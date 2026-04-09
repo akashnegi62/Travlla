@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const AboutHero = () => {
+type AboutHeroProps = {
+  title?: string;
+};
+
+const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
   return (
     <section className="relative bg-cover bg-center w-full bg-white bg-[url('/inr-banner.jpg')] overflow-hidden">
       {/* Background Overlay */}
@@ -19,7 +23,7 @@ const AboutHero = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="lg:text-[60px] md:text-[52px] text-[28px] font-bold text-[#1a3d3d] relative">
-              About Us
+              {title}
             </h2>
           </motion.div>
 
@@ -39,7 +43,7 @@ const AboutHero = () => {
                 </Link>
               </li>
               <li className="relative inline-block text-base font-semibold text-[#1a3d3d]">
-                About Us
+                {title}
               </li>
             </ul>
           </motion.div>

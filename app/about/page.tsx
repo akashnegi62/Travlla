@@ -7,7 +7,7 @@ import AboutTestimonial from "@/components/About/AboutTestimonial";
 function About() {
   return (
     <>
-      <AboutHero />
+      <AboutHero title="Company Overview" />
       <AboutRecommend />
       <AboutDestination />
       <AboutService />
