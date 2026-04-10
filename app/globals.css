@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: kau;
-  src: url("/img/kaushanscript-regular.ttf") format("truetype");
+  font-family: 'kau';
+  src: url('/fonts/kaushanscript-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
