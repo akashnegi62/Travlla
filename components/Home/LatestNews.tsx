@@ -36,7 +36,11 @@ const LatestNews = () => {
   return (
     <section
       className="bg-[#1a3d3d] xl:pt-30 pt-12.5 xl:pb-22.5 pb-5 bg-cover bg-no-repeat"
-      style={{ backgroundImage: "url('/img/pattern.png')" }}
+      style={{
+        backgroundImage: "url('/img/pattern.png')",
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}
     >
       <div className="container mx-auto px-4">
         {/* Header Section */}

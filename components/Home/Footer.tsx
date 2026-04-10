@@ -117,7 +117,7 @@ const Footer = () => {
             <div className="xl:col-span-1 lg:col-span-2">
               <div className="mb-8">
                 <Image
-                  src="/img/logo.jpeg"
+                  src="/img/logo.png"
                   alt="Logo"
                   width={160}
                   height={50}

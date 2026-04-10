@@ -149,32 +149,34 @@ export default function Header() {
         {/* --- MAIN NAVIGATION --- */}
         <div
           className={`transition-all duration-300 ${
-            isFixed ? "py-3 bg-white" : "py-6 bg-transparent"
+            isFixed ? "py-2 bg-white" : "py-4 bg-transparent"
           }`}
         >
-          <div className="container mx-auto px-4 flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="relative w-48 h-12">
-              <Image
-                src="/img/logo.jpeg"
-                alt="Logo"
-                fill
-                sizes="192px"
-                className={`object-contain transition-all duration-300 ${!isFixed ? "brightness-0 invert" : ""}`}
-                priority
-              />
-            </Link>
+          <div className="container mx-auto px-4 flex items-center justify-between gap-8">
+            {/* Logo - Centered in height with items */}
+            <div className="shrink-0 mb-5">
+              <Link href="/" className="relative block w-64 h-16">
+                <Image
+                  src="/img/logo.png"
+                  alt="Logo"
+                  fill
+                  sizes="256px"
+                  className="object-cover transition-all duration-300"
+                  priority
+                />
+              </Link>
+            </div>
 
-            {/* Desktop Menu */}
+            {/* Desktop Menu - Aligned on the same line */}
             <nav className="hidden lg:block">
               <ul className="flex items-center gap-1">
                 {menuData.map((item) => (
-                  <li key={item.name} className="relative group px-3 py-2">
+                  <li key={item.name} className="relative group px-2 py-2">
                     <Link
                       href={item.href}
-                      className={`text-[15px] font-bold flex items-center gap-1 transition-colors
+                      className={`text-[15px] xl:text-[16px] font-bold flex items-center gap-1 transition-colors
                       ${isFixed ? "text-gray-700" : "text-white hover:text-white/80"} 
-                      hover:text-[#a3e635]`}
+                      hover:text-[#a3e635] whitespace-nowrap`}
                     >
                       {item.name}
                       {item.subMenu && (
@@ -184,7 +186,7 @@ export default function Header() {
 
                     {/* Dropdown */}
                     {item.subMenu && (
-                      <ul className="absolute top-full left-0 w-56 bg-white shadow-2xl rounded-b-lg py-3 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 border-t-2 border-[#004b62]">
+                      <ul className="absolute top-full left-0 w-60 bg-white shadow-2xl rounded-b-lg py-3 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 border-t-2 border-[#004b62]">
                         {item.subMenu.map((sub) => (
                           <li key={sub.name}>
                             <Link
@@ -217,7 +219,6 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -226,7 +227,6 @@ export default function Header() {
               className="fixed inset-0 bg-black/70 z-1000 backdrop-blur-sm"
             />
 
-            {/* Sidebar Content */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -238,8 +238,8 @@ export default function Header() {
                 <Image
                   src="/img/logo.png"
                   alt="logo"
-                  width={140}
-                  height={40}
+                  width={160}
+                  height={50}
                   className="object-contain"
                 />
                 <button
@@ -286,19 +286,6 @@ export default function Header() {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              {/* Mobile Sidebar Footer */}
-              <div className="p-6 bg-gray-50 mt-auto">
-                <p className="text-sm font-bold text-gray-400 uppercase mb-4 tracking-widest">
-                  Follow Us
-                </p>
-                <div className="flex gap-4 text-[#004b62]">
-                  <FaFacebookF className="cursor-pointer hover:text-[#a3e635]" />
-                  <FaTwitter className="cursor-pointer hover:text-[#a3e635]" />
-                  <FaInstagram className="cursor-pointer hover:text-[#a3e635]" />
-                  <FaLinkedinIn className="cursor-pointer hover:text-[#a3e635]" />
-                </div>
               </div>
             </motion.div>
           </>
