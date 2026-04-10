@@ -7,12 +7,12 @@ import { motion } from 'framer-motion';
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const nationalData = [
-  { id: 1, name: "Goa Beaches", img: "/assets/images/destinations/style1/pic1.jpg", count: "12 Tours" },
-  { id: 2, name: "Himachal Hills", img: "/assets/images/destinations/style1/pic2.jpg", count: "08 Tours" },
-  { id: 3, name: "Kerala Backwaters", img: "/assets/images/destinations/style1/pic3.jpg", count: "15 Tours" },
-  { id: 4, name: "Rajasthan Heritage", img: "/assets/images/destinations/style1/pic4.jpg", count: "10 Tours" },
-  { id: 5, name: "Leh Ladakh", img: "/assets/images/destinations/style1/pic5.jpg", count: "05 Tours" },
-  { id: 6, name: "Andaman Islands", img: "/assets/images/destinations/style1/pic6.jpg", count: "07 Tours" },
+  { id: 1, name: "Goa Beaches", img: "/img/location/loc1.webp", count: "12 Tours" },
+  { id: 2, name: "Himachal Hills", img: "/img/location/loc2.webp", count: "08 Tours" },
+  { id: 3, name: "Kerala Backwaters", img: "/img/location/loc3.webp", count: "15 Tours" },
+  { id: 4, name: "Rajasthan Heritage", img: "/img/location/loc4.webp", count: "10 Tours" },
+  { id: 5, name: "Leh Ladakh", img: "/img/location/loc5.webp", count: "05 Tours" },
+  { id: 6, name: "Andaman Islands", img: "/img/location/loc6.webp", count: "07 Tours" },
 ];
 
 export default function NationalPage() {
@@ -37,7 +37,13 @@ export default function NationalPage() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative h-112.5 rounded-[40px] overflow-hidden shadow-xl"
               >
-                <Image src={loc.img} alt={loc.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image
+                  src={loc.img}
+                  alt={loc.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-[#1a3d3d] via-transparent to-transparent opacity-80" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-10">

@@ -10,37 +10,37 @@ const destinations = [
   {
     name: "Paris",
     listings: "28 Listing",
-    image: "/vac1.jpg",
+    image: "/img/vac1.jpg",
   },
   {
     name: "Kashmir",
     listings: "32 Listing",
-    image: "/vac2.jpg",
+    image: "/img/vac2.jpg",
   },
   {
     name: "Thailand",
     listings: "20 Listing",
-    image: "/vac3.jpg",
+    image: "/img/vac3.jpg",
   },
   {
     name: "Maldives",
     listings: "40 Listing",
-    image: "/vac4.jpg",
+    image: "/img/vac4.jpg",
   },
   {
     name: "Indonesia",
     listings: "80 Listing",
-    image: "/vac5.jpg",
+    image: "/img/vac5.jpg",
   },
   {
     name: "Bali",
     listings: "20 Listing",
-    image: "/vac1.jpg",
+    image: "/img/vac1.jpg",
   },
   {
     name: "Mauritius",
     listings: "20 Listing",
-    image: "/vac2.jpg",
+    image: "/img/vac2.jpg",
   },
 ];
 
@@ -89,7 +89,7 @@ const Favourite = () => {
                     className="w-9 h-9 inline-flex rounded-full overflow-hidden border border-white -ml-2.5 first:ml-0"
                   >
                     <Image
-                      src={`/pic${i}.jpg`}
+                      src={`/img/pic${i}.jpg`}
                       alt="user"
                       width={34}
                       height={34}
@@ -159,6 +159,7 @@ const Favourite = () => {
                       src={dest.image}
                       alt={dest.name}
                       fill
+                      sizes="(max-width: 768px) 280px, 320px"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
@@ -179,11 +180,11 @@ const Favourite = () => {
         {/* Man on Rock Decoration */}
         <div className="absolute top-0 right-0 max-lg:w-[30%] hidden md:block pointer-events-none mix-blend-lighten opacity-30 lg:opacity-100">
           <Image
-            src="/man-rock.png"
+            src="/img/man-rock.png"
             alt="Decoration"
             width={450}
             height={550}
-            className="object-contain"
+            className="object-contain w-auto h-auto"
           />
         </div>
       </div>

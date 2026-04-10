@@ -10,21 +10,21 @@ const testimonialData = [
     id: 1,
     name: "Amelia Warner",
     role: "Tourist",
-    img: "/pic1.jpg",
+    img: "/img/pic1.jpg",
     text: "Once the travel bug bites, there is no known antidote, and I know that I shall be happily infected until the end of my life. A journey is best measured in friends.",
   },
   {
     id: 2,
     name: "Kavin Martin",
     role: "Traveler",
-    img: "/pic2.jpg",
+    img: "/img/pic2.jpg",
     text: "I Was Very Impressed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
   {
     id: 3,
     name: "Antonio",
     role: "Tourist",
-    img: "/pic3.jpg",
+    img: "/img/pic3.jpg",
     text: "Travel bug bites, there is no known antidote, and I know that I shall be happily infected until the end of my life. A journey is best measured in friends.",
   },
 ];
@@ -59,11 +59,11 @@ const AboutTestimonials = () => {
           </p>
           <div className="flex justify-center mt-2">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="separator"
               width={470}
               height={70}
-              className="w-87.5"
+              className="w-87.5 h-auto"
             />
           </div>
         </div>
@@ -85,7 +85,7 @@ const AboutTestimonials = () => {
               className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-125 z-10"
             >
               <Image
-                src="/airplane.png"
+                src="/img/airplane.png"
                 alt="airplane"
                 width={493}
                 height={116}
@@ -107,6 +107,7 @@ const AboutTestimonials = () => {
                   src={current.img}
                   alt={current.name}
                   fill
+                  sizes="(max-width: 768px) 320px, 375px"
                   className="object-cover"
                 />
               </motion.div>
@@ -128,6 +129,7 @@ const AboutTestimonials = () => {
                     src={item.img}
                     alt="thumb"
                     fill
+                    sizes="64px"
                     className="object-cover"
                   />
                 </button>
@@ -155,7 +157,7 @@ const AboutTestimonials = () => {
                     </div>
                     <div className="opacity-20 shrink-0">
                       <Image
-                        src="/Quote.png"
+                        src="/img/quote.png"
                         alt="quote"
                         width={70}
                         height={58}
@@ -204,7 +206,7 @@ const AboutTestimonials = () => {
         className="absolute top-1/3 -right-10 opacity-60 w-32 hidden xl:block"
       >
         <Image
-          src="/hotballon-right.png"
+          src="/img/hotballon-right.png"
           alt="balloon"
           width={110}
           height={166}

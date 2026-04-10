@@ -15,7 +15,7 @@ const tourData = [
     price: 59,
     duration: "8 days, 3 Nights",
     rating: 4.8,
-    img: "/vac1.jpg",
+    img: "/img/vac1.jpg",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const tourData = [
     price: 45,
     duration: "5 days, 2 Nights",
     rating: 4.9,
-    img: "/vac4.jpg",
+    img: "/img/vac4.jpg",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const tourData = [
     price: 60,
     duration: "10 days, 9 Nights",
     rating: 4.7,
-    img: "/vac5.jpg",
+    img: "/img/vac5.jpg",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const tourData = [
     price: 70,
     duration: "7 days, 6 Nights",
     rating: 4.8,
-    img: "/vac2.jpg",
+    img: "/img/vac2.jpg",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const tourData = [
     price: 95,
     duration: "6 days, 5 Nights",
     rating: 5.0,
-    img: "/vac3.jpg",
+    img: "/img/vac3.jpg",
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ const tourData = [
     price: 40,
     duration: "4 days, 3 Nights",
     rating: 4.6,
-    img: "/vac4.jpg",
+    img: "/img/vac4.jpg",
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const tourData = [
     price: 85,
     duration: "5 days, 4 Nights",
     rating: 4.9,
-    img: "/vac5.jpg",
+    img: "/img/vac5.jpg",
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ const tourData = [
     price: 110,
     duration: "12 days, 11 Nights",
     rating: 4.8,
-    img: "/vac1.jpg",
+    img: "/img/vac1.jpg",
   },
 ];
 
@@ -129,11 +129,11 @@ const PopularTours = () => {
           </p>
           <div className="-mt-7 flex justify-center">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="Separator"
               width={470}
               height={70}
-              className="w-117.5"
+              className="w-117.5 h-auto"
             />
           </div>
         </motion.div>
@@ -161,6 +161,7 @@ const PopularTours = () => {
                       src={tour.img}
                       alt={tour.location}
                       fill
+                      sizes="(max-width: 768px) 300px, (max-width: 1280px) 420px, 423px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 py-6 px-8 bg-black/20 backdrop-blur-md transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-full">

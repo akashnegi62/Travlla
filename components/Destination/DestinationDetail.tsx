@@ -15,22 +15,22 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 
 // --- Data ---
 const destinations = [
-  { name: "Paris", img: "/vac1.jpg" },
-  { name: "Maldives", img: "/vac2.jpg" },
-  { name: "Hong Kong", img: "/vac3.jpg" },
-  { name: "Thailand", img: "/vac4.jpg" },
-  { name: "Bangkok", img: "/vac5.jpg" },
-  { name: "Tokyo", img: "/vac1.jpg" },
-  { name: "Spain", img: "/vac2.jpg" },
-  { name: "California", img: "/vac3.jpg" },
+  { name: "Paris", img: "/img/vac1.jpg" },
+  { name: "Maldives", img: "/img/vac2.jpg" },
+  { name: "Hong Kong", img: "/img/vac3.jpg" },
+  { name: "Thailand", img: "/img/vac4.jpg" },
+  { name: "Bangkok", img: "/img/vac5.jpg" },
+  { name: "Tokyo", img: "/img/vac1.jpg" },
+  { name: "Spain", img: "/img/vac2.jpg" },
+  { name: "California", img: "/img/vac3.jpg" },
 ];
 
 const brands = [
-  "/brand1.png",
-  "/brand2.png",
-  "/brand3.png",
-  "/brand4.png",
-  "/brand1.png",
+  "/img/brand1.png",
+  "/img/brand2.png",
+  "/img/brand3.png",
+  "/img/brand4.png",
+  "/img/brand1.png",
 ];
 
 const tours = [
@@ -39,28 +39,28 @@ const tours = [
     location: "Plateau in Slovenia",
     price: 59,
     duration: "8 days, 3 Nights",
-    img: "/vac1.jpg",
+    img: "/img/vac1.jpg",
   },
   {
     id: 2,
     location: "Bali, Indonesia",
     price: 59,
     duration: "8 days, 3 Nights",
-    img: "/vac2.jpg",
+    img: "/img/vac2.jpg",
   },
   {
     id: 3,
     location: "Tokyo City Japan",
     price: 59,
     duration: "8 days, 3 Nights",
-    img: "/vac3.jpg",
+    img: "/img/vac3.jpg",
   },
   {
     id: 4,
     location: "South Korea",
     price: 59,
     duration: "8 days, 3 Nights",
-    img: "/vac4.jpg",
+    img: "/img/vac4.jpg",
   },
 ];
 
@@ -80,7 +80,7 @@ const DestinationDetail = () => {
   return (
     <div className="bg-white">
       {/* --- 1. DESTINATION GRID SECTION --- */}
-      <section className="bg-contain bg-bottom bg-repeat-x xl:pb-24 xl:pt-30 pt-12.5 bg-[url('/assets/images/background/Cloud-bg.png')]">
+      <section className="bg-contain bg-bottom bg-repeat-x xl:pb-24 xl:pt-30 pt-12.5 bg-[url('/img/big-cloud.png')]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-12 gap-7.5">
             {destinations.map((dest, i) => (
@@ -94,6 +94,7 @@ const DestinationDetail = () => {
                       src={dest.img}
                       alt={dest.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
@@ -107,7 +108,7 @@ const DestinationDetail = () => {
                   {/* Floating Balloon on Hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -z-1 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:-top-12">
                     <Image
-                      src="/assets/images/destinations/hotballon-right.png"
+                      src="/img/hotballon-right.png"
                       alt="balloon"
                       width={120}
                       height={180}
@@ -179,11 +180,11 @@ const DestinationDetail = () => {
               Destinations worth exploring! Here are a few popular spots
             </p>
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="sep"
               width={470}
               height={70}
-              className="mx-auto"
+              className="mx-auto h-auto"
             />
           </div>
 
@@ -202,6 +203,7 @@ const DestinationDetail = () => {
                       src={tour.img}
                       alt={tour.location}
                       fill
+                      sizes="(max-width: 768px) 320px, 461px"
                       className="object-cover transition-transform duration-700 group-hover/card:scale-110"
                     />
 

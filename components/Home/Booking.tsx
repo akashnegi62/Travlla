@@ -11,21 +11,21 @@ const steps = [
     title: "Choose Destination",
     description:
       "All you have to do is, first select your preferred destination and proceed",
-    icon: "/destination.png",
+    icon: "/img/destination.png",
   },
   {
     id: "02",
     title: "Make Payment",
     description:
       "You are important to us. We pay attention to the quality of every service we provide to you.",
-    icon: "/make-payment.png",
+    icon: "/img/pay-icon.png",
   },
   {
     id: "03",
     title: "Ready For Travelling",
     description:
       "We have seen that you have fulfilled all the requirements, now you are ready to travel.",
-    icon: "/travelling.png",
+    icon: "/img/travel-icon.png",
   },
 ];
 
@@ -43,11 +43,11 @@ const Booking = () => {
           </p>
           <div className="-mt-7 flex justify-center">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="Separator"
               width={470}
               height={70}
-              className="w-117.5"
+              className="w-117.5 h-auto"
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ const Booking = () => {
                         alt={step.title}
                         width={48}
                         height={48}
-                        className="grayscale group-hover:grayscale-0 transition-all duration-500 w-12"
+                        className="grayscale group-hover:grayscale-0 transition-all duration-500 w-12 h-auto"
                       />
                     </div>
                   </div>
@@ -99,7 +99,7 @@ const Booking = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="my-7.5 bg-[#a3e635] xl:h-46 rounded-2xl overflow-hidden bg-[url('/Cloud1.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
+            className="my-7.5 bg-[#a3e635] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
           >
             <div className="flex items-end max-lg:justify-center max-lg:mb-3.75">
               <h2 className="font-black 2xl:text-[120px] text-[80px] leading-[0.75] text-white mr-4.5">

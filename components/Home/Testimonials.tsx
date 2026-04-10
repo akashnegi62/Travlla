@@ -10,28 +10,28 @@ const testimonials = [
     id: 1,
     name: "Kavin Martin",
     role: "Traver",
-    image: "/client1.jpg",
+    image: "/img/client1.jpg",
     text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
   {
     id: 2,
     name: "Amelia Warner",
     role: "Tourist",
-    image: "/client1.jpg",
+    image: "/img/client1.jpg",
     text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
   {
     id: 3,
     name: "Kavin Martin",
     role: "Traver",
-    image: "/client1.jpg",
+    image: "/img/client1.jpg",
     text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
   {
     id: 4,
     name: "Amelia Warner",
     role: "Tourist",
-    image: "/client1.jpg",
+    image: "/img/client1.jpg",
     text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
 ];
@@ -55,7 +55,7 @@ const Testimonials = () => {
   return (
     <section
       className="xl:pt-30 pt-12.5 xl:pb-25 pb-10 bg-center bg-no-repeat bg-[#f0fafa] relative overflow-hidden"
-      style={{ backgroundImage: "url('/Map.png')" }}
+      style={{ backgroundImage: "url('/img/map.png')" }}
     >
       {/* Background Decorative Hot Balloon */}
       <motion.div
@@ -64,7 +64,7 @@ const Testimonials = () => {
         className="absolute md:left-10 left-5 top-1/4 md:w-56 w-24 opacity-50 z-0 pointer-events-none"
       >
         <Image
-          src="/hotballon-Left.png"
+          src="/img/hotballon-left.png"
           alt="Balloon"
           width={230}
           height={300}
@@ -82,11 +82,11 @@ const Testimonials = () => {
           </p>
           <div className="-mt-7 flex justify-center">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="Separator"
               width={470}
               height={70}
-              className="w-117.5"
+            className="w-117.5 h-auto"
             />
           </div>
         </div>
@@ -138,7 +138,7 @@ const Testimonials = () => {
                       </div>
                       <div className="right-part opacity-20">
                         <Image
-                          src="/Quote.png"
+                          src="/img/quote.png"
                           alt="Quote"
                           width={60}
                           height={50}

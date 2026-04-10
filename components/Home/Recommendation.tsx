@@ -11,13 +11,13 @@ const Recommendation = () => {
       title: "Trusted travel guide",
       description:
         "Provides reliable information to help travelers plan their trips efficiently and safely.",
-      icon: "/travel-guide.png",
+      icon: "/img/guide-icon.png",
     },
     {
       title: "Mission & Vision",
       description:
         "Aims to connect people to positive experience through travel, helping them see the world differently.",
-      icon: "/mission-icon.png",
+      icon: "/img/mission-icon.png",
     },
   ];
 
@@ -37,7 +37,7 @@ const Recommendation = () => {
                   className="absolute top-0 right-0 z-20 max-sm:w-50"
                 >
                   <Image
-                    src="/airplane.png"
+                    src="/img/airplane.png"
                     alt="airplane"
                     width={431}
                     height={166}
@@ -48,7 +48,7 @@ const Recommendation = () => {
                 {/* Top Left Image */}
                 <div className="sm:max-w-69.5 max-w-50 overflow-hidden">
                   <Image
-                    src="/we-rec-pic5.jpg"
+                    src="/img/hero-recommed1.jpg"
                     alt="Rec 1"
                     width={478}
                     height={420}
@@ -63,9 +63,10 @@ const Recommendation = () => {
                   className="mt-3 md:w-97.5 md:h-97.5 sm:w-67.5 sm:h-67.5 w-50 h-50 md:border-20 border-8 border-white rounded-full shadow-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden"
                 >
                   <Image
-                    src="/we-rec-pic3.jpg"
+                    src="/img/hero-recommed2.jpg"
                     alt="Rec Center"
                     fill
+                    sizes="(max-width: 640px) 200px, (max-width: 768px) 270px, 390px"
                     className="object-cover"
                   />
                 </motion.div>
@@ -73,7 +74,7 @@ const Recommendation = () => {
                 {/* Bottom Right Image */}
                 <div className="absolute bottom-0 right-0 sm:max-w-69.5 max-w-50">
                   <Image
-                    src="/we-rec-pic4.jpg"
+                    src="/img/hero-recommed3.jpg"
                     alt="Rec 2"
                     width={278}
                     height={420}
@@ -144,7 +145,7 @@ const Recommendation = () => {
                           className="w-9 h-9 rounded-full border-2 border-white overflow-hidden"
                         >
                           <Image
-                            src={`/pic${i}.jpg`}
+                            src={`/img/pic${i}.jpg`}
                             alt="user"
                             width={34}
                             height={34}

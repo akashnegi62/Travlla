@@ -6,14 +6,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const services = [
-  { title: "Tour Guide", img: "/vac1.jpg" },
-  { title: "Entertainment", img: "/vac2.jpg" },
-  { title: "Safe Flight", img: "/vac3.jpg" },
-  { title: "Texi & Metro", img: "/vac4.jpg" },
-  { title: "Delicious Food", img: "/vac5.jpg" },
-  { title: "Spa & Massages", img: "/vac1.jpg" },
-  { title: "Interesting Rest", img: "/vac2.jpg" },
-  { title: "Pickup & Drop", img: "/vac3.jpg" },
+  { title: "Tour Guide", img: "/img/vac1.jpg" },
+  { title: "Entertainment", img: "/img/vac2.jpg" },
+  { title: "Safe Flight", img: "/img/vac3.jpg" },
+  { title: "Texi & Metro", img: "/img/vac4.jpg" },
+  { title: "Delicious Food", img: "/img/vac5.jpg" },
+  { title: "Spa & Massages", img: "/img/vac1.jpg" },
+  { title: "Interesting Rest", img: "/img/vac2.jpg" },
+  { title: "Pickup & Drop", img: "/img/vac3.jpg" },
 ];
 
 const AboutService = () => {
@@ -35,11 +35,11 @@ const AboutService = () => {
           </p>
           <div className="-mt-7 flex justify-center">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="Separator"
               width={470}
               height={70}
-              className="w-[470px] inline-block"
+              className="w-[470px] h-auto inline-block"
             />
           </div>
         </div>

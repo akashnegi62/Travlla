@@ -12,7 +12,7 @@ const blogPosts = [
     month: "June",
     author: "Joey Peterson",
     title: "The Top Travel Destinations for Photography Enthusiasts",
-    image: "/vac1.jpg",
+    image: "/img/vac1.jpg",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const blogPosts = [
     month: "June",
     author: "Aliena Smith",
     title: "The Best Ways to Travel with Your Significant Other",
-    image: "/vac2.jpg",
+    image: "/img/vac2.jpg",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const blogPosts = [
     month: "June",
     author: "Ronin Colun",
     title: "Top 3 Adventure Destinations for Your Next Holiday",
-    image: "/vac3.jpg",
+    image: "/img/vac3.jpg",
   },
 ];
 
@@ -36,7 +36,7 @@ const LatestNews = () => {
   return (
     <section
       className="bg-[#1a3d3d] xl:pt-30 pt-12.5 xl:pb-22.5 pb-5 bg-cover bg-no-repeat"
-      style={{ backgroundImage: "url('/patern.png')" }}
+      style={{ backgroundImage: "url('/img/pattern.png')" }}
     >
       <div className="container mx-auto px-4">
         {/* Header Section */}
@@ -79,6 +79,7 @@ const LatestNews = () => {
                     src={post.image}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
 

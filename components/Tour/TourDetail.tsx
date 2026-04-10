@@ -12,7 +12,7 @@ const tourCategories = [
     title: "Hiking",
     description:
       "Here are the people who we believe most changed the stories that defined the past year.",
-    image: "/vac2.jpg",
+    image: "/img/vac2.jpg",
     label: "Hiking",
   },
   {
@@ -20,7 +20,7 @@ const tourCategories = [
     title: "Wildlife Tourism",
     description:
       "Observing animals in their natural habitats like tiger safaris has become a popular and educational form of travel.",
-    image: "/vac1.jpg",
+    image: "/img/vac1.jpg",
     label: "Wildlife",
   },
   {
@@ -28,7 +28,7 @@ const tourCategories = [
     title: "Adventure Tours",
     description:
       "For those who seek the thrill. Paragliding, white-water rafting, and bungee jumping in exotic locations.",
-    image: "/vac3.jpg",
+    image: "/img/vac3.jpg",
     label: "Adventure Tours",
   },
   {
@@ -36,7 +36,7 @@ const tourCategories = [
     title: "Cultural Tours",
     description:
       "Explore history and local traditions through our curated cultural experiences across the globe.",
-    image: "/vac4.jpg",
+    image: "/img/vac4.jpg",
     label: "Cultural Tours",
   },
   {
@@ -44,7 +44,7 @@ const tourCategories = [
     title: "Beach Vacations",
     description:
       "Relax on pristine beaches and enjoy crystal-clear waters at the world's most beautiful coastal destinations.",
-    image: "/vac5.jpg",
+    image: "/img/vac5.jpg",
     label: "Beach & Island",
   },
 ];
@@ -105,7 +105,7 @@ const TourDetail = () => {
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
-        backgroundImage: "url('/tour-bg.jpg')",
+        backgroundImage: "url('/img/tour-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

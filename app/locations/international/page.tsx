@@ -7,12 +7,12 @@ import { motion } from 'framer-motion';
 import { FaGlobe } from 'react-icons/fa';
 
 const internationalData = [
-  { id: 1, name: "Paris, France", img: "/assets/images/destinations/style1/pic7.jpg", desc: "Experience the city of lights and world-class art." },
-  { id: 2, name: "Bali, Indonesia", img: "/assets/images/destinations/style1/pic8.jpg", desc: "Tropical paradise with lush jungles and beaches." },
-  { id: 3, name: "Tokyo, Japan", img: "/assets/images/destinations/style1/pic6.jpg", desc: "A perfect blend of tradition and high-tech future." },
-  { id: 4, name: "Swiss Alps", img: "/assets/images/destinations/style1/pic4.jpg", desc: "Majestic mountains and serene lake-side villages." },
-  { id: 5, name: "Dubai, UAE", img: "/assets/images/destinations/style1/pic2.jpg", desc: "The ultimate luxury shopping and desert adventure." },
-  { id: 6, name: "New York, USA", img: "/assets/images/destinations/style1/pic3.jpg", desc: "The city that never sleeps and iconic landmarks." },
+  { id: 1, name: "Paris, France", img: "/img/location/loc7.webp", desc: "Experience the city of lights and world-class art." },
+  { id: 2, name: "Bali, Indonesia", img: "/img/location/loc8.webp", desc: "Tropical paradise with lush jungles and beaches." },
+  { id: 3, name: "Tokyo, Japan", img: "/img/location/loc9.webp", desc: "A perfect blend of tradition and high-tech future." },
+  { id: 4, name: "Swiss Alps", img: "/img/location/loc4.webp", desc: "Majestic mountains and serene lake-side villages." },
+  { id: 5, name: "Dubai, UAE", img: "/img/location/loc2.webp", desc: "The ultimate luxury shopping and desert adventure." },
+  { id: 6, name: "New York, USA", img: "/img/location/loc3.webp", desc: "The city that never sleeps and iconic landmarks." },
 ];
 
 export default function InternationalPage() {
@@ -38,7 +38,13 @@ export default function InternationalPage() {
                 className="flex flex-col md:flex-row bg-white rounded-[50px] overflow-hidden shadow-2xl group"
               >
                 <div className="md:w-1/2 relative h-75 md:h-auto overflow-hidden">
-                  <Image src={loc.img} alt={loc.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image
+                    src={loc.img}
+                    alt={loc.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
                 <div className="md:w-1/2 p-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-bold text-[#1a3d3d] mb-4">{loc.name}</h3>

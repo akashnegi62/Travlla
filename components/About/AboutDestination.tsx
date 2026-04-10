@@ -6,14 +6,14 @@ import Link from "next/link";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const destinations = [
-  { name: "Thailand", img: "/vac1.jpg" },
-  { name: "Bangkok", img: "/vac2.jpg" },
-  { name: "Tokyo", img: "/vac3.jpg" },
-  { name: "Spain", img: "/vac4.jpg" },
-  { name: "California", img: "/vac5.jpg" },
-  { name: "Paris", img: "/vac1.jpg" },
-  { name: "Maldives", img: "/vac1.jpg" },
-  { name: "Hong Kong", img: "/vac1.jpg" },
+  { name: "Thailand", img: "/img/vac1.jpg" },
+  { name: "Bangkok", img: "/img/vac2.jpg" },
+  { name: "Tokyo", img: "/img/vac3.jpg" },
+  { name: "Spain", img: "/img/vac4.jpg" },
+  { name: "California", img: "/img/vac5.jpg" },
+  { name: "Paris", img: "/img/vac1.jpg" },
+  { name: "Maldives", img: "/img/vac1.jpg" },
+  { name: "Hong Kong", img: "/img/vac1.jpg" },
 ];
 
 const AboutDestination = () => {
@@ -29,7 +29,7 @@ const AboutDestination = () => {
   };
 
   return (
-    <section className="relative overflow-hidden md:pb-24 pb-10 md:pt-32 pt-16 bg-contain bg-bottom bg-repeat-x bg-[url('/Cloud-bg.png')]">
+    <section className="relative overflow-hidden md:pb-24 pb-10 md:pt-32 pt-16 bg-contain bg-bottom bg-repeat-x bg-[url('/img/big-cloud.png')]">
       <div className="container mx-auto px-4">
         {/* TITLE START */}
         <div className="text-center max-w-[600px] mx-auto md:mb-16 mb-8">
@@ -41,11 +41,11 @@ const AboutDestination = () => {
           </p>
           <div className="-mt-7">
             <Image
-              src="/Title-Separator.png"
+              src="/img/title-seperator.png"
               alt="Separator"
               width={470}
               height={70}
-              className="w-[470px] inline-block"
+              className="w-[470px] h-auto inline-block"
             />
           </div>
         </div>
@@ -83,6 +83,7 @@ const AboutDestination = () => {
                       src={dest.img}
                       alt={dest.name}
                       fill
+                      sizes="(max-width: 768px) 280px, 309px"
                       className="object-cover object-center"
                     />
                   </div>
@@ -99,11 +100,11 @@ const AboutDestination = () => {
                   {/* Hot Balloon Animation on Hover */}
                   <div className="absolute top-5 left-1/2 -translate-x-1/2 -z-1 transition-all duration-500 opacity-0 group-hover/card:opacity-100 group-hover/card:-top-16">
                     <Image
-                      src="/hotballon-right.png"
+                      src="/img/hotballon-right.png"
                       alt="balloon"
                       width={155}
                       height={233}
-                      className="w-full max-w-[120px] mx-auto block"
+                      className="w-full max-w-[120px] h-auto mx-auto block"
                     />
                   </div>
                 </div>
@@ -116,7 +117,7 @@ const AboutDestination = () => {
       {/* Background Decorative Balloons */}
       <div className="absolute -left-28 top-1/2 w-56 opacity-30 pointer-events-none">
         <Image
-          src="/hotballon-Left.png"
+          src="/img/hotballon-left.png"
           alt="balloon"
           width={233}
           height={333}
@@ -124,7 +125,7 @@ const AboutDestination = () => {
       </div>
       <div className="absolute -right-14 top-1/2 w-28 opacity-30 pointer-events-none">
         <Image
-          src="/hotballon-right.png"
+          src="/img/hotballon-right.png"
           alt="balloon"
           width={110}
           height={166}

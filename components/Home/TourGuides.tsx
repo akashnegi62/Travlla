@@ -11,22 +11,22 @@ const guides = [
   {
     name: "Murphy",
     role: "Tourist Guide",
-    img: "/person1.jpg",
+    img: "/img/person1.jpg",
   },
   {
     name: "Alexis Cox",
     role: "Tourist Guide",
-    img: "/person2.jpg",
+    img: "/img/person2.jpg",
   },
   {
     name: "Murray",
     role: "Tourist Guide",
-    img: "/person3.jpg",
+    img: "/img/person3.jpg",
   },
   {
     name: "Crawford",
     role: "Tourist Guide",
-    img: "/person4.jpg",
+    img: "/img/person4.jpg",
   },
 ];
 
@@ -45,11 +45,11 @@ const TourGuides = () => {
             </p>
             <div className="-mt-7 flex justify-center">
               <Image
-                src="/Title-Separator.png"
+                src="/img/title-seperator.png"
                 alt="Separator"
                 width={470}
                 height={70}
-                className="w-117.5"
+                className="w-117.5 h-auto"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ const TourGuides = () => {
                     className="absolute inset-0 flex justify-center items-center -top-10 opacity-30"
                   >
                     <Image
-                      src="/CircleShape.png"
+                      src="/img/circle-shape.png"
                       alt="Circle"
                       width={715}
                       height={715}
@@ -86,7 +86,7 @@ const TourGuides = () => {
 
                   <div className="relative z-10 flex justify-center">
                     <Image
-                      src="/team-l-pic.png"
+                      src="/img/hero.png"
                       alt="Team"
                       width={739}
                       height={653}

@@ -13,7 +13,7 @@ export default function MessagePage() {
             <div className="lg:w-1/2 relative">
               <div className="rounded-[50px] overflow-hidden shadow-2xl border-8 border-[#f0f9f9]">
                 <Image
-                  src="/assets/images/founder.jpg"
+                  src="/img/about2.jpg"
                   alt="Founder"
                   width={600}
                   height={800}

@@ -13,7 +13,7 @@ const blogData = [
     month: "June",
     author: "Joey Peterson",
     title: "The Top Travel Destinations for Photography Enthusiasts",
-    img: "/vac1.jpg",
+    img: "/img/vac1.jpg",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const blogData = [
     month: "June",
     author: "Aliena Smith",
     title: "The Best Ways to Travel with Your Significant Other",
-    img: "/vac2.jpg",
+    img: "/img/vac2.jpg",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const blogData = [
     month: "June",
     author: "Ronin Colun",
     title: "Top 3 Adventure Destinations for Your Next Holiday",
-    img: "/vac3.jpg",
+    img: "/img/vac3.jpg",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const blogData = [
     month: "June",
     author: "Joey Peterson",
     title: "Essential Gear for Every Professional Travel Photographer",
-    img: "/vac4.jpg",
+    img: "/img/vac4.jpg",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const blogData = [
     month: "June",
     author: "Aliena Smith",
     title: "Exploring the Hidden Gems of South East Asia",
-    img: "/vac5.jpg",
+    img: "/img/vac5.jpg",
   },
   {
     id: 6,
@@ -53,7 +53,7 @@ const blogData = [
     month: "June",
     author: "Ronin Colun",
     title: "How to Plan a Budget Friendly European Summer Trip",
-    img: "/vac1.jpg",
+    img: "/img/vac1.jpg",
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ const blogData = [
     month: "June",
     author: "Joey Peterson",
     title: "Tips for Capturing the Perfect Sunset on Your Travels",
-    img: "/vac2.jpg",
+    img: "/img/vac2.jpg",
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const blogData = [
     month: "June",
     author: "Aliena Smith",
     title: "Cultural Etiquette: What to Know Before You Go",
-    img: "/vac3.jpg",
+    img: "/img/vac3.jpg",
   },
   {
     id: 9,
@@ -77,7 +77,7 @@ const blogData = [
     month: "June",
     author: "Ronin Colun",
     title: "The Ultimate Guide to Solo Backpacking in South America",
-    img: "/vac4.jpg",
+    img: "/img/vac4.jpg",
   },
 ];
 
@@ -102,6 +102,7 @@ const BlogList = () => {
                     src={post.img}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                   />
                 </Link>

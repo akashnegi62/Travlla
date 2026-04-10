@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const BlogHero = () => {
   return (
-    <section className="relative bg-cover bg-center w-full bg-white bg-[url('/inr-banner.jpg')] overflow-hidden">
+    <section className="relative bg-cover bg-center w-full bg-white bg-[url('/img/bg.jpg')] overflow-hidden">
       {/* Background Overlay */}
       <div className="opacity-100 absolute left-0 top-0 size-full"></div>
 
@@ -56,7 +56,7 @@ const BlogHero = () => {
           className="inline-block whitespace-nowrap"
         >
           <Image
-            src="/inr-banner-cloud.png"
+            src="/img/big-cloud.png"
             alt="Cloud"
             width={500}
             height={190}
@@ -76,7 +76,7 @@ const BlogHero = () => {
           }}
           className="mt-60"
         >
-          <Image src="/airplane.png" alt="Airplane" width={378} height={146} />
+          <Image src="/img/airplane.png" alt="Airplane" width={378} height={146} />
         </motion.div>
       </div>
 
@@ -87,11 +87,11 @@ const BlogHero = () => {
         className="absolute right-[45px] bottom-[65px] z-1"
       >
         <Image
-          src="/hotballon-Left.png"
+          src="/img/hotballon-left.png"
           alt="Balloon Small"
           width={84}
           height={121}
-          className="md:w-[84px] w-[40px]"
+          className="md:w-[84px] w-[40px] h-auto"
         />
       </motion.div>
 
@@ -107,11 +107,11 @@ const BlogHero = () => {
         className="absolute md:-right-[60px] -right-[40px] top-[165px] z-1"
       >
         <Image
-          src="/hotballon-right.png"
+          src="/img/hotballon-right.png"
           alt="Balloon Large"
           width={230}
           height={333}
-          className="md:w-[230px] w-[80px]"
+          className="md:w-[230px] w-[80px] h-auto"
         />
       </motion.div>
     </section>

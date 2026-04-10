@@ -10,12 +10,12 @@ const AboutRecommend = () => {
     {
       title: "Trusted travel guide",
       desc: "Provides reliable information to help travelers plan their trips efficiently and safely.",
-      icon: "/travel-guide.png",
+      icon: "/img/guide-icon.png",
     },
     {
       title: "Mission & Vision",
       desc: "Aims to connect people to positive experience through travel, helping them see the world differently.",
-      icon: "/mission-icon.png",
+      icon: "/img/mission-icon.png",
     },
   ];
 
@@ -34,7 +34,7 @@ const AboutRecommend = () => {
                 max-md:-left-12 max-sm:left-0"
               >
                 <Image
-                  src="/abt-pic1.png"
+                  src="/img/about1.jpg"
                   alt="Main Traveler"
                   width={376}
                   height={672}
@@ -49,9 +49,10 @@ const AboutRecommend = () => {
                 xl:bottom-[70px] bottom-[60px] z-20 max-sm:hidden overflow-hidden shadow-lg"
               >
                 <Image
-                  src="/we-rec3-pic.jpg"
+                  src="/img/hero-recommed2.jpg"
                   alt="Destination"
                   fill
+                  sizes="(max-width: 768px) 280px, 390px"
                   className="object-cover rounded-full"
                 />
               </div>
@@ -64,9 +65,10 @@ const AboutRecommend = () => {
                 max-sm:hidden overflow-hidden"
               >
                 <Image
-                  src="/we-rec3-pic2.jpg"
+                  src="/img/hero-recommed3.jpg"
                   alt="Mountain"
                   fill
+                  sizes="200px"
                   className="object-cover rounded-full"
                 />
               </div>
@@ -144,7 +146,7 @@ const AboutRecommend = () => {
                         className="w-9 h-9 inline-flex rounded-full overflow-hidden border-2 border-white -ml-2.5 first:ml-0 shadow-sm"
                       >
                         <Image
-                          src={`/pic${i}.jpg`}
+                          src={`/img/pic${i}.jpg`}
                           alt="customer"
                           width={34}
                           height={34}

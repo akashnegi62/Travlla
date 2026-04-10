@@ -12,28 +12,28 @@ const stats = [
     title: "Awards Winning",
     value: "3600",
     suffix: "+",
-    icon: "/count-icon1.png",
+    icon: "/img/count-icon1.png",
   },
   {
     id: 2,
     title: "Happy Traveler",
     value: "7634",
     suffix: "+",
-    icon: "/count-icon2.png",
+    icon: "/img/count-icon2.png",
   },
   {
     id: 3,
     title: "Tours success",
     value: "2.5",
     suffix: "K",
-    icon: "/count-icon3.png",
+    icon: "/img/count-icon3.png",
   },
   {
     id: 4,
     title: "Our Experience",
     value: "25",
     suffix: "+",
-    icon: "/count-icon4.png",
+    icon: "/img/count-icon4.png",
   },
 ];
 
@@ -49,7 +49,7 @@ const VideoSection = () => {
           playsInline
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover z-0"
         >
-          <source src="/video" type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
         </video>
 
         {/* Play Button Overlay */}

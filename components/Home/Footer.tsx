@@ -10,15 +10,15 @@ import { HiOutlinePhone, HiOutlineMail, HiOutlineHome } from "react-icons/hi";
 import { IconType } from "react-icons/lib";
 
 const instaGallery = [
-  "/vac1.jpg",
-  "/vac2.jpg",
-  "/vac3.jpg",
-  "/vac4.jpg",
-  "/vac5.jpg",
-  "/vac1.jpg",
-  "/vac2.jpg",
-  "/vac3.jpg",
-  "/vac4.jpg",
+  "/img/vac1.jpg",
+  "/img/vac2.jpg",
+  "/img/vac3.jpg",
+  "/img/vac4.jpg",
+  "/img/vac5.jpg",
+  "/img/vac1.jpg",
+  "/img/vac2.jpg",
+  "/img/vac3.jpg",
+  "/img/vac4.jpg",
 ];
 
 const Footer = () => {
@@ -45,6 +45,7 @@ const Footer = () => {
                     src={img}
                     alt="insta"
                     fill
+                    sizes="(max-width: 640px) 30vw, (max-width: 1024px) 18vw, 10vw"
                     className="object-cover duration-500 group-hover:opacity-30 group-hover:blur-[3px]"
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -69,7 +70,7 @@ const Footer = () => {
             className="relative w-72 h-32"
           >
             <Image
-              src="/car.png"
+              src="/img/car.png"
               alt="Car"
               width={248}
               height={135}
@@ -78,7 +79,7 @@ const Footer = () => {
             {/* Spinning Tyres */}
             <div className="absolute left-[10%] bottom-0 w-10 h-10">
               <Image
-                src="/car-tyre.png"
+                src="/img/car-tyre.png"
                 alt="tyre"
                 width={43}
                 height={43}
@@ -87,7 +88,7 @@ const Footer = () => {
             </div>
             <div className="absolute right-[22%] bottom-0 w-10 h-10">
               <Image
-                src="/car-tyre.png"
+                src="/img/car-tyre.png"
                 alt="tyre"
                 width={50}
                 height={50}
@@ -99,7 +100,7 @@ const Footer = () => {
 
         {/* Right Tree Pic */}
         <div className="absolute right-0 bottom-0 z-0 w-48 opacity-40 md:opacity-100">
-          <Image src="/island.png" alt="Tree" width={220} height={146} />
+          <Image src="/img/island.png" alt="Tree" width={220} height={146} />
         </div>
       </div>
 
@@ -107,7 +108,7 @@ const Footer = () => {
       <footer
         className="bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat"
         style={{
-          backgroundImage: "url('/ftr-light-bg.png')",
+          backgroundImage: "url('/img/light-bg.png')",
         }}
       >
         <div className="container mx-auto px-4 xl:pt-32 pt-16 pb-20">
@@ -116,10 +117,11 @@ const Footer = () => {
             <div className="xl:col-span-1 lg:col-span-2">
               <div className="mb-8">
                 <Image
-                  src="/logo-light.png"
+                  src="/img/logo.jpeg"
                   alt="Logo"
                   width={160}
                   height={50}
+                  className="w-auto h-auto"
                 />
               </div>
               <p className="text-gray-600 mb-6 leading-relaxed">

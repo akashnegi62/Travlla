@@ -18,62 +18,63 @@ import { IconType } from "react-icons/lib";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden 2xl:h-237.5 lg:h-192 h-auto bg-[#1a3d3d]">
+    <section className="relative overflow-hidden min-h-screen lg:h-[900px] bg-[#0f4c4c]">
       {/* Background Image Container */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-40"
-        style={{ backgroundImage: "url('/tour-bg.jpg')" }}
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-30"
+        style={{ backgroundImage: "url('/img/tour-bg.jpg')" }}
       />
 
       {/* Main Content Wrap */}
-      <div className="relative z-10 lg:m-8.75 lg:rounded-3xl bg-black/40 2xl:h-220 lg:h-175 flex items-center">
-        <div className="container mx-auto lg:flex items-center justify-between relative w-full pt-20 lg:pt-0">
+      <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-screen lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:py-0">
+        <div className="container mx-auto px-6 lg:flex items-center justify-between relative w-full">
           {/* Left Text Content */}
-          <div className="max-w-250 z-20">
+          <div className="w-full lg:max-w-[600px] z-20 text-center lg:text-left">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="xl:text-5xl text-2xl text-white font-[kau] italic block mb-2"
+              className="text-3xl lg:text-5xl text-white font-[kau] italic block mb-2"
             >
               Discover
             </motion.span>
 
             <motion.h1
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="4xl:text-[150px] 2xl:text-[120px] lg:text-[100px] md:text-[90px] text-5xl font-[kau] text-white mb-5"
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-8xl lg:text-[120px] font-[kau] text-white mb-6 leading-tight"
             >
               The World
             </motion.h1>
 
-            <p className="xl:text-2xl text-lg text-white italic mb-10 opacity-90">
+            <p className="text-lg lg:text-xl text-white italic mb-10 opacity-90">
               The Safety of our customers at all stages
             </p>
 
-            <div className="mb-12">
+            <div className="mb-16">
               <Link
                 href="/contact"
-                className="bg-[#a3e635] text-black px-10 py-4 rounded-full font-bold hover:bg-white transition-colors duration-300"
+                className="bg-[#84cc16] text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 inline-block"
               >
                 Get In Touch
               </Link>
             </div>
 
-            {/* Search Bar */}
-            <div className="lg:w-162.5 w-full bg-white rounded-2xl lg:rounded-full p-4 lg:p-2 shadow-2xl flex flex-col lg:flex-row items-center gap-4">
-              <div className="flex-1 px-5 border-r border-gray-100 w-full">
-                <label className="text-xs font-bold text-gray-400 uppercase block">
+            {/* Search Bar / Booking Card */}
+            <div className="w-full max-w-[450px] lg:max-w-[700px] mx-auto lg:mx-0 bg-white rounded-[32px] p-6 lg:p-3 shadow-2xl flex flex-col lg:flex-row items-center gap-2">
+              <div className="w-full flex-1 px-4 py-2 border-b lg:border-b-0 lg:border-r border-gray-100 text-left">
+                <label className="text-sm font-bold text-[#0f4c4c] block mb-1">
                   Location
                 </label>
-                <select className="bg-transparent text-gray-800 font-bold outline-none w-full">
+                <select className="bg-transparent text-gray-500 font-medium outline-none w-full appearance-none cursor-pointer">
                   <option>New Zealand</option>
                   <option>Paris</option>
                   <option>Bali</option>
                 </select>
               </div>
-              <div className="flex-1 px-5 border-r border-gray-100 w-full">
-                <label className="text-xs font-bold text-gray-400 uppercase block">
+
+              <div className="w-full flex-1 px-4 py-2 border-b lg:border-b-0 lg:border-r border-gray-100 text-left">
+                <label className="text-sm font-bold text-[#0f4c4c] block mb-1">
                   Date
                 </label>
                 <div className="flex justify-between items-center">
@@ -81,28 +82,36 @@ const Hero = () => {
                   <FaCalendarAlt className="text-gray-300" />
                 </div>
               </div>
-              <div className="flex-1 px-5 w-full">
-                <label className="text-xs font-bold text-gray-400 uppercase block">
+
+              <div className="w-full flex-1 px-4 py-2 text-left">
+                <label className="text-sm font-bold text-[#0f4c4c] block mb-1">
                   Traveler
                 </label>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold">1</span>
-                  <div className="flex gap-2 text-gray-300">
-                    <FaMinus size={10} /> <FaPlus size={10} />
+                  <span className="font-bold text-gray-700">1</span>
+                  <div className="flex gap-4 text-gray-400">
+                    <button className="hover:text-black">
+                      <FaMinus size={12} />
+                    </button>
+                    <button className="hover:text-black">
+                      <FaPlus size={12} />
+                    </button>
                   </div>
                 </div>
               </div>
-              <button className="bg-[#fbbf24] p-5 rounded-xl lg:rounded-full text-white hover:bg-[#a3e635] transition-colors w-full lg:w-auto">
-                <FaSearch />
+
+              <button className="bg-[#84cc16] w-full lg:w-20 h-16 lg:h-16 rounded-2xl lg:rounded-full flex items-center justify-center text-white hover:bg-[#0f4c4c] transition-all group">
+                <FaSearch className="text-2xl group-hover:scale-110 transition-transform" />
               </button>
             </div>
 
             {/* Social Links */}
-            <div className="mt-12 flex items-center gap-6">
-              <span className="text-white text-xs uppercase tracking-[0.2em] font-bold relative after:content-[''] after:inline-block after:w-16 after:h-px after:bg-white after:ml-4 after:align-middle">
-                Follow Us
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+              <span className="text-white text-xs uppercase tracking-[0.3em] font-bold flex items-center">
+                FOLLOW US
+                <span className="hidden sm:inline-block w-12 h-px bg-white/50 ml-4"></span>
               </span>
-              <div className="flex gap-4">
+              <div className="flex gap-5">
                 <SocialIcon Icon={FaFacebookF} />
                 <SocialIcon Icon={FaLinkedinIn} />
                 <SocialIcon Icon={FaInstagram} />
@@ -112,72 +121,60 @@ const Hero = () => {
           </div>
 
           {/* Right Images Content */}
-          <div className="hidden lg:block relative flex-1 min-h-150">
-            {/* Plane Graphic */}
+          <div className="relative mt-12 lg:mt-0 flex-1 flex justify-center items-center">
+            {/* Plane Graphic - Hidden on small mobile to reduce clutter */}
             <motion.div
-              animate={{ x: [0, 20, 0], y: [0, -10, 0] }}
+              animate={{ x: [0, 15, 0], y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
-              className="absolute top-20 right-[40%] z-10 w-full"
+              className="absolute top-0 right-0 z-0 opacity-20 lg:opacity-100 hidden sm:block"
             >
               <Image
-                src="/Plane-With-Line.png"
+                src="/img/plane-line.png"
                 alt="Plane"
-                width={770}
-                height={291}
-                priority
+                width={1000}
+                height={50}
               />
             </motion.div>
 
             {/* Main Traveler Image */}
-            <div className="relative z-12 ml-30 w-full">
+            <div className="relative z-10 w-full max-w-[500px] lg:max-w-none">
               <Image
-                src="/right-pic.png"
-                alt="Travel"
-                width={819}
-                height={702}
+                src="/img/hero.png"
+                alt="Traveler"
+                width={700}
+                height={600}
+                className="w-full h-auto object-contain"
                 priority
               />
-            </div>
 
-            {/* Floating Discount Badge */}
-            <motion.div
-              animate={{ rotate: [-15, -12, -15], y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-20 top-1/2 -translate-y-1/2 text-white z-20 text-right"
-            >
-              <span className="block text-2xl italic font-light">
-                Get Up To
-              </span>
-              <span className="block text-[80px] font-black italic leading-[0.8] my-2">
-                45%
-              </span>
-              <span className="block text-2xl font-bold uppercase tracking-wider">
-                Discount
-              </span>
-            </motion.div>
+              {/* Floating Discount Badge - Centered under image on mobile */}
+              <motion.div
+                animate={{ rotate: [-5, 5, -5], y: [0, -10, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -bottom-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0 lg:top-1/2 text-white text-center lg:text-right"
+              >
+                <span className="block text-xl lg:text-2xl italic font-light">
+                  Get Up To
+                </span>
+                <span className="block text-7xl lg:text-9xl font-black italic leading-none my-1">
+                  45%
+                </span>
+                <span className="block text-xl lg:text-2xl font-bold uppercase tracking-widest">
+                  Discount
+                </span>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Cloud Animations */}
-      <div className="absolute z-99 top-10 w-full overflow-hidden pointer-events-none opacity-40">
-        <motion.div
-          animate={{ x: [-200, 1500] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="inline-block"
-        >
-          <Image src="/Cloud1.png" alt="Cloud" width={168} height={131} />
-        </motion.div>
-      </div>
-      <div className="absolute z-99 top-40 w-full overflow-hidden pointer-events-none opacity-40">
-        <motion.div
-          animate={{ x: [-200, 1500] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="inline-block"
-        >
-          <Image src="/Cloud1.png" alt="Cloud" width={168} height={131} />
-        </motion.div>
-      </div>
+      {/* Clouds */}
+      <Cloud delay={0} top="10%" />
+      <Cloud delay={15} top="30%" />
     </section>
   );
 };
@@ -185,10 +182,32 @@ const Hero = () => {
 const SocialIcon = ({ Icon }: { Icon: IconType }) => (
   <a
     href="#"
-    className="text-white hover:text-[#fbbf24] transition-all transform hover:-translate-y-1 duration-300 text-xl"
+    className="text-white hover:text-[#84cc16] transition-all duration-300 text-xl"
   >
     <Icon />
   </a>
+);
+
+const Cloud = ({ delay, top }: { delay: number; top: string }) => (
+  <div
+    className="absolute w-full pointer-events-none opacity-30 z-50"
+    style={{ top }}
+  >
+    <motion.div
+      initial={{ x: "-20%" }}
+      animate={{ x: "120%" }}
+      transition={{ duration: 40, repeat: Infinity, ease: "linear", delay }}
+      className="inline-block"
+    >
+      <Image
+        src="/img/cloud.png"
+        alt="Cloud"
+        width={200}
+        height={100}
+        className="w-auto h-auto"
+      />
+    </motion.div>
+  </div>
 );
 
 export default Hero;
