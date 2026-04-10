@@ -64,7 +64,8 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
             alt="Cloud"
             width={500}
             height={190}
-            className="h-[190px] w-auto opacity-60"
+            className="opacity-60"
+            style={{ height: "auto" }}
           />
         </motion.div>
       </div>
@@ -96,6 +97,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
           width={84}
           height={121}
           className="md:w-[84px] w-[40px] h-auto"
+          style={{ height: "auto" }}
         />
       </motion.div>
 
@@ -116,6 +118,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
           width={230}
           height={333}
           className="md:w-[230px] w-[80px] h-auto"
+          style={{ height: "auto" }}
         />
       </motion.div>
     </section>

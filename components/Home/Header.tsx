@@ -35,9 +35,9 @@ const menuData = [
     href: "#",
     subMenu: [
       { name: "Explore Membership", href: "/membership" },
-      { name: "Understanding Costs", href: "/costs" },
-      { name: "What Is a Timeshare?", href: "/timeshare" },
-      { name: "What We Offer", href: "/offer" },
+      { name: "Understanding Costs", href: "/membership/costs" },
+      { name: "What Is a Timeshare?", href: "/membership/timeshare" },
+      { name: "What We Offer", href: "/membership/offer" },
     ],
   },
   {
@@ -64,7 +64,7 @@ const menuData = [
     href: "#",
     subMenu: [
       { name: "Login", href: "https://rosewoodworldwidetravel.com/client/" },
-      { name: "Book Holiday", href: "/book-holiday" },
+      { name: "Book Holiday", href: "/members/book-holiday" },
     ],
   },
 ];
