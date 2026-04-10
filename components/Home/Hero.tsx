@@ -26,7 +26,7 @@ const Hero = () => {
       />
 
       {/* Main Content Wrap */}
-      <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-screen lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:py-0">
+      <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-[80] lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:py-0">
         <div className="container mx-auto px-6 lg:flex items-center justify-between relative w-full">
           {/* Left Text Content */}
           <div className="w-full lg:max-w-[600px] z-20 text-center lg:text-left">
