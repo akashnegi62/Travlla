@@ -31,8 +31,8 @@ const ContactForm = () => {
                   <span className="text-[#a3e635]">Reach</span> & Get in Touch!
                 </h2>
                 <div className="text-base text-gray-600">
-                  We&apos;d love to hear from you. Our friendly team is always here
-                  to chat.
+                  We&apos;d love to hear from you. Our friendly team is always
+                  here to chat.
                 </div>
               </div>
 
@@ -136,12 +136,12 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Phone</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#1a3d3d]">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
                       <a
                         href="tel:1236540214"
                         className="hover:text-[#a3e635] transition-colors"
                       >
-                        123 654 0214
+                        +91 8929863875
                       </a>
                     </h3>
                   </div>
@@ -156,12 +156,12 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Email</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#1a3d3d]">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
                       <a
                         href="mailto:travllainfo@gmail.com"
                         className="hover:text-[#a3e635] transition-colors"
                       >
-                        travllainfo@gmail.com
+                        info@RosewoodWorldwideTravel.com
                       </a>
                     </h3>
                   </div>
@@ -176,15 +176,15 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Address</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#1a3d3d]">
-                      55/11 ronin tower, New York
+                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
+                      Awfis, Hitech City , Siddiq Nagar, Hyderabad
                     </h3>
                   </div>
                 </li>
               </ul>
 
               <div className="mt-16 max-sm:text-center">
-                <h3 className="font-serif italic text-3xl md:text-5xl text-[#1a3d3d]">
+                <h3 className="font-serif italic text-xl md:text-3xl text-[#1a3d3d]">
                   Let&apos;s{" "}
                   <span className="text-[#a3e635] non-italic font-bold">
                     Talk

@@ -22,7 +22,8 @@ export default function MessagePage() {
               </div>
               <div className="absolute -bottom-6 -right-6 bg-[#a3e635] p-8 rounded-2xl hidden md:block">
                 <p className="text-[#004b62] font-black text-2xl italic">
-                  &quot;Travel is the only thing you buy that makes you richer.&quot;
+                  &quot;Travel is the only thing you buy that makes you
+                  richer.&quot;
                 </p>
               </div>
             </div>
@@ -32,17 +33,19 @@ export default function MessagePage() {
               </h2>
               <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  Welcome to Rosewood. When I started this company 25 years ago,
-                  my goal was simple: to make the world accessible without
-                  losing its mystery.
+                  Welcome to Rosewood Worldwide Travel, It&apos;s one of the
+                  fastest-growing companies in the leisure and travel industry.
+                  With strong partnerships across top-notch resorts, hotels,
+                  clubs, and wellness centers worldwide, we are dedicated to
+                  ensuring your holidays are nothing short of extraordinary.
                 </p>
                 <p>
-                  We believe that travel shouldn&apos;t just be a checkbox on a list,
-                  but a transformative experience that changes your perspective
-                  forever.
+                  We believe that travel shouldn&apos;t just be a checkbox on a
+                  list, but a transformative experience that changes your
+                  perspective forever.
                 </p>
                 <p className="font-serif text-3xl text-[#004b62] pt-8">
-                  - Vikram Singh
+                  - Thank you for choosing us!
                 </p>
               </div>
             </div>
