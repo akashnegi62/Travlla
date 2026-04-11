@@ -99,7 +99,7 @@ const Booking = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="my-7.5 bg-[#a3e635] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
+            className="my-7.5 bg-[#f9a90d] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud-bg.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
           >
             <div className="flex items-end max-lg:justify-center max-lg:mb-3.75">
               <h2 className="font-black 2xl:text-[120px] text-[80px] leading-[0.75] text-white mr-4.5">

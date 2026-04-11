@@ -21,12 +21,12 @@ const Hero = () => {
     <section className="relative overflow-hidden min-h-screen lg:h-[900px] bg-[#0f4c4c]">
       {/* Background Image Container */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-30"
-        style={{ backgroundImage: "url('/img/tour-bg.jpg')" }}
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/img/bg-curve.jpg')" }}
       />
 
       {/* Main Content Wrap */}
-      <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-[80] lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:py-0">
+      <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-[80] lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:pt-35 lg:pl-20">
         <div className="container mx-auto px-6 lg:flex items-center justify-between relative w-full">
           {/* Left Text Content */}
           <div className="w-full lg:max-w-[600px] z-20 text-center lg:text-left">
@@ -126,12 +126,12 @@ const Hero = () => {
             <motion.div
               animate={{ x: [0, 15, 0], y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
-              className="absolute top-0 right-0 z-0 opacity-20 lg:opacity-100 hidden sm:block"
+              className="absolute top-0 right-1/2 z-0 opacity-20 lg:opacity-100 hidden sm:block"
             >
               <Image
                 src="/img/plane-line.png"
                 alt="Plane"
-                width={1000}
+                width={500}
                 height={50}
               />
             </motion.div>
@@ -143,7 +143,7 @@ const Hero = () => {
                 alt="Traveler"
                 width={700}
                 height={600}
-                className="w-full h-auto object-contain"
+                className="w-full h-[80vh] object-contain"
                 priority
               />
 
@@ -155,12 +155,12 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0 lg:top-1/2 text-white text-center lg:text-right"
+                className="absolute -bottom-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-10 lg:translate-x-0 lg:top-50 text-white text-center lg:text-right"
               >
                 <span className="block text-xl lg:text-2xl italic font-light">
                   Get Up To
                 </span>
-                <span className="block text-7xl lg:text-9xl font-black italic leading-none my-1">
+                <span className="block text-7xl lg:text-7xl font-black italic leading-none my-1">
                   45%
                 </span>
                 <span className="block text-xl lg:text-2xl font-bold uppercase tracking-widest">
@@ -174,7 +174,7 @@ const Hero = () => {
 
       {/* Clouds */}
       <Cloud delay={0} top="10%" />
-      <Cloud delay={15} top="30%" />
+      <Cloud delay={0} top="30%" />
     </section>
   );
 };
@@ -190,13 +190,13 @@ const SocialIcon = ({ Icon }: { Icon: IconType }) => (
 
 const Cloud = ({ delay, top }: { delay: number; top: string }) => (
   <div
-    className="absolute w-full pointer-events-none opacity-30 z-50"
+    className="absolute w-full pointer-events-none z-50"
     style={{ top }}
   >
     <motion.div
       initial={{ x: "-20%" }}
-      animate={{ x: "120%" }}
-      transition={{ duration: 40, repeat: Infinity, ease: "linear", delay }}
+      animate={{ x: "1000%" }}
+      transition={{ duration: 10, repeat: Infinity, ease: "linear", delay }}
       className="inline-block"
     >
       <Image

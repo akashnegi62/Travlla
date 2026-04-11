@@ -7,41 +7,13 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const destinations = [
-  {
-    name: "Paris",
-    listings: "28 Listing",
-    image: "/img/vac1.jpg",
-  },
-  {
-    name: "Kashmir",
-    listings: "32 Listing",
-    image: "/img/vac2.jpg",
-  },
-  {
-    name: "Thailand",
-    listings: "20 Listing",
-    image: "/img/vac3.jpg",
-  },
-  {
-    name: "Maldives",
-    listings: "40 Listing",
-    image: "/img/vac4.jpg",
-  },
-  {
-    name: "Indonesia",
-    listings: "80 Listing",
-    image: "/img/vac5.jpg",
-  },
-  {
-    name: "Bali",
-    listings: "20 Listing",
-    image: "/img/vac1.jpg",
-  },
-  {
-    name: "Mauritius",
-    listings: "20 Listing",
-    image: "/img/vac2.jpg",
-  },
+  { name: "Mauritius", listings: "20 Listing", image: "/img/vac2.jpg" },
+  { name: "Paris", listings: "28 Listing", image: "/img/vac1.jpg" },
+  { name: "Kashmir", listings: "32 Listing", image: "/img/vac2.jpg" },
+  { name: "Thailand", listings: "20 Listing", image: "/img/vac3.jpg" },
+  { name: "Maldives", listings: "40 Listing", image: "/img/vac4.jpg" },
+  { name: "Indonesia", listings: "80 Listing", image: "/img/vac5.jpg" },
+  { name: "Bali", listings: "20 Listing", image: "/img/vac1.jpg" },
 ];
 
 const Favourite = () => {
@@ -49,125 +21,173 @@ const Favourite = () => {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
+      const { scrollLeft } = scrollRef.current;
       const scrollTo =
-        direction === "left"
-          ? scrollLeft - clientWidth / 2
-          : scrollLeft + clientWidth / 2;
+        direction === "left" ? scrollLeft - 350 : scrollLeft + 350;
       scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
 
   return (
-    <section className="bg-[#eefeff] 2xl:p-12.5 xl:p-9 p-0">
-      <div className="relative bg-[#1a3d3d] xl:rounded-3xl overflow-hidden">
-        {/* Header Section */}
-        <div className="lg:flex items-center max-w-405 mx-auto px-6 pb-7.5 md:p-7.5 pt-12.5 lg:px-10 lg:pt-25 lg:pb-18.75">
-          <div className="max-w-125 relative z-10">
+    <section className="bg-white xl:p-0 p-0">
+      <div className="relative bg-[#1d5c5a] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
+        {/* --- BACKGROUND DECORATIONS --- */}
+
+        {/* Huge Centered Text */}
+        <div className="absolute top-40 right-0 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] pl-4 lg:pl-12">
+          <motion.span
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#f59e0b] text-[80px] md:text-[120px] lg:text-[150px] font-black leading-[0.8] tracking-tighter"
+          >
+            TOP!
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-white text-[50px] md:text-[90px] lg:text-[120px] font-black leading-[0.9] tracking-tight z-0"
+          >
+            DESTINATION
+          </motion.span>
+        </div>
+
+        {/* Rock Climber on the Right */}
+        <div className="absolute top-0 right-0 z-10 w-[280px] md:w-[400px] lg:w-[500px] h-[700px] pointer-events-none">
+          <Image
+            src="/img/man-rock.png" // Ensure you have your climber asset
+            alt="Rock Climber"
+            fill
+            className="object-contain object-top-right drop-shadow-2xl"
+            priority
+          />
+        </div>
+
+        {/* --- HEADER CONTENT (Left Side) --- */}
+        <div className="container mx-auto px-6 md:px-12 relative z-20 mb-20 lg:mb-32">
+          <div className="max-w-[450px]">
+            <motion.h2
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-[42px] font-bold text-white leading-[1.2] mb-4"
+            >
+              <span className="text-[#f59e0b]">Most Favorite</span> Tour Places!
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-white/90 text-sm md:text-[14px] leading-relaxed mb-8"
+            >
+              Choosing a destination can be exciting but also a bit overwhelming
+              with so many amazing places out there! Let&apos;s narrow it down a
+              little. Are you dreaming of peaceful nature, buzzing cities,
+              historical wonders, or relaxing beaches?
+            </motion.p>
+
+            {/* Happy Customer Stats */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="sm:mb-15 mb-7.5"
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center gap-4 mb-8"
             >
-              <h2 className="xl:text-[46px] md:text-[40px] text-3xl mb-3.5 font-bold text-white leading-tight">
-                <span className="text-[#a3e635]">Most Favorite</span> Tour
-                Places!
-              </h2>
-              <p className="text-base text-gray-300 leading-relaxed">
-                Choosing a destination can be exciting but also a bit
-                overwhelming! Narrow it down: are you dreaming of nature,
-                buzzing cities, or relaxing beaches?
-              </p>
-            </motion.div>
-
-            {/* Happy Customer Stats */}
-            <div className="flex mb-7.5 items-center">
-              <div className="flex items-center mr-5">
+              <div className="flex -space-x-3">
                 {[1, 2, 3].map((i) => (
-                  <span
+                  <div
                     key={i}
-                    className="w-9 h-9 inline-flex rounded-full overflow-hidden border border-white -ml-2.5 first:ml-0"
+                    className="w-10 h-10 rounded-full overflow-hidden border-[3px] border-[#1d5c5a] relative"
                   >
                     <Image
                       src={`/img/pic${i}.jpg`}
                       alt="user"
-                      width={34}
-                      height={34}
+                      fill
                       className="object-cover"
                     />
-                  </span>
+                  </div>
                 ))}
               </div>
               <div>
-                <span className="block font-black text-[22px] text-[#fbbf24]">
+                <span className="block font-black text-xl text-[#a3e635] leading-none mb-1">
                   3.5k
                 </span>
-                <p className="uppercase font-medium text-[10px] text-white tracking-wider">
+                <span className="text-[10px] font-bold text-white uppercase tracking-widest opacity-90">
                   Happy Customer
-                </p>
+                </span>
               </div>
-            </div>
+            </motion.div>
 
-            <Link
-              href="/destination-detail"
-              className="inline-block bg-[#a3e635] text-[#1a3d3d] px-8 py-4 rounded-full font-bold hover:bg-white transition-all duration-300"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
             >
-              View More Destinations
-            </Link>
-          </div>
-
-          {/* Watermark Background Text */}
-          <div className="hidden lg:block absolute right-10 top-20 font-black text-[120px] uppercase text-white/5 pointer-events-none select-none">
-            <span className="block text-[#a3e635]/10">Top!</span>
-            Destination
+              <Link
+                href="/destination-detail"
+                className="inline-block bg-[#8bc34a] text-[#004b62] px-8 py-3.5 rounded-full font-bold text-sm hover:bg-white transition-colors shadow-lg"
+              >
+                View More Destinations
+              </Link>
+            </motion.div>
           </div>
         </div>
 
-        {/* Custom Slider Section */}
-        <div className="px-6 pb-15 relative">
-          {/* Scroll Controls */}
-          <div className="absolute lg:-top-20 lg:right-15 -top-20 right-5 flex gap-3 z-20">
-            <button
-              onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full bg-[#a3e635] text-[#1a3d3d] flex items-center justify-center hover:bg-white transition-colors shadow-lg"
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full bg-[#a3e635] text-[#1a3d3d] flex items-center justify-center hover:bg-white transition-colors shadow-lg"
-            >
-              <FaChevronRight />
-            </button>
-          </div>
+        {/* --- CARDS SLIDER --- */}
+        <div className="relative w-full z-30 mt-auto px-4 md:px-12">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scroll("left")}
+            className="group absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+          >
+            <FaChevronLeft className="group-hover:text-[#f59e0b]" size={16} />
+          </button>
 
-          {/* Horizontal Scroll Container */}
+          {/* Right Arrow */}
+          <button
+            onClick={() => scroll("right")}
+            className="group absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+          >
+            <FaChevronRight className="group-hover:text-[#f59e0b]" size={16} />
+          </button>
+
+          {/* Scroll Container */}
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
+            className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 pb-4 pt-4"
           >
             {destinations.map((dest, index) => (
               <motion.div
                 key={index}
-                className="min-w-70 md:min-w-[320px] flex-1 snap-start group cursor-pointer"
-                whileHover={{ flexGrow: 1.5 }} // Mimics the flex-1 to flex-2 original behavior
-                transition={{ duration: 0.4, ease: "circOut" }}
+                className="min-w-[240px] md:min-w-[260px] snap-center shrink-0 group cursor-pointer"
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="mb-px border border-white/20 rounded-3xl p-3.75 duration-500 bg-[#1a3d3d] group-hover:bg-[#f8fdfd] transition-all h-full">
-                  <div className="relative overflow-hidden rounded-2xl h-87.5">
+                {/* Bordered Card Design */}
+                <div className="border-[1.5px] border-[#2f7a78] rounded-[30px] p-3 bg-transparent hover:bg-[#185351] transition-all duration-500 h-full flex flex-col">
+                  {/* Image */}
+                  <div className="w-full h-[320px] relative rounded-[20px] overflow-hidden mb-4">
                     <Image
                       src={dest.image}
                       alt={dest.name}
                       fill
-                      sizes="(max-width: 768px) 280px, 320px"
+                      sizes="(max-width: 768px) 240px, 260px"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
-                  <div className="text-center mt-5 mb-2">
-                    <h3 className="text-2xl font-bold transition-colors duration-500 text-white group-hover:text-[#1a3d3d]">
+
+                  {/* Text */}
+                  <div className="text-center pb-2">
+                    <h3 className="text-xl md:text-[22px] font-bold text-white mb-1 transition-colors">
                       {dest.name}
                     </h3>
-                    <span className="block text-sm font-medium text-white/60 group-hover:text-gray-500">
+                    <span className="text-[11px] font-bold text-white/80">
                       {dest.listings}
                     </span>
                   </div>
@@ -176,20 +196,8 @@ const Favourite = () => {
             ))}
           </div>
         </div>
-
-        {/* Man on Rock Decoration */}
-        <div className="absolute top-0 right-0 max-lg:w-[30%] hidden md:block pointer-events-none mix-blend-lighten opacity-30 lg:opacity-100">
-          <Image
-            src="/img/man-rock.png"
-            alt="Decoration"
-            width={450}
-            height={550}
-            className="object-contain w-auto h-auto"
-          />
-        </div>
       </div>
 
-      {/* Tailwind CSS for hiding scrollbars */}
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;

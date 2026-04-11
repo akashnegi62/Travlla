@@ -3,19 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaPinterestP,
-  FaInstagram,
-  FaLinkedinIn,
-  FaPhoneAlt,
-  FaClock,
-  FaChevronDown,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { FaChevronDown, FaSearch, FaTimes } from "react-icons/fa";
 
 const menuData = [
   { name: "Home", href: "/" },
@@ -72,6 +62,8 @@ const menuData = [
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,205 +76,221 @@ export default function Header() {
   return (
     <>
       <header
-        className={`w-full z-999 transition-all duration-300 ${
-          isFixed
-            ? "fixed top-0 bg-white shadow-lg translate-y-0"
-            : "absolute top-0 bg-transparent"
-        }`}
+        className={`w-full z-999 transition-all duration-500 absolute left-0 right-0 top-0 lg:p-8 
+        ${isFixed ? "fixed top-0! p-0!" : ""}`}
       >
-        {/* --- TOP LINE --- */}
-        {!isFixed && (
-          <div className="bg-[#004b62]/90 text-white py-2 text-sm border-b border-white/10">
-            <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <FaPhoneAlt className="text-xs" />
-                  <span className="font-bold">+91 8929863875</span>
-                </div>
-                <div className="hidden md:flex items-center gap-2 opacity-80">
-                  <FaClock className="text-xs" />
-                  <span>Tue-Sun: 10.00am - 6.00pm</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <ul className="flex gap-4 font-semibold">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-[#a3e635] transition-colors"
-                    >
-                      Pay Now
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://rosewoodworldwidetravel.com/client/"
-                      className="hover:text-[#a3e635] transition-colors"
-                    >
-                      Sign in
-                    </Link>
-                  </li>
-                </ul>
-                <div className="hidden lg:flex items-center gap-3 text-white/80">
-                  <Link href="#" className="hover:text-white">
-                    <FaFacebookF />
-                  </Link>
-                  <Link href="#" className="hover:text-white">
-                    <FaTwitter />
-                  </Link>
-                  <Link href="#" className="hover:text-white">
-                    <FaPinterestP />
-                  </Link>
-                  <Link href="#" className="hover:text-white">
-                    <FaInstagram />
-                  </Link>
-                  <Link href="#" className="hover:text-white">
-                    <FaLinkedinIn />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* --- MAIN NAVIGATION --- */}
         <div
-          className={`transition-all duration-300 ${
-            isFixed ? "py-2 bg-white" : "py-4 bg-transparent"
-          }`}
+          className={`mx-auto w-full transition-all duration-500 flex items-center justify-between 
+          ${isFixed ? "bg-[#004b62] rounded-b-3xl shadow-xl min-h-[80px] px-8" : "bg-transparent min-h-[120px]"}`}
         >
-          <div className="container mx-auto px-4 flex items-center justify-between gap-8">
-            {/* Logo - Centered in height with items */}
-            <div className="shrink-0 mb-5">
-              <Link href="/" className="relative block w-64 h-16">
-                <Image
-                  src="/img/logo.png"
-                  alt="Logo"
-                  fill
-                  sizes="256px"
-                  className="object-cover transition-all duration-300"
-                  priority
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Menu - Aligned on the same line */}
-            <nav className="hidden lg:block">
-              <ul className="flex items-center gap-1">
-                {menuData.map((item) => (
-                  <li key={item.name} className="relative group px-2 py-2">
-                    <Link
-                      href={item.href}
-                      className={`text-[15px] xl:text-[16px] font-bold flex items-center gap-1 transition-colors
-                      ${isFixed ? "text-gray-700" : "text-white hover:text-white/80"} 
-                      hover:text-[#a3e635] whitespace-nowrap`}
-                    >
-                      {item.name}
-                      {item.subMenu && (
-                        <FaChevronDown className="text-[10px] group-hover:rotate-180 transition-transform" />
-                      )}
-                    </Link>
-
-                    {/* Dropdown */}
-                    {item.subMenu && (
-                      <ul className="absolute top-full left-0 w-60 bg-white shadow-2xl rounded-b-lg py-3 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 border-t-2 border-[#004b62]">
-                        {item.subMenu.map((sub) => (
-                          <li key={sub.name}>
-                            <Link
-                              href={sub.href}
-                              className="block px-6 py-2 text-[14px] font-semibold text-gray-600 hover:bg-gray-50 hover:text-[#004b62] hover:pl-8 transition-all"
-                            >
-                              {sub.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Mobile Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className={`lg:hidden p-2 text-2xl transition-colors ${isFixed ? "text-[#004b62]" : "text-white"}`}
+          {/* --- LOGO --- */}
+          <div className="flex items-center relative z-10 w-44 h-20">
+            <Link
+              href="/"
+              className="table-cell align-middle relative w-full h-full mb-5"
             >
-              <FaBars />
-            </button>
+              <Image
+                src={
+                  isFixed
+                    ? "/img/logo.png"
+                    : "/img/logo-black.png"
+                } // Swap logo on scroll
+                alt="Logo"
+                fill
+                className="object-cover duration-500"
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* --- DESKTOP NAVIGATION --- */}
+          <nav className="hidden lg:flex justify-center grow font-medium">
+            <ul className="flex flex-wrap items-center">
+              {menuData.map((item) => (
+                <li key={item.name} className="relative group px-2 xl:px-4">
+                  <Link
+                    href={item.href}
+                    className={`py-8 text-[15px] font-bold flex items-center gap-1 transition-colors
+                    ${pathname === item.href ? "text-[#a3e635]" : isFixed ? "text-white hover:text-[#a3e635]" : "text-[#ffff] hover:text-[#a3e635]"}`}
+                  >
+                    <span className="inline-block whitespace-nowrap">
+                      {item.name}
+                    </span>
+                    {item.subMenu && (
+                      <FaChevronDown className="text-[10px] group-hover:rotate-180 transition-transform" />
+                    )}
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {item.subMenu && (
+                    <ul className="absolute left-0 w-64 bg-white rounded-2xl shadow-xl py-3 opacity-0 invisible translate-y-10 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-500 border-t-2 border-[#004b62] z-50">
+                      {item.subMenu.map((sub) => (
+                        <li
+                          key={sub.name}
+                          className="border-b border-black/5 last:border-none"
+                        >
+                          <Link
+                            href={sub.href}
+                            className="block px-6 py-3 text-sm font-semibold text-[#1a3d3d] hover:text-[#004b62] hover:pl-8 transition-all duration-500"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* --- RIGHT SIDE ACTIONS --- */}
+          <div className="flex items-center justify-end h-20 xl:pl-8 z-10 ml-auto">
+            <ul className="flex items-center gap-4">
+              {/* Search Toggle */}
+              <li>
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className={`flex items-center justify-center w-14 h-14 text-xl transition-colors
+                  ${isFixed ? "text-white hover:text-[#a3e635]" : "text-white hover:text-[#a3e635]"}`}
+                >
+                  <FaSearch />
+                </button>
+              </li>
+
+              {/* Hamburger Mobile Toggle */}
+              <li className="lg:hidden">
+                <button
+                  onClick={() => setMobileMenuOpen(true)}
+                  className="flex flex-col gap-1.5 p-2"
+                >
+                  <span
+                    className={`block w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                  ></span>
+                  <span
+                    className={`block w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                  ></span>
+                  <span
+                    className={`block w-5 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                  ></span>
+                </button>
+              </li>
+
+              {/* Info Sidebar Toggle (Desktop Only) */}
+              <li className="hidden lg:block">
+                <button className="w-11 h-11 bg-[#1a3d3d] flex flex-col items-center justify-center gap-1.5 rounded relative overflow-hidden group">
+                  <span className="block w-7 h-0.5 bg-white group-hover:w-5 transition-all"></span>
+                  <span className="block w-7 h-0.5 bg-white"></span>
+                  <span className="block w-7 h-0.5 bg-white group-hover:w-4 transition-all"></span>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </header>
 
-      {/* --- MOBILE SIDEBAR --- */}
+      {/* --- SEARCH FULLSCREEN OVERLAY --- */}
+      <AnimatePresence>
+        {searchOpen && (
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 bg-[#f0f9f9] z-1002 flex items-center justify-center p-8"
+          >
+            <button
+              onClick={() => setSearchOpen(false)}
+              className="absolute right-8 top-8 w-10 h-10 bg-[#a3e635] text-[#1a3d3d] rounded flex items-center justify-center text-xl hover:bg-[#1a3d3d] hover:text-white transition-all"
+            >
+              <FaTimes />
+            </button>
+            <form className="relative flex items-center w-full max-w-[600px] bg-white rounded-full overflow-hidden shadow-2xl">
+              <input
+                type="text"
+                placeholder="Search..."
+                autoFocus
+                className="h-[70px] px-8 text-lg text-[#1a3d3d] w-full outline-none"
+              />
+              <button
+                type="submit"
+                className="w-[70px] h-[70px] bg-[#1a3d3d] text-white flex items-center justify-center text-2xl hover:bg-[#a3e635] hover:text-[#1a3d3d] transition-colors m-2 rounded-full"
+              >
+                <FaSearch />
+              </button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* --- MOBILE SIDEBAR MENU --- */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/70 z-1000 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/60 z-1000 lg:hidden backdrop-blur-sm"
             />
 
+            {/* Sidebar */}
             <motion.div
-              initial={{ x: "100%" }}
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[300px] bg-white z-1001 shadow-2xl flex flex-col"
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="fixed top-0 left-0 h-full w-[300px] bg-white z-1001 lg:hidden flex flex-col shadow-2xl"
             >
-              <div className="p-6 flex justify-between items-center border-b">
+              <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
-                  src="/img/logo.png"
-                  alt="logo"
-                  width={160}
-                  height={50}
+                  src="/assets/images/logo-dark.png"
+                  alt="Logo"
+                  width={140}
+                  height={40}
                   className="object-contain"
                 />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-500 text-2xl p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  className="text-2xl text-gray-500 hover:text-red-500"
                 >
                   <FaTimes />
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto py-4 px-6">
-                <ul className="space-y-2">
+              <div className="flex-1 overflow-y-auto p-5">
+                <ul className="space-y-4">
                   {menuData.map((item) => (
                     <li
                       key={item.name}
-                      className="border-b border-gray-50 pb-2"
+                      className="border-b border-gray-100 pb-3"
                     >
-                      <div className="flex flex-col">
-                        <Link
-                          href={item.href}
-                          onClick={() =>
-                            !item.subMenu && setMobileMenuOpen(false)
-                          }
-                          className="text-lg font-bold text-[#004b62] flex justify-between items-center py-2"
-                        >
-                          {item.name}
-                        </Link>
-                        {item.subMenu && (
-                          <ul className="mt-1 ml-4 space-y-2 border-l-2 border-gray-100 pl-4 mb-2">
-                            {item.subMenu.map((sub) => (
-                              <li key={sub.name}>
-                                <Link
-                                  href={sub.href}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="text-gray-500 font-medium py-1 block hover:text-[#004b62]"
-                                >
-                                  {sub.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
+                      <Link
+                        href={item.href}
+                        onClick={() =>
+                          !item.subMenu && setMobileMenuOpen(false)
+                        }
+                        className="text-lg font-bold text-[#1a3d3d] flex justify-between items-center hover:text-[#a3e635]"
+                      >
+                        {item.name}
+                      </Link>
+                      {item.subMenu && (
+                        <ul className="mt-3 ml-4 space-y-3 border-l-2 border-[#a3e635] pl-4">
+                          {item.subMenu.map((sub) => (
+                            <li key={sub.name}>
+                              <Link
+                                href={sub.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-[15px] font-semibold text-gray-500 hover:text-[#004b62]"
+                              >
+                                {sub.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>

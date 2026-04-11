@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="absolute left-0 bottom-0 w-full overflow-hidden pointer-events-none z-10">
           <motion.div
             initial={{ x: "-100%" }}
-            animate={{ x: "500%" }}
+            animate={{ x: "700%" }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             className="relative w-72 h-32"
           >

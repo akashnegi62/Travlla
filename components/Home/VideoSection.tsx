@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, animate, useInView } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 
 const stats = [
@@ -37,11 +37,40 @@ const stats = [
   },
 ];
 
+// Sub-component for the highly performant counting animation
+const Counter = ({ value }: { value: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const endValue = parseFloat(value);
+  const isDecimal = value.includes(".");
+
+  useEffect(() => {
+    if (isInView && ref.current) {
+      animate(0, endValue, {
+        duration: 2.5, // 2.5 seconds animation
+        ease: "easeOut",
+        onUpdate: (latest) => {
+          // Update the DOM directly for maximum performance (zero React re-renders)
+          if (ref.current) {
+            ref.current.textContent = isDecimal
+              ? latest.toFixed(1)
+              : Math.round(latest).toString();
+          }
+        },
+      });
+    }
+  }, [isInView, endValue, isDecimal]);
+
+  // Use a standard span and set initial value to 0
+  return <span ref={ref}>0</span>;
+};
+
 const VideoSection = () => {
   return (
     <section>
       {/* --- VIDEO PORTION --- */}
-      <div className="xl:h-165 lg:h-125 h-75 relative overflow-hidden bg-cover bg-center">
+      <div className="xl:h-[660px] lg:h-[500px] h-[300px] relative overflow-hidden bg-cover bg-center">
         <video
           muted
           loop
@@ -53,11 +82,11 @@ const VideoSection = () => {
         </video>
 
         {/* Play Button Overlay */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/10">
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20">
           <Link
             href="https://www.youtube.com/watch?v=0O2aH4XLbto"
             target="_blank"
-            className="group relative flex items-center justify-center w-34.5 h-34.5 rounded-full border border-white/50"
+            className="group relative flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full border border-white/50"
           >
             {/* Ripple Effect Animation */}
             <motion.span
@@ -67,7 +96,7 @@ const VideoSection = () => {
               className="absolute inset-0 bg-white rounded-full"
             />
 
-            <div className="relative z-20 w-16.25 h-16.25 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full text-white text-xl shadow-xl transition-transform duration-300 group-hover:scale-110">
+            <div className="relative z-20 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full text-white text-xl md:text-2xl shadow-xl transition-transform duration-300 group-hover:scale-110">
               <FaPlay className="ml-1" />
             </div>
           </Link>
@@ -78,29 +107,31 @@ const VideoSection = () => {
       <div className="bg-[#1a3d3d] py-10 lg:py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat) => (
+            {stats.map((stat, i) => (
               <motion.div
                 key={stat.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="border border-dashed border-white/20 p-5 lg:p-8 flex flex-col xl:flex-row items-center xl:items-start text-center xl:text-left gap-5 transition-colors hover:border-[#a3e635]/50"
+                transition={{ delay: i * 0.1 }}
+                className="border border-dashed border-white/20 p-5 lg:p-8 flex flex-col xl:flex-row items-center xl:items-start text-center xl:text-left gap-5 transition-colors hover:border-[#a3e635]/50 group"
               >
-                <div className="w-12.5 min-w-12.5">
+                <div className="w-12 md:w-16 min-w-[48px]">
                   <Image
                     src={stat.icon}
                     alt={stat.title}
-                    width={50}
-                    height={50}
-                    className="w-full object-contain"
+                    width={60}
+                    height={60}
+                    className="w-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div>
-                  <h4 className="font-medium text-base lg:text-xl text-white mb-2 lg:mb-4">
+                  <h4 className="font-medium text-sm lg:text-lg text-white/80 mb-1 lg:mb-2 uppercase tracking-wider">
                     {stat.title}
                   </h4>
-                  <div className="text-[#a3e635] font-black text-2xl lg:text-[42px] leading-none flex items-center justify-center xl:justify-start">
-                    <span>{stat.value}</span>
+                  <div className="text-[#a3e635] font-black text-3xl lg:text-[42px] leading-none flex items-center justify-center xl:justify-start">
+                    {/* Integrated Counter Component */}
+                    <Counter value={stat.value} />
                     <b className="ml-0.5">{stat.suffix}</b>
                   </div>
                 </div>
