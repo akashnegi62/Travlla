@@ -7,7 +7,18 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaSearch, FaTimes } from "react-icons/fa";
 
-const menuData = [
+interface SubMenuItem {
+  name: string;
+  href: string;
+}
+
+interface MenuItem {
+  name: string;
+  href: string;
+  subMenu?: SubMenuItem[];
+}
+
+const menuData: MenuItem[] = [
   { name: "Home", href: "/" },
   {
     name: "About us",
@@ -63,6 +74,8 @@ export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  // TypeScript Fix: Defining state as string or null
+  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -73,41 +86,46 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // TypeScript Fix: Adding : string type to the parameter
+  const toggleSubMenu = (name: string) => {
+    setActiveSubMenu(activeSubMenu === name ? null : name);
+  };
+
   return (
     <>
       <header
-        className={`w-full z-999 transition-all duration-500 absolute left-0 right-0 top-0 lg:p-8 
+        className={`w-full z-[999] transition-all duration-500 absolute left-0 right-0 top-0 lg:p-8 px-5
         ${isFixed ? "fixed top-0! p-0!" : ""}`}
       >
         <div
           className={`mx-auto w-full transition-all duration-500 flex items-center justify-between 
-          ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-8" : "bg-transparent min-h-30"}`}
+          ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-4 lg:px-8" : "bg-transparent min-h-30"}`}
         >
           {/* --- LOGO --- */}
-          <div className="flex items-center relative z-10 w-44 h-20">
+          <div className="flex items-center relative z-10 w-36 lg:w-44 h-20 shrink-0">
             <Link
               href="/"
               className="table-cell align-middle relative w-full h-full mb-5"
             >
               <Image
-                src={isFixed ? "/img/logo.png" : "/img/logo-black.png"} // Swap logo on scroll
+                src={isFixed ? "/img/logo.png" : "/img/logo-black.png"}
                 alt="Logo"
                 fill
-                className="object-cover duration-500"
+                className="object-contain duration-500"
                 priority
               />
             </Link>
           </div>
 
-          {/* --- DESKTOP NAVIGATION --- */}
+          {/* --- DESKTOP NAVIGATION (LAPTOP RESPONSIVE) --- */}
           <nav className="hidden lg:flex justify-center grow font-medium">
-            <ul className="flex flex-wrap items-center">
+            <ul className="flex flex-wrap items-center justify-center">
               {menuData.map((item) => (
-                <li key={item.name} className="relative group px-2 xl:px-4">
+                <li key={item.name} className="relative group px-1 xl:px-4">
                   <Link
                     href={item.href}
-                    className={`py-8 text-[15px] font-bold flex items-center gap-1 transition-colors
-                    ${pathname === item.href ? "text-[#a3e635]" : isFixed ? "text-white hover:text-[#a3e635]" : "text-[#ffff] hover:text-[#a3e635]"}`}
+                    className={`py-8 text-[13px] xl:text-[15px] font-bold flex items-center gap-1 transition-colors
+                    ${pathname === item.href ? "text-[#a3e635]" : isFixed ? "text-white hover:text-[#a3e635]" : "text-white hover:text-[#a3e635]"}`}
                   >
                     <span className="inline-block whitespace-nowrap">
                       {item.name}
@@ -117,7 +135,6 @@ export default function Header() {
                     )}
                   </Link>
 
-                  {/* Dropdown Menu */}
                   {item.subMenu && (
                     <ul className="absolute left-0 w-64 bg-white rounded-2xl shadow-xl py-3 opacity-0 invisible translate-y-10 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-500 border-t-2 border-[#004b62] z-50">
                       {item.subMenu.map((sub) => (
@@ -141,20 +158,18 @@ export default function Header() {
           </nav>
 
           {/* --- RIGHT SIDE ACTIONS --- */}
-          <div className="flex items-center justify-end h-20 xl:pl-8 z-10 ml-auto">
-            <ul className="flex items-center gap-4">
-              {/* Search Toggle */}
+          <div className="flex items-center justify-end h-20 xl:pl-8 z-10 flex-shrink-0">
+            <ul className="flex items-center gap-2 xl:gap-4">
               <li>
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className={`flex items-center justify-center w-14 h-14 text-xl transition-colors
-                  ${isFixed ? "text-white hover:text-[#a3e635]" : "text-white hover:text-[#a3e635]"}`}
+                  className={`flex items-center justify-center w-10 lg:w-14 h-14 text-xl transition-colors
+                  ${isFixed ? "text-white hover:text-[#a3e635]" : "text-black hover:text-[#a3e635]"}`}
                 >
                   <FaSearch />
                 </button>
               </li>
 
-              {/* Hamburger Mobile Toggle */}
               <li className="lg:hidden">
                 <button
                   onClick={() => setMobileMenuOpen(true)}
@@ -172,7 +187,6 @@ export default function Header() {
                 </button>
               </li>
 
-              {/* Info Sidebar Toggle (Desktop Only) */}
               <li className="hidden lg:block">
                 <button className="w-11 h-11 bg-[#1a3d3d] flex flex-col items-center justify-center gap-1.5 rounded relative overflow-hidden group">
                   <span className="block w-7 h-0.5 bg-white group-hover:w-5 transition-all"></span>
@@ -185,7 +199,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* --- SEARCH FULLSCREEN OVERLAY --- */}
+      {/* --- SEARCH OVERLAY --- */}
       <AnimatePresence>
         {searchOpen && (
           <motion.div
@@ -193,11 +207,11 @@ export default function Header() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#f0f9f9] z-1002 flex items-center justify-center p-8"
+            className="fixed inset-0 bg-[#f0f9f9] z-[1002] flex items-center justify-center p-8"
           >
             <button
               onClick={() => setSearchOpen(false)}
-              className="absolute right-8 top-8 w-10 h-10 bg-[#a3e635] text-[#1a3d3d] rounded flex items-center justify-center text-xl hover:bg-[#1a3d3d] hover:text-white transition-all"
+              className="absolute right-8 top-8 w-10 h-10 bg-[#a3e635] text-[#1a3d3d] rounded flex items-center justify-center text-xl hover:bg-[#1a3d3d] hover:text-white"
             >
               <FaTimes />
             </button>
@@ -210,7 +224,7 @@ export default function Header() {
               />
               <button
                 type="submit"
-                className="w-[70px] h-[70px] bg-[#1a3d3d] text-white flex items-center justify-center text-2xl hover:bg-[#a3e635] hover:text-[#1a3d3d] transition-colors m-2 rounded-full"
+                className="w-[70px] h-[70px] bg-[#1a3d3d] text-white flex items-center justify-center text-2xl hover:bg-[#a3e635] m-2 rounded-full"
               >
                 <FaSearch />
               </button>
@@ -223,22 +237,19 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 z-1000 lg:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-black/60 z-[1000] lg:hidden backdrop-blur-sm"
             />
-
-            {/* Sidebar */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="fixed top-0 left-0 h-full w-[300px] bg-white z-1001 lg:hidden flex flex-col shadow-2xl"
+              className="fixed top-0 left-0 h-full w-[300px] bg-white z-[1001] lg:hidden flex flex-col shadow-2xl"
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
@@ -263,30 +274,56 @@ export default function Header() {
                       key={item.name}
                       className="border-b border-gray-100 pb-3"
                     >
-                      <Link
-                        href={item.href}
+                      <div
+                        className="flex justify-between items-center cursor-pointer"
                         onClick={() =>
-                          !item.subMenu && setMobileMenuOpen(false)
+                          item.subMenu
+                            ? toggleSubMenu(item.name)
+                            : setMobileMenuOpen(false)
                         }
-                        className="text-lg font-bold text-[#1a3d3d] flex justify-between items-center hover:text-[#a3e635]"
                       >
-                        {item.name}
-                      </Link>
-                      {item.subMenu && (
-                        <ul className="mt-3 ml-4 space-y-3 border-l-2 border-[#a3e635] pl-4">
-                          {item.subMenu.map((sub) => (
-                            <li key={sub.name}>
-                              <Link
-                                href={sub.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="text-[15px] font-semibold text-gray-500 hover:text-[#004b62]"
-                              >
-                                {sub.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                        {item.subMenu ? (
+                          <span className="text-lg font-bold text-[#1a3d3d]">
+                            {item.name}
+                          </span>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className="text-lg font-bold text-[#1a3d3d]"
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+
+                        {item.subMenu && (
+                          <FaChevronDown
+                            className={`text-sm transition-transform duration-300 ${activeSubMenu === item.name ? "rotate-180" : ""}`}
+                          />
+                        )}
+                      </div>
+
+                      <AnimatePresence>
+                        {item.subMenu && activeSubMenu === item.name && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="mt-3 ml-4 space-y-3 border-l-2 border-[#a3e635] pl-4 overflow-hidden"
+                          >
+                            {item.subMenu.map((sub) => (
+                              <li key={sub.name}>
+                                <Link
+                                  href={sub.href}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="text-[15px] font-semibold text-gray-500 hover:text-[#004b62]"
+                                >
+                                  {sub.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
                     </li>
                   ))}
                 </ul>

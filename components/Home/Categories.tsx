@@ -152,8 +152,9 @@ const Categories = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         backgroundImage: "url('/img/tour-bg.jpg')",
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">

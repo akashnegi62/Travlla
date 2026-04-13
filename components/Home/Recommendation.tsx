@@ -56,7 +56,7 @@ const Recommendation = () => {
                 {/* Top Left Image */}
                 <div className="sm:max-w-69.5 max-w-50 overflow-hidden">
                   <Image
-                    src="/img/hero-recommed1.jpg"
+                    src="/img/hero-recommed3.jpg"
                     alt="Rec 1"
                     width={478}
                     height={420}
@@ -71,7 +71,7 @@ const Recommendation = () => {
                   className="mt-3 md:w-97.5 md:h-97.5 sm:w-67.5 sm:h-67.5 w-50 h-50 md:border-20 border-8 border-white rounded-full shadow-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden"
                 >
                   <Image
-                    src="/img/hero-recommed2.jpg"
+                    src="/img/hero-recommed1.jpg"
                     alt="Rec Center"
                     fill
                     sizes="(max-width: 640px) 200px, (max-width: 768px) 270px, 390px"
@@ -82,7 +82,7 @@ const Recommendation = () => {
                 {/* Bottom Right Image */}
                 <div className="absolute bottom-0 right-0 sm:max-w-69.5 max-w-50">
                   <Image
-                    src="/img/hero-recommed3.jpg"
+                    src="/img/hero-recommed2.jpg"
                     alt="Rec 2"
                     width={278}
                     height={420}

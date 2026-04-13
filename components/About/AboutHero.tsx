@@ -71,10 +71,10 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       </div>
 
       {/* Airplane - Sliding in from right and subtly floating */}
-      <div className="absolute w-1/2 right-0 top-0 bottom-0 z-1">
+      <div className="absolute w-1/2 right-0 -top-25 lg:-top-25 bottom-0 z-1">
         <motion.div
-          animate={{ x: ["-100%", "1000%"], y: ["-20%", "0%"] }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+          animate={{ x: ["-100%", "-20%"], y: ["-20%", "0%"] }}
+          transition={{ duration: 10, ease: "linear" }}
           className="mt-60"
         >
           <Image
@@ -82,6 +82,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
             alt="Airplane"
             width={378}
             height={146}
+            className="w-auto lg:h-30 h-10"
           />
         </motion.div>
       </div>

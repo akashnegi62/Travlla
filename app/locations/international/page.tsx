@@ -1,45 +1,62 @@
-"use client";
-import React from 'react';
+import React from "react";
 import AboutHero from "@/components/About/AboutHero";
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaGlobe } from 'react-icons/fa';
+import Image from "next/image";
+import Link from "next/link";
+import { FaGlobe } from "react-icons/fa";
 
-const internationalData = [
-  { id: 1, name: "Paris, France", img: "/img/location/loc7.webp", desc: "Experience the city of lights and world-class art." },
-  { id: 2, name: "Bali, Indonesia", img: "/img/location/loc8.webp", desc: "Tropical paradise with lush jungles and beaches." },
-  { id: 3, name: "Tokyo, Japan", img: "/img/location/loc9.webp", desc: "A perfect blend of tradition and high-tech future." },
-  { id: 4, name: "Swiss Alps", img: "/img/location/loc4.webp", desc: "Majestic mountains and serene lake-side villages." },
-  { id: 5, name: "Dubai, UAE", img: "/img/location/loc2.webp", desc: "The ultimate luxury shopping and desert adventure." },
-  { id: 6, name: "New York, USA", img: "/img/location/loc3.webp", desc: "The city that never sleeps and iconic landmarks." },
-];
+// Define the TypeScript type based on what your API returns
+type InternationalLocation = {
+  id: string | number;
+  name: string;
+  img: string;
+  desc?: string;
+};
 
-export default function InternationalPage() {
+// 1. Server-side fetch function
+async function getLocations() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://rosewoodworldwidetravel.com";
+  // 'no-store' ensures fresh data on every request
+  const res = await fetch(`${baseUrl}/api/international_locations.php`);
+
+  if (!res.ok) throw new Error("Failed to fetch international locations");
+  return res.json();
+}
+
+// 2. Make the component async
+export default async function InternationalPage() {
+  // Await the data directly inside the component
+  const locations = await getLocations();
+
   return (
     <main className="bg-white">
       <AboutHero title="Global Destinations" />
-      
+
       <section className="py-24 bg-[#f0f9f9]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="flex justify-center mb-4 text-[#fbbf24] text-4xl">
-                <FaGlobe className="animate-spin-slow" />
+              <FaGlobe className="animate-[spin_4s_linear_infinite]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1a3d3d] uppercase tracking-tighter">Around The World</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">We bring the finest international travel experiences directly to you with premium service.</p>
+            <h2 className="text-4xl md:text-5xl font-black text-[#1a3d3d] uppercase tracking-tighter">
+              Around The World
+            </h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+              We bring the finest international travel experiences directly to
+              you with premium service.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {internationalData.map((loc) => (
-              <motion.div 
-                key={loc.id}
-                whileHover={{ x: 10 }}
-                className="flex flex-col md:flex-row bg-white rounded-[50px] overflow-hidden shadow-2xl group"
+            {locations.map((loc: InternationalLocation, i: number) => (
+              <div
+                key={loc.id || i}
+                className="flex flex-col md:flex-row bg-white rounded-[50px] overflow-hidden shadow-2xl group transition-transform hover:translate-x-2"
               >
-                <div className="md:w-1/2 relative h-75 md:h-auto overflow-hidden">
+                <div className="md:w-1/2 relative h-[300px] md:h-auto overflow-hidden bg-gray-200">
                   <Image
-                    src={loc.img}
+                    src={loc.img || "/img/placeholder.jpg"}
                     alt={loc.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -47,13 +64,21 @@ export default function InternationalPage() {
                   />
                 </div>
                 <div className="md:w-1/2 p-10 flex flex-col justify-center">
-                  <h3 className="text-2xl font-bold text-[#1a3d3d] mb-4">{loc.name}</h3>
-                  <p className="text-gray-500 mb-6 leading-relaxed">{loc.desc}</p>
-                  <Link href="/book-tour" className="text-[#fbbf24] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors">
+                  <h3 className="text-2xl font-bold text-[#1a3d3d] mb-4">
+                    {loc.name}
+                  </h3>
+                  <p className="text-gray-500 mb-6 leading-relaxed">
+                    {loc.desc ||
+                      "Experience the best of this destination with our premium, carefully curated tour packages."}
+                  </p>
+                  <Link
+                    href={`/tour-detail/${loc.id}`}
+                    className="text-[#fbbf24] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors"
+                  >
                     Book This Trip →
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

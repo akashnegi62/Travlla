@@ -73,8 +73,8 @@ const AboutTestimonials = () => {
           {/* Large Gradient Text Background */}
           <div className="relative text-center w-full">
             <h1
-              className="text-[60px] md:text-[120px] lg:text-[180px] font-black uppercase tracking-widest select-none leading-none
-              bg-linear-to-b from-[#066168] via-[#fbbf24]/50 to-white bg-clip-text text-transparent opacity-30"
+              className="text-[50px] md:text-[120px] lg:text-[180px] font-black uppercase tracking-widest select-none leading-none
+              bg-linear-to-b from-[#066168] via-[#fbbf24]/50 to-white bg-clip-text text-transparent lg:opacity-30"
             >
               Testimonial
             </h1>
@@ -82,19 +82,20 @@ const AboutTestimonials = () => {
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-125 z-10"
+              className="absolute top-10 lg:top-0 left-[70%] lg:left-1/2 -translate-x-1/2 w-full max-w-125 z-10"
             >
               <Image
                 src="/img/airplane.png"
                 alt="airplane"
                 width={493}
                 height={116}
+                className="w-auto lg:w-30 h-15"
               />
             </motion.div>
           </div>
 
           {/* --- CONTENT AREA (Grid with Image and Text) --- */}
-          <div className="relative w-full max-w-6xl mx-auto -mt-10 lg:-mt-20 flex flex-col lg:flex-row items-center gap-12 z-20 px-6">
+          <div className="relative w-full max-w-6xl mx-auto mt-15 lg:-mt-20 flex flex-col lg:flex-row items-center gap-12 z-20 px-6">
             {/* 1. Left: Main Active User Image */}
             <div className="relative group shrink-0">
               <motion.div
