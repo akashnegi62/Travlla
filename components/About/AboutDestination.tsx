@@ -44,7 +44,7 @@ const PopularDestination = () => {
       {/* Background Decorative Balloons */}
       <div className="absolute left-0 lg:-left-10 top-1/3 w-32 md:w-56 opacity-80 pointer-events-none z-0">
         <Image
-          src="/img/hotballon-left.png"
+          src="/img/redballon.png"
           alt="balloon"
           width={233}
           height={333}

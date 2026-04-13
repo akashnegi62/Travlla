@@ -93,7 +93,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
         className="absolute right-[45px] bottom-[65px] z-1"
       >
         <Image
-          src="/img/hotballon-left.png"
+          src="/img/redballon.png"
           alt="Balloon Small"
           width={84}
           height={121}

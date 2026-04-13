@@ -64,7 +64,7 @@ const Testimonials = () => {
         className="absolute md:left-10 left-5 top-1/4 md:w-56 w-24 opacity-50 z-0 pointer-events-none"
       >
         <Image
-          src="/img/hotballon-left.png"
+          src="/img/redballon.png"
           alt="Balloon"
           width={230}
           height={300}

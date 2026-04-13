@@ -63,7 +63,7 @@ const Favourite = () => {
       <div className="relative bg-[#256168] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
         {/* --- BACKGROUND DECORATIONS --- */}
         {/* Rock Climber on the Right */}
-        <div className="absolute top-0 -right-20 sm:right-0 z-10 w-[280px] md:w-[400px] lg:w-[500px] h-[700px] pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
+        <div className="absolute top-0 -right-20 sm:right-0 z-10 w-70 md:w-100 lg:w-125 h-175 pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
           <Image
             src="/img/man-rock.png" // Ensure you have your climber asset
             alt="Rock Climber"
@@ -210,7 +210,7 @@ const Favourite = () => {
                 {/* Bordered Card Design */}
                 <div className="border-[1.5px] border-[#2f7a78] rounded-[30px] p-3 bg-transparent hover:bg-[#185351] transition-all duration-500 h-full flex flex-col">
                   {/* Image */}
-                  <div className="w-full h-[320px] relative rounded-[20px] overflow-hidden mb-4">
+                  <div className="w-full h-80 relative rounded-[20px] overflow-hidden mb-4">
                     <Image
                       src={dest.image}
                       alt={dest.name}

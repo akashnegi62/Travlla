@@ -18,7 +18,7 @@ import { IconType } from "react-icons/lib";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden min-h-screen lg:h-[900px] bg-[#0f4c4c]">
+    <section className="relative overflow-hidden min-h-screen lg:h-225 bg-[#0f4c4c]">
       {/* Background Image Container */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -29,7 +29,7 @@ const Hero = () => {
       <div className="relative z-10 lg:m-8 lg:rounded-[40px] bg-black/20 min-h-[80] lg:h-[calc(100%-64px)] flex items-center pt-24 pb-12 lg:pt-35 lg:pl-20">
         <div className="container mx-auto px-6 lg:flex items-center justify-between relative w-full">
           {/* Left Text Content */}
-          <div className="w-full lg:max-w-[600px] z-20 text-center lg:text-left">
+          <div className="w-full lg:max-w-150 z-20 text-center lg:text-left">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const Hero = () => {
             </div>
 
             {/* Search Bar / Booking Card */}
-            <div className="w-full max-w-[450px] lg:max-w-[700px] mx-auto lg:mx-0 bg-white rounded-[32px] p-6 lg:p-3 shadow-2xl flex flex-col lg:flex-row items-center gap-2">
+            <div className="w-full max-w-112.5 lg:max-w-175 mx-auto lg:mx-0 bg-white rounded-4xl p-6 lg:p-3 shadow-2xl flex flex-col lg:flex-row items-center gap-2">
               <div className="w-full flex-1 px-4 py-2 border-b lg:border-b-0 lg:border-r border-gray-100 text-left">
                 <label className="text-sm font-bold text-[#0f4c4c] block mb-1">
                   Location
@@ -137,7 +137,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Main Traveler Image */}
-            <div className="relative z-10 w-full max-w-[500px] lg:max-w-none">
+            <div className="relative z-10 w-full max-w-125 lg:max-w-none">
               <Image
                 src="/img/hero.png"
                 alt="Traveler"

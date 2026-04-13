@@ -76,7 +76,12 @@ const ContactHero = () => {
           }}
           className="mt-60"
         >
-          <Image src="/img/airplane.png" alt="Airplane" width={378} height={146} />
+          <Image
+            src="/img/airplane.png"
+            alt="Airplane"
+            width={378}
+            height={146}
+          />
         </motion.div>
       </div>
 
@@ -87,7 +92,7 @@ const ContactHero = () => {
         className="absolute right-[45px] bottom-[65px] z-1"
       >
         <Image
-          src="/img/hotballon-left.png"
+          src="/img/redballon.png"
           alt="Balloon Small"
           width={84}
           height={121}
