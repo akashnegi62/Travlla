@@ -81,7 +81,7 @@ export default function Header() {
       >
         <div
           className={`mx-auto w-full transition-all duration-500 flex items-center justify-between 
-          ${isFixed ? "bg-[#004b62] rounded-b-3xl shadow-xl min-h-[80px] px-8" : "bg-transparent min-h-[120px]"}`}
+          ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-8" : "bg-transparent min-h-30"}`}
         >
           {/* --- LOGO --- */}
           <div className="flex items-center relative z-10 w-44 h-20">

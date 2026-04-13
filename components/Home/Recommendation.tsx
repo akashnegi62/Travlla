@@ -31,10 +31,18 @@ const Recommendation = () => {
               <div className="relative pt-17.5 lg:mr-6 sm:h-152.5 h-115">
                 {/* Floating Airplane */}
                 <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1 }}
-                  className="absolute top-0 right-0 z-20 max-sm:w-50"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  animate={{ x: [0, -40, 0] }}
+                  transition={{
+                    opacity: { duration: 1 },
+                    x: {
+                      duration: 6, // How long one full left-right cycle takes
+                      repeat: Infinity, // Loops forever
+                      ease: "easeInOut", // Makes the turnaround smooth
+                    },
+                  }}
+                  className="absolute top-0 right-0 z-20 max-sm:w-50 pointer-events-none"
                 >
                   <Image
                     src="/img/airplane.png"

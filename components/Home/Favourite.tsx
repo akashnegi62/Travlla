@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -18,28 +18,49 @@ const destinations = [
 
 const Favourite = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current && scrollRef.current.firstElementChild) {
-      // Get the exact width of a single card
+      // Get exact width of a single card + the 20px gap
       const itemWidth =
         scrollRef.current.firstElementChild.getBoundingClientRect().width;
-      const gap = 20; // 20px gap because of Tailwind's 'gap-5'
-      const scrollAmount = itemWidth + gap; // Scroll exactly 1 item at a time
+      const gap = 20;
+      const scrollAmount = itemWidth + gap;
 
-      const { scrollLeft } = scrollRef.current;
-      const scrollTo =
-        direction === "left"
-          ? scrollLeft - scrollAmount
-          : scrollLeft + scrollAmount;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      let scrollTo = scrollLeft;
+
+      if (direction === "left") {
+        scrollTo = scrollLeft - scrollAmount;
+      } else {
+        // If we reached the end (adding a 5px buffer for rounding issues), rewind to 0
+        if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 5) {
+          scrollTo = 0;
+        } else {
+          scrollTo = scrollLeft + scrollAmount;
+        }
+      }
 
       scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
 
+  // --- AUTO-SWIPE LOGIC ---
+  useEffect(() => {
+    // If the user is hovering over the slider, pause the interval
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      scroll("right");
+    }, 3000); // Swipes every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
   return (
     <section className="bg-white xl:p-0 p-0">
-      <div className="relative bg-[#1d5c5a] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
+      <div className="relative bg-[#256168] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
         {/* --- BACKGROUND DECORATIONS --- */}
         {/* Rock Climber on the Right */}
         <div className="absolute top-0 -right-20 sm:right-0 z-10 w-[280px] md:w-[400px] lg:w-[500px] h-[700px] pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
@@ -127,12 +148,12 @@ const Favourite = () => {
         </div>
 
         {/* Huge Text: Relative on Mobile so it stacks, Absolute on Desktop so it floats */}
-        <div className="relative lg:absolute lg:top-40 lg:right-0 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] px-6 md:px-12 lg:pl-12 mt-6 lg:mt-0 mb-10 lg:mb-0">
+        <div className="relative lg:absolute lg:top-40 lg:left-1/2 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] px-6 md:px-12 lg:pl-12 mt-6 lg:mt-0 mb-10 lg:mb-0">
           <motion.span
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#f59e0b] text-[70px] md:text-[120px] lg:text-[150px] font-black leading-[0.8] tracking-tighter"
+            className="text-[#f59e0b] text-[10vw] md:text-[10vw] lg:text-[6vw] font-black leading-[0.8] tracking-tighter"
           >
             TOP!
           </motion.span>
@@ -141,14 +162,18 @@ const Favourite = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white text-[45px] md:text-[90px] lg:text-[120px] font-black leading-[0.9] tracking-tight z-0"
+            className="text-white text-[10vw] md:text-[10vw] lg:text-[6vw] font-black leading-[0.9] tracking-tight z-0"
           >
             DESTINATION
           </motion.span>
         </div>
 
         {/* --- CARDS SLIDER --- */}
-        <div className="relative w-full z-30 mt-auto px-0 md:px-12">
+        <div
+          className="relative w-full z-30 mt-auto px-0 md:px-12"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {/* Left Arrow */}
           <button
             onClick={() => scroll("left")}

@@ -55,7 +55,7 @@ const Testimonials = () => {
   return (
     <section
       className="xl:pt-30 pt-12.5 xl:pb-25 pb-10 bg-center bg-no-repeat bg-[#f0fafa] relative overflow-hidden"
-      style={{ backgroundImage: "url('/img/map.png')" }}
+      style={{ backgroundImage: "url('/img/bg-testimonial.png')" }}
     >
       {/* Background Decorative Hot Balloon */}
       <motion.div
@@ -86,7 +86,7 @@ const Testimonials = () => {
               alt="Separator"
               width={470}
               height={70}
-            className="w-117.5 h-auto"
+              className="w-117.5 h-auto"
             />
           </div>
         </div>
@@ -104,8 +104,8 @@ const Testimonials = () => {
               >
                 <div className="bg-transparent mt-0">
                   {/* Image and Rating */}
-                  <div className="mb-7 relative w-[306px] max-md:mx-auto group">
-                    <div className="rounded-[40px] rounded-es-none overflow-hidden h-[297px] shadow-lg">
+                  <div className="mb-7 relative w-76.5 max-md:mx-auto group">
+                    <div className="rounded-[40px] rounded-es-none overflow-hidden h-74.25 shadow-lg">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -138,7 +138,7 @@ const Testimonials = () => {
                       </div>
                       <div className="right-part opacity-20">
                         <Image
-                          src="/img/quote.png"
+                          src="/img/symbol.png"
                           alt="Quote"
                           width={60}
                           height={50}
