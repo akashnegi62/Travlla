@@ -56,11 +56,11 @@ const TourGuides = () => {
 
               {/* 2. Text Content (Layered over the circle, above the girl) */}
               <div className="text-center z-10 relative -translate-y-4 sm:-translate-y-8">
-                <h3 className="font-serif italic text-[40px] sm:text-[56px] text-[#004b62] font-bold mb-1 leading-none">
+                <h3 className="font-serif italic text-[30px] lg:text-[40px] sm:text-[56px] text-[#004b62] font-bold mb-1 leading-none">
                   Meet with
                 </h3>
                 <h2
-                  className="text-[55px] lg:text-[6vw] sm:text-[80px] text-white font-bold drop-shadow-md tracking-tight leading-none"
+                  className="text-[40px] lg:text-[6vw] sm:text-[80px] text-white font-bold drop-shadow-md tracking-tight leading-none"
                   style={{
                     fontFamily: "cursive, 'Brush Script MT', sans-serif",
                   }}
@@ -76,7 +76,7 @@ const TourGuides = () => {
                   alt="Expert Guide"
                   width={739}
                   height={653}
-                  className="w-full h-auto lg:h-[65vh] object-contain drop-shadow-2xl"
+                  className="w-full h-[30vh] lg:h-[65vh] object-contain drop-shadow-2xl"
                   priority
                 />
               </div>

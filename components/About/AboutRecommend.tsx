@@ -34,7 +34,7 @@ const AboutRecommend = () => {
                 max-md:-left-12 max-sm:left-0"
               >
                 <Image
-                  src="/img/about1.jpg"
+                  src="/img/about3.png"
                   alt="Main Traveler"
                   width={376}
                   height={672}

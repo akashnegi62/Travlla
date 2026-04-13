@@ -20,10 +20,19 @@ const Favourite = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
+    if (scrollRef.current && scrollRef.current.firstElementChild) {
+      // Get the exact width of a single card
+      const itemWidth =
+        scrollRef.current.firstElementChild.getBoundingClientRect().width;
+      const gap = 20; // 20px gap because of Tailwind's 'gap-5'
+      const scrollAmount = itemWidth + gap; // Scroll exactly 1 item at a time
+
       const { scrollLeft } = scrollRef.current;
       const scrollTo =
-        direction === "left" ? scrollLeft - 350 : scrollLeft + 350;
+        direction === "left"
+          ? scrollLeft - scrollAmount
+          : scrollLeft + scrollAmount;
+
       scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
@@ -32,30 +41,8 @@ const Favourite = () => {
     <section className="bg-white xl:p-0 p-0">
       <div className="relative bg-[#1d5c5a] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
         {/* --- BACKGROUND DECORATIONS --- */}
-
-        {/* Huge Centered Text */}
-        <div className="absolute top-40 right-0 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] pl-4 lg:pl-12">
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[#f59e0b] text-[80px] md:text-[120px] lg:text-[150px] font-black leading-[0.8] tracking-tighter"
-          >
-            TOP!
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-white text-[50px] md:text-[90px] lg:text-[120px] font-black leading-[0.9] tracking-tight z-0"
-          >
-            DESTINATION
-          </motion.span>
-        </div>
-
         {/* Rock Climber on the Right */}
-        <div className="absolute top-0 right-0 z-10 w-[280px] md:w-[400px] lg:w-[500px] h-[700px] pointer-events-none">
+        <div className="absolute top-0 -right-20 sm:right-0 z-10 w-[280px] md:w-[400px] lg:w-[500px] h-[700px] pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
           <Image
             src="/img/man-rock.png" // Ensure you have your climber asset
             alt="Rock Climber"
@@ -66,13 +53,13 @@ const Favourite = () => {
         </div>
 
         {/* --- HEADER CONTENT (Left Side) --- */}
-        <div className="container mx-auto px-6 md:px-12 relative z-20 mb-20 lg:mb-32">
-          <div className="max-w-[450px]">
+        <div className="container mx-auto px-6 md:px-12 relative z-20 mb-8 lg:mb-32">
+          <div className="max-w-[450px] md:max-w-[600px] lg:max-w-[450px]">
             <motion.h2
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-[42px] font-bold text-white leading-[1.2] mb-4"
+              className="text-3xl md:text-[50px] lg:text-[42px] font-bold text-white leading-[1.2] mb-4"
             >
               <span className="text-[#f59e0b]">Most Favorite</span> Tour Places!
             </motion.h2>
@@ -82,7 +69,7 @@ const Favourite = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/90 text-sm md:text-[14px] leading-relaxed mb-8"
+              className="text-white/90 text-sm md:text-lg lg:text-[14px] leading-relaxed mb-8"
             >
               Choosing a destination can be exciting but also a bit overwhelming
               with so many amazing places out there! Let&apos;s narrow it down a
@@ -139,12 +126,33 @@ const Favourite = () => {
           </div>
         </div>
 
+        {/* Huge Text: Relative on Mobile so it stacks, Absolute on Desktop so it floats */}
+        <div className="relative lg:absolute lg:top-40 lg:right-0 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] px-6 md:px-12 lg:pl-12 mt-6 lg:mt-0 mb-10 lg:mb-0">
+          <motion.span
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#f59e0b] text-[70px] md:text-[120px] lg:text-[150px] font-black leading-[0.8] tracking-tighter"
+          >
+            TOP!
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-white text-[45px] md:text-[90px] lg:text-[120px] font-black leading-[0.9] tracking-tight z-0"
+          >
+            DESTINATION
+          </motion.span>
+        </div>
+
         {/* --- CARDS SLIDER --- */}
-        <div className="relative w-full z-30 mt-auto px-4 md:px-12">
+        <div className="relative w-full z-30 mt-auto px-0 md:px-12">
           {/* Left Arrow */}
           <button
             onClick={() => scroll("left")}
-            className="group absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+            className="group absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
           >
             <FaChevronLeft className="group-hover:text-[#f59e0b]" size={16} />
           </button>
@@ -152,7 +160,7 @@ const Favourite = () => {
           {/* Right Arrow */}
           <button
             onClick={() => scroll("right")}
-            className="group absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+            className="group absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
           >
             <FaChevronRight className="group-hover:text-[#f59e0b]" size={16} />
           </button>
@@ -160,12 +168,17 @@ const Favourite = () => {
           {/* Scroll Container */}
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 pb-4 pt-4"
+            className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 md:px-0 pb-4 pt-4"
           >
             {destinations.map((dest, index) => (
               <motion.div
                 key={index}
-                className="min-w-[240px] md:min-w-[260px] snap-center shrink-0 group cursor-pointer"
+                /* Exact fitting CSS logic based on 'gap-5' (20px):
+                  - Mobile: 100% width (1 item)
+                  - Tablet (md): 50% width minus half a gap (2 items)
+                  - Desktop (lg): 20% width minus 4/5ths of a gap (5 items)
+                */
+                className="w-full md:w-[calc(50%-10px)] lg:w-[calc(20%-16px)] shrink-0 snap-start group cursor-pointer"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
@@ -177,7 +190,7 @@ const Favourite = () => {
                       src={dest.image}
                       alt={dest.name}
                       fill
-                      sizes="(max-width: 768px) 240px, 260px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 20vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>

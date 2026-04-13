@@ -55,8 +55,8 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       {/* Moving Clouds */}
       <div className="h-50 w-full absolute top-[200px] left-0 z-1">
         <motion.div
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          animate={{ x: ["-100%", "1000%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="inline-block whitespace-nowrap"
         >
           <Image
@@ -73,15 +73,16 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       {/* Airplane - Sliding in from right and subtly floating */}
       <div className="absolute w-1/2 right-0 top-0 bottom-0 z-1">
         <motion.div
-          initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1, y: [0, -15, 0] }}
-          transition={{
-            x: { duration: 1.5, ease: "easeOut" },
-            y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-          }}
+          animate={{ x: ["-100%", "1000%"], y: ["-20%", "0%"] }}
+          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
           className="mt-60"
         >
-          <Image src="/img/airplane.png" alt="Airplane" width={378} height={146} />
+          <Image
+            src="/img/airplane.png"
+            alt="Airplane"
+            width={378}
+            height={146}
+          />
         </motion.div>
       </div>
 

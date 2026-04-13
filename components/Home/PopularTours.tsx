@@ -79,13 +79,19 @@ const PopularTours = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      // Scroll by roughly one container width for smoother multi-card navigation
+    if (scrollRef.current && scrollRef.current.firstElementChild) {
+      // Get the exact width of a single card
+      const itemWidth =
+        scrollRef.current.firstElementChild.getBoundingClientRect().width;
+      const gap = 30; // 30px gap based on Tailwind's 'gap-[30px]' used below
+      const scrollAmount = itemWidth + gap; // Scroll exactly 1 item at a time
+
+      const { scrollLeft } = scrollRef.current;
       const scrollTo =
         direction === "left"
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+          ? scrollLeft - scrollAmount
+          : scrollLeft + scrollAmount;
+
       scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
@@ -112,16 +118,16 @@ const PopularTours = () => {
   };
 
   return (
-    <section className="xl:pt-30 pt-12.5 bg-[#eefeff] 2xl:mx-15 sm:mx-6 xl:pb-26.5 pb-9 overflow-hidden">
-      <div className="container-fluid mx-auto">
+    <section className="xl:pt-[120px] pt-[50px] px-5 lg:px-0 bg-[#eefeff] 2xl:mx-15 sm:mx-6 xl:pb-[100px] pb-9 overflow-hidden">
+      <div className="container mx-auto max-w-[1400px]">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="sm:mb-15 mb-7.5 max-w-150 mx-auto text-center"
+          className="sm:mb-[60px] mb-[30px] max-w-[600px] mx-auto text-center"
         >
-          <h2 className="xl:text-[46px] md:text-40 text-3xl font-bold mb-2.5 text-[#1a3d3d]">
+          <h2 className="xl:text-[46px] md:text-[40px] text-3xl font-bold mb-[10px] text-[#1a3d3d]">
             Explore Popular <span className="text-[#a3e635]">Tours!</span>
           </h2>
           <p className="text-base text-gray-500">
@@ -133,7 +139,7 @@ const PopularTours = () => {
               alt="Separator"
               width={470}
               height={70}
-              className="w-117.5 h-auto"
+              className="w-[470px] h-auto"
             />
           </div>
         </motion.div>
@@ -146,41 +152,47 @@ const PopularTours = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="flex gap-7.5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-24 px-4"
+            // Changed gap to a fixed 30px (gap-[30px]) to make the math perfect
+            className="flex gap-[30px] overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-24"
           >
             {tourData.map((tour) => (
               <motion.div
                 key={tour.id}
                 variants={itemVariants}
-                className="min-w-75 md:min-w-105.75 snap-start"
+                /* Exact fitting CSS logic based on 'gap-[30px]':
+                  - Mobile: 100% width (1 item)
+                  - Tablet (md): 50% width minus half a gap (15px) (2 items)
+                  - Desktop (lg): 25% width minus 3/4ths of a gap (22.5px) (4 items)
+                */
+                className="w-full md:w-[calc(50%-15px)] lg:w-[calc(25%-22.5px)] shrink-0 snap-start"
               >
-                <div className="relative overflow-hidden group rounded-[40px] h-105 shadow-md">
+                <div className="relative overflow-hidden group rounded-[40px] h-[420px] shadow-md bg-white">
                   {/* Default State Image & Label */}
                   <div className="relative h-full w-full">
                     <Image
                       src={tour.img}
                       alt={tour.location}
                       fill
-                      sizes="(max-width: 768px) 300px, (max-width: 1280px) 420px, 423px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 py-6 px-8 bg-black/20 backdrop-blur-md transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-full">
-                      <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-                        <HiOutlineLocationMarker className="text-[#a3e635]" />
-                        {tour.location}
+                    <div className="absolute bottom-0 left-0 right-0 py-6 px-8 bg-black/30 backdrop-blur-sm transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-full">
+                      <h3 className="text-[20px] xl:text-[24px] font-bold text-white flex items-center gap-2">
+                        <HiOutlineLocationMarker className="text-[#a3e635] shrink-0" />
+                        <span className="truncate">{tour.location}</span>
                       </h3>
                     </div>
                   </div>
 
                   {/* Hover Overlay Content */}
-                  <div className="absolute inset-5 p-7 flex flex-col justify-between bg-[#1a3d3d]/80 backdrop-blur-sm rounded-[30px] border border-white/10 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10">
+                  <div className="absolute inset-5 p-5 xl:p-7 flex flex-col justify-between bg-[#1a3d3d]/90 backdrop-blur-sm rounded-[30px] border border-white/10 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10">
                     <div className="flex justify-between items-start">
-                      <div className="bg-[#1a3d3d] text-white px-5 py-2 rounded-r-full -ml-8 font-bold text-sm flex items-center gap-2 shadow-lg">
+                      <div className="bg-[#1a3d3d] text-white px-3 xl:px-5 py-2 rounded-r-full -ml-6 xl:-ml-8 font-bold text-xs xl:text-sm flex items-center gap-2 shadow-lg whitespace-nowrap">
                         <MdOutlineCalendarMonth className="text-[#a3e635] text-lg" />
                         {tour.duration}
                       </div>
                       <div className="text-right">
-                        <span className="text-white text-3xl font-black block">
+                        <span className="text-white text-2xl xl:text-3xl font-black block">
                           ${tour.price}
                         </span>
                         <span className="text-white/60 text-[10px] uppercase tracking-widest font-bold">
@@ -190,21 +202,21 @@ const PopularTours = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-4">
+                      <h3 className="text-xl xl:text-2xl font-bold text-white mb-4">
                         {tour.location}
                       </h3>
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 xl:gap-0">
                         <Link
                           href="/tour-detail"
-                          className="border border-white/30 text-white px-6 py-2 rounded-full font-bold hover:bg-[#a3e635] hover:text-[#1a3d3d] hover:border-[#a3e635] transition-all"
+                          className="border border-white/30 text-white px-6 py-2 rounded-full font-bold text-center hover:bg-[#a3e635] hover:text-[#1a3d3d] hover:border-[#a3e635] transition-all text-sm"
                         >
                           Book Now
                         </Link>
-                        <div className="text-right">
+                        <div className="text-left xl:text-right">
                           <span className="text-white text-xs opacity-70">
                             ({tour.rating} Review)
                           </span>
-                          <div className="flex text-[#a3e635] gap-0.5 mt-1 justify-end">
+                          <div className="flex text-[#a3e635] gap-0.5 mt-1 xl:justify-end">
                             {[...Array(5)].map((_, i) => (
                               <FaStar key={i} size={12} />
                             ))}

@@ -90,11 +90,7 @@ export default function Header() {
               className="table-cell align-middle relative w-full h-full mb-5"
             >
               <Image
-                src={
-                  isFixed
-                    ? "/img/logo.png"
-                    : "/img/logo-black.png"
-                } // Swap logo on scroll
+                src={isFixed ? "/img/logo.png" : "/img/logo-black.png"} // Swap logo on scroll
                 alt="Logo"
                 fill
                 className="object-cover duration-500"
@@ -246,7 +242,7 @@ export default function Header() {
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
-                  src="/assets/images/logo-dark.png"
+                  src="/img/logo-black.png"
                   alt="Logo"
                   width={140}
                   height={40}
