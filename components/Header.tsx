@@ -64,7 +64,7 @@ const menuData: MenuItem[] = [
     name: "Members lounge",
     href: "#",
     subMenu: [
-      { name: "Login", href: "https://rosewoodworldwidetravel.com/client/" },
+      { name: "Login", href: "/login" },
       { name: "Book Holiday", href: "/members/book-holiday" },
     ],
   },
@@ -98,7 +98,7 @@ export default function Header() {
         ${isFixed ? "fixed top-0! p-0!" : ""}`}
       >
         <div
-          className={`mx-auto w-full transition-all duration-500 flex items-center justify-between 
+          className={`mx-auto w-[95%] transition-all duration-500 flex items-center justify-between 
           ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-4 lg:px-8" : "bg-transparent min-h-30"}`}
         >
           {/* --- LOGO --- */}

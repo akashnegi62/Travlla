@@ -146,27 +146,6 @@ const Hero = () => {
                 className="w-full h-[80vh] object-contain"
                 priority
               />
-
-              {/* Floating Discount Badge - Centered under image on mobile */}
-              <motion.div
-                animate={{ rotate: [-5, 5, -5], y: [0, -10, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute -bottom-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-10 lg:translate-x-0 lg:top-50 text-white text-center lg:text-right"
-              >
-                <span className="block text-xl lg:text-2xl italic font-light">
-                  Get Up To
-                </span>
-                <span className="block text-7xl lg:text-7xl font-black italic leading-none my-1">
-                  45%
-                </span>
-                <span className="block text-xl lg:text-2xl font-bold uppercase tracking-widest">
-                  Discount
-                </span>
-              </motion.div>
             </div>
           </div>
         </div>
@@ -189,14 +168,11 @@ const SocialIcon = ({ Icon }: { Icon: IconType }) => (
 );
 
 const Cloud = ({ delay, top }: { delay: number; top: string }) => (
-  <div
-    className="absolute w-full pointer-events-none z-50"
-    style={{ top }}
-  >
+  <div className="absolute w-full pointer-events-none z-8" style={{ top }}>
     <motion.div
       initial={{ x: "-20%" }}
       animate={{ x: "1000%" }}
-      transition={{ duration: 10, repeat: Infinity, ease: "linear", delay }}
+      transition={{ duration: 30, repeat: Infinity, ease: "linear", delay }}
       className="inline-block"
     >
       <Image
