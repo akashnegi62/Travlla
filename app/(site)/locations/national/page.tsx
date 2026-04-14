@@ -1,4 +1,3 @@
-// Remove "use client" at the top!
 import React from "react";
 import AboutHero from "@/components/About/AboutHero";
 import Image from "next/image";
@@ -68,7 +67,7 @@ export default async function NationalPage() {
                     {loc.name}
                   </h3>
                   <Link
-                    href={`/tour-detail/${loc.id}`}
+                    href={`/tour-detail/${loc.name.charAt(0).toUpperCase() + loc.name.slice(1).toLowerCase()}`}
                     className="inline-block bg-white text-[#1a3d3d] px-6 py-2 rounded-full font-bold text-sm hover:bg-[#fbbf24] transition-colors"
                   >
                     Explore Now

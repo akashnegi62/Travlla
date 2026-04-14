@@ -54,7 +54,7 @@ export default async function InternationalPage() {
                 key={loc.id || i}
                 className="flex flex-col md:flex-row bg-white rounded-[50px] overflow-hidden shadow-2xl group transition-transform hover:translate-x-2"
               >
-                <div className="md:w-1/2 relative h-[300px] md:h-auto overflow-hidden bg-gray-200">
+                <div className="md:w-1/2 relative h-75 md:h-auto overflow-hidden bg-gray-200">
                   <Image
                     src={loc.img || "/img/placeholder.jpg"}
                     alt={loc.name}
@@ -72,7 +72,7 @@ export default async function InternationalPage() {
                       "Experience the best of this destination with our premium, carefully curated tour packages."}
                   </p>
                   <Link
-                    href={`/tour-detail/${loc.id}`}
+                    href={`/tour-detail/${loc.name.charAt(0).toUpperCase() + loc.name.slice(1).toLowerCase()}`}
                     className="text-[#fbbf24] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors"
                   >
                     Book This Trip →

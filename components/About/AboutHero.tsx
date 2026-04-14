@@ -15,7 +15,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       {/* Background Overlay */}
       <div className="opacity-100 absolute left-0 top-0 size-full"></div>
 
-      <div className="flex w-full lg:h-[640px] md:h-[540px] h-[400px] pb-10 items-baseline mx-auto">
+      <div className="flex w-full lg:h-160 md:h-135 h-100 pb-10 items-baseline mx-auto">
         <div className="relative md:mt-60 mt-45 flex items-center justify-center w-full flex-col z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,14 +91,14 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-[45px] bottom-[65px] z-1"
+        className="absolute right-11.25 bottom-16.25 z-1"
       >
         <Image
           src="/img/redballon.png"
           alt="Balloon Small"
           width={84}
           height={121}
-          className="md:w-[84px] w-[40px] h-auto"
+          className="md:w-21 w-10 h-auto"
           style={{ height: "auto" }}
         />
       </motion.div>
