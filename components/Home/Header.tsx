@@ -94,7 +94,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`w-full z-[999] transition-all duration-500 absolute left-0 right-0 top-0 lg:p-8 px-5
+        className={`w-full z-999 transition-all duration-500 absolute left-0 right-0 top-0 lg:p-8 px-5
         ${isFixed ? "fixed top-0! p-0!" : ""}`}
       >
         <div
@@ -108,7 +108,7 @@ export default function Header() {
               className="table-cell align-middle relative w-full h-full mb-5"
             >
               <Image
-                src={isFixed ? "/img/logo.png" : "/img/logo-black.png"}
+                src={isFixed ? "/img/newlogo.jpeg" : "/img/newlogo.jpeg"}
                 alt="Logo"
                 fill
                 className="object-contain duration-500"
@@ -158,13 +158,13 @@ export default function Header() {
           </nav>
 
           {/* --- RIGHT SIDE ACTIONS --- */}
-          <div className="flex items-center justify-end h-20 xl:pl-8 z-10 flex-shrink-0">
+          <div className="flex items-center justify-end h-20 xl:pl-8 z-10 shrink-0">
             <ul className="flex items-center gap-2 xl:gap-4">
               <li>
                 <button
                   onClick={() => setSearchOpen(true)}
                   className={`flex items-center justify-center w-10 lg:w-14 h-14 text-xl transition-colors
-                  ${isFixed ? "text-white hover:text-[#a3e635]" : "text-black hover:text-[#a3e635]"}`}
+                  ${isFixed ? "text-white hover:text-[#a3e635]" : "text-white hover:text-[#a3e635]"}`}
                 >
                   <FaSearch />
                 </button>
@@ -215,16 +215,16 @@ export default function Header() {
             >
               <FaTimes />
             </button>
-            <form className="relative flex items-center w-full max-w-[600px] bg-white rounded-full overflow-hidden shadow-2xl">
+            <form className="relative flex items-center w-full max-w-150 bg-white rounded-full overflow-hidden shadow-2xl">
               <input
                 type="text"
                 placeholder="Search..."
                 autoFocus
-                className="h-[70px] px-8 text-lg text-[#1a3d3d] w-full outline-none"
+                className="h-17.5 px-8 text-lg text-[#1a3d3d] w-full outline-none"
               />
               <button
                 type="submit"
-                className="w-[70px] h-[70px] bg-[#1a3d3d] text-white flex items-center justify-center text-2xl hover:bg-[#a3e635] m-2 rounded-full"
+                className="w-17.5 h-17.5 bg-[#1a3d3d] text-white flex items-center justify-center text-2xl hover:bg-[#a3e635] m-2 rounded-full"
               >
                 <FaSearch />
               </button>
@@ -253,7 +253,7 @@ export default function Header() {
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
-                  src="/img/logo-black.png"
+                  src="/img/newlogo.jpeg"
                   alt="Logo"
                   width={140}
                   height={40}

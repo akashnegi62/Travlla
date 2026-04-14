@@ -21,7 +21,7 @@ export default function PhilosophyPage() {
               className="w-full lg:w-5/12 h-[600px] lg:h-[850px] relative rounded-[40px] overflow-hidden shadow-2xl group"
             >
               <Image
-                src="/vac5.jpg" // Assuming you have an aerial beach shot here
+                src="/img/vac1.jpg" // Assuming you have an aerial beach shot here
                 alt="Tropical beach view with boats"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

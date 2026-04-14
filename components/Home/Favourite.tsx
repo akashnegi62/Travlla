@@ -60,7 +60,7 @@ const Favourite = () => {
 
   return (
     <section className="bg-white xl:p-0 p-0">
-      <div className="relative bg-[#256168] overflow-hidden min-h-[900px] flex flex-col shadow-2xl pb-16 pt-16">
+      <div className="relative bg-[#256168] overflow-hidden min-h-225 flex flex-col shadow-2xl pb-16 pt-16">
         {/* --- BACKGROUND DECORATIONS --- */}
         {/* Rock Climber on the Right */}
         <div className="absolute top-0 -right-20 sm:right-0 z-10 w-70 md:w-100 lg:w-125 h-175 pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
@@ -75,7 +75,7 @@ const Favourite = () => {
 
         {/* --- HEADER CONTENT (Left Side) --- */}
         <div className="container mx-auto px-6 md:px-12 relative z-20 mb-8 lg:mb-32">
-          <div className="max-w-[450px] md:max-w-[600px] lg:max-w-[450px]">
+          <div className="max-w-112.5 md:max-w-150 lg:max-w-112.5">
             <motion.h2
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -148,7 +148,7 @@ const Favourite = () => {
         </div>
 
         {/* Huge Text: Relative on Mobile so it stacks, Absolute on Desktop so it floats */}
-        <div className="relative lg:absolute lg:top-40 lg:left-1/2 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-[1000px] px-6 md:px-12 lg:pl-12 mt-6 lg:mt-0 mb-10 lg:mb-0">
+        <div className="relative lg:absolute lg:top-40 lg:left-1/2 flex flex-col items-start z-0 pointer-events-none select-none w-full max-w-250 px-6 md:px-12 lg:pl-12 mt-6 lg:mt-0 mb-10 lg:mb-0">
           <motion.span
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
