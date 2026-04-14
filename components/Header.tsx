@@ -99,7 +99,7 @@ export default function Header() {
       >
         <div
           className={`mx-auto w-[95%] transition-all duration-500 flex items-center justify-between 
-          ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-4 lg:px-8" : "bg-transparent min-h-30"}`}
+          ${isFixed ? "bg-[#256168] rounded-b-3xl shadow-xl min-h-20 px-4 py-5 lg:px-8" : "bg-transparent min-h-30"}`}
         >
           {/* --- LOGO --- */}
           <div className="flex items-center relative z-10 w-36 lg:w-44 h-20 shrink-0">
@@ -108,7 +108,7 @@ export default function Header() {
               className="table-cell align-middle relative w-full h-full mb-5"
             >
               <Image
-                src={isFixed ? "/img/newlogo.jpeg" : "/img/newlogo.jpeg"}
+                src={isFixed ? "/img/newlogo.png" : "/img/newlogo.png"}
                 alt="Logo"
                 fill
                 className="object-contain duration-500"
@@ -253,7 +253,7 @@ export default function Header() {
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
-                  src="/img/newlogo.jpeg"
+                  src="/img/newlogo.png"
                   alt="Logo"
                   width={140}
                   height={40}

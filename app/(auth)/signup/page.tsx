@@ -27,7 +27,7 @@ export default function SignUpPage() {
           <div className="relative w-32 h-32">
             <Link href="/" className="">
               <Image
-                src={"/img/newlogo.jpeg"}
+                src={"/img/newlogo.png"}
                 alt="Logo"
                 fill
                 className="object-contain"
