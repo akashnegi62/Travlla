@@ -33,12 +33,12 @@ const guides = [
 const TourGuides = () => {
   return (
     <section className="bg-[#fbfcfc] py-20 px-4 overflow-hidden">
-      <div className="container mx-auto max-w-[1300px]">
+      <div className="container mx-auto max-w-325">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
           {/* --- LEFT COLUMN: Rotating Background, Text, & Hero Image --- */}
           <div className="lg:w-1/2 w-full flex justify-center items-center relative mt-10 lg:mt-0">
             {/* Container for the layered composition */}
-            <div className="relative lg:h-[70vh] lg:w-full w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] flex flex-col items-center justify-start pt-16 sm:pt-24">
+            <div className="relative lg:h-[70vh] lg:w-full w-95 h-95 sm:w-125 sm:h-125 flex flex-col items-center justify-start pt-16 sm:pt-24">
               {/* 1. Animated Rotating Background Image */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -97,7 +97,7 @@ const TourGuides = () => {
                   className="bg-white p-4 pb-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[40px] text-center flex flex-col items-center"
                 >
                   {/* Guide Image */}
-                  <div className="w-full h-[260px] md:h-[280px] overflow-hidden rounded-[30px] mb-6 relative">
+                  <div className="w-full h-65 md:h-70 overflow-hidden rounded-[30px] mb-6 relative">
                     <Image
                       src={guide.img}
                       alt={guide.name}

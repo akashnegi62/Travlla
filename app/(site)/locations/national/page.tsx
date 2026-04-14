@@ -48,7 +48,7 @@ export default async function NationalPage() {
             {locations.map((loc: LocationItem, i: number) => (
               <div
                 key={loc.id || i}
-                className="group relative h-[450px] rounded-[40px] overflow-hidden shadow-xl"
+                className="group relative h-112.5 rounded-[40px] overflow-hidden shadow-xl"
               >
                 <Image
                   src={loc.img || "/img/placeholder.jpg"}
