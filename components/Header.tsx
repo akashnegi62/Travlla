@@ -207,7 +207,7 @@ export default function Header() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#f0f9f9] z-[1002] flex items-center justify-center p-8"
+            className="fixed inset-0 bg-[#f0f9f9] z-1002 flex items-center justify-center p-8"
           >
             <button
               onClick={() => setSearchOpen(false)}
@@ -242,14 +242,14 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 z-[1000] lg:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-black/60 z-1000 lg:hidden backdrop-blur-sm"
             />
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="fixed top-0 left-0 h-full w-[300px] bg-white z-[1001] lg:hidden flex flex-col shadow-2xl"
+              className="fixed top-0 left-0 h-full w-75 bg-white z-1001 lg:hidden flex flex-col shadow-2xl"
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image

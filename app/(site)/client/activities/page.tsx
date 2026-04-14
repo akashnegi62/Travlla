@@ -24,7 +24,7 @@ export default function ActivitiesPage() {
               <motion.div 
                 key={i}
                 whileHover={{ scale: 1.03 }}
-                className="relative h-[400px] rounded-[40px] overflow-hidden group cursor-pointer"
+                className="relative h-100 rounded-[40px] overflow-hidden group cursor-pointer"
               >
                 <Image
                   src={act.img}

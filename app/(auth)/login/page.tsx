@@ -65,7 +65,7 @@ export default function LoginPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
               <h2 className="text-2xl font-bold">Login Now!</h2>
               <p className="text-sm opacity-90">
                 Welcome back! Please enter your details.
@@ -104,7 +104,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-5 top-[46px] text-slate-400 hover:text-slate-600"
+                className="absolute right-5 top-11.5 text-slate-400 hover:text-slate-600"
               >
                 {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
               </button>

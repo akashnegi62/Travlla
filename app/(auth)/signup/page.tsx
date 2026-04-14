@@ -70,7 +70,7 @@ export default function SignUpPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
               <h2 className="text-2xl font-bold">Register Now!</h2>
               <p className="text-sm opacity-90">
                 Register now to start your journey!
@@ -132,7 +132,7 @@ export default function SignUpPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-5 top-[44px] text-slate-400"
+                className="absolute right-5 top-11 text-slate-400"
               >
                 {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
               </button>
@@ -192,7 +192,7 @@ export default function SignUpPage() {
           </div>
 
           <div className="flex gap-4">
-            <button className="flex-[2] flex items-center justify-center gap-3 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 font-bold text-slate-700">
+            <button className="flex-2 flex items-center justify-center gap-3 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 font-bold text-slate-700">
               <FaGoogle className="text-red-500 text-xl" /> Google
             </button>
             <button className="flex-1 flex items-center justify-center py-4 border border-slate-200 rounded-2xl hover:bg-slate-50">

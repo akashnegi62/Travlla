@@ -10,7 +10,7 @@ export default function PhilosophyPage() {
       <AboutHero title="Our Philosophy" />
 
       <section className="py-24">
-        <div className="container mx-auto px-4 max-w-[1400px]">
+        <div className="container mx-auto px-4 max-w-350">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
             {/* LEFT COLUMN: Aerial Image */}
             <motion.div
@@ -18,7 +18,7 @@ export default function PhilosophyPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full lg:w-5/12 h-[600px] lg:h-[850px] relative rounded-[40px] overflow-hidden shadow-2xl group"
+              className="w-full lg:w-5/12 h-150 lg:h-212.5 relative rounded-[40px] overflow-hidden shadow-2xl group"
             >
               <Image
                 src="/img/vac1.jpg" // Assuming you have an aerial beach shot here

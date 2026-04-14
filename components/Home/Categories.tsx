@@ -212,7 +212,7 @@ const Categories = () => {
                   >
                     {/* Polaroid Style Card - Mobile */}
                     <div className="bg-white rounded-3xl p-3 shadow-2xl">
-                      <div className="relative h-[350px] rounded-2xl overflow-hidden">
+                      <div className="relative h-87.5 rounded-2xl overflow-hidden">
                         <Image
                           src={cat.image}
                           alt={cat.label}
@@ -337,7 +337,7 @@ const Categories = () => {
                     >
                       {/* Polaroid Style Card */}
                       <div className="bg-white rounded-4xl p-4 shadow-2xl">
-                        <div className="relative h-[420px] rounded-3xl overflow-hidden">
+                        <div className="relative h-105 rounded-3xl overflow-hidden">
                           <Image
                             src={cat.image}
                             alt={cat.label}
