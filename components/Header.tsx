@@ -176,13 +176,13 @@ export default function Header() {
                   className="flex flex-col gap-1.5 p-2"
                 >
                   <span
-                    className={`block w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                    className={`block bg-white w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
                   ></span>
                   <span
-                    className={`block w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                    className={`block bg-white w-7 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
                   ></span>
                   <span
-                    className={`block w-5 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
+                    className={`block bg-white w-5 h-0.5 rounded-full duration-300 ${isFixed ? "bg-white" : "bg-[#1a3d3d]"}`}
                   ></span>
                 </button>
               </li>
