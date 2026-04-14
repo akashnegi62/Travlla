@@ -101,15 +101,6 @@ const Booking = () => {
             viewport={{ once: true }}
             className="my-7.5 bg-[#f9a90d] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud-bg.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
           >
-            <div className="flex items-end max-lg:justify-center max-lg:mb-3.75">
-              <h2 className="font-black 2xl:text-[120px] text-[80px] leading-[0.75] text-white mr-4.5">
-                48
-              </h2>
-              <div className="block font-black text-xl leading-6 text-[#1a3d3d] uppercase text-left">
-                %<span className="block">Off</span>
-              </div>
-            </div>
-
             <div className="2xl:text-[50px] xl:text-4xl text-2xl 2xl:leading-18.5 leading-normal text-[#1a3d3d] flex-1 mx-5 font-[kau] italic max-lg:mb-3.75">
               <span className="text-white font-[kau] text-lg leading-6 block pb-2.5 non-italic">
                 Get Special Offer
