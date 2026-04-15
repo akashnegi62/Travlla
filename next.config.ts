@@ -1,42 +1,27 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  async rewrites() {
-    return [
-      {
-        // Whenever the frontend fetches /api/something
-        source: "/api/:path*",
-        // The Next.js server will proxy it to your real domain
-        destination: "https://rosewoodworldwidetravel.com/api/:path*",
-      },
-    ];
-  },
+  // Tells Next.js to build a static HTML site
+  output: "export",
+
+  // Adds a trailing slash to URLs (e.g., /about/) - helpful for static hosting
+  trailingSlash: true,
+
   images: {
+    // unoptimized: true is strictly REQUIRED when using output: "export"
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
         hostname: "treehouseluxuryvacations.com",
-        port: "",
-        pathname: "/**", // This allows all image paths from this domain
+        pathname: "/**",
       },
-      // I also highly recommend adding your primary API domain here just in case!
       {
         protocol: "https",
         hostname: "rosewoodworldwidetravel.com",
-        port: "",
         pathname: "/**",
       },
     ],
-  },
-  output: "export",
-};
-
-module.exports = {
-  output: "export",
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
   },
 };
 
