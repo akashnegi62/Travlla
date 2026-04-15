@@ -12,11 +12,11 @@ const fetchOptions = {
   },
 };
 
-// 1. Generate Static Params (With Capitalization Fix & Slug update)
+// 1. Generate Static Params (Simple Single Word Capitalization: "Delhi")
 export async function generateStaticParams() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com"; // Removed trailing slash
+    "https://crm.mercurevacationclub.com";
 
   try {
     const [nationalRes, internationalRes] = await Promise.all([
@@ -27,8 +27,7 @@ export async function generateStaticParams() {
       ),
     ]);
 
-    if (!nationalRes.ok || !internationalRes.ok)
-      throw new Error("API Response Error");
+    if (!nationalRes.ok || !internationalRes.ok) throw new Error("API Error");
 
     const national = await nationalRes.json();
     const international = await internationalRes.json();
@@ -37,13 +36,9 @@ export async function generateStaticParams() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return allLocations.map((loc: any) => {
       const name = loc.name || "";
-      const formattedName = name
-        .split(" ")
-        .map(
-          (word: string) =>
-            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-        )
-        .join(" ");
+
+      const formattedName =
+        name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
       return {
         slug: formattedName,
@@ -51,12 +46,12 @@ export async function generateStaticParams() {
     });
   } catch (error) {
     console.error("Failed to generate static params:", error);
-    // FALLBACK: Return some defaults so the build doesn't fail if the API times out
+
     return [
+      { slug: "Delhi" },
       { slug: "Goa" },
+      { slug: "Dehradun" },
       { slug: "Manali" },
-      { slug: "Dubai" },
-      { slug: "Paris" },
     ];
   }
 }
@@ -102,7 +97,7 @@ export default async function LocationDetailsPage({
   if (!properties || properties.length === 0) {
     return (
       <main className="bg-white min-h-screen flex flex-col">
-        <AboutHero title={`${locationName.toUpperCase()} Details`} />
+        <AboutHero title={`${locationName} Details`} />
         <div className="container mx-auto px-4 py-24 text-center grow flex flex-col items-center justify-center">
           <h2 className="text-3xl font-bold text-[#1a3d3d] mb-4">
             No Properties Found
@@ -113,7 +108,7 @@ export default async function LocationDetailsPage({
           </p>
           <Link
             href="/locations/national"
-            className="bg-[#fbbf24] text-[#1a3d3d] px-8 py-3 rounded-full font-bold hover:bg-[#1a3d3d] hover:text-white transition-colors"
+            className="bg-[#fbbf24] text-[#1a3d3d] px-8 py-3 rounded-full font-bold hover:bg-[#1a3d3d] transition-colors"
           >
             Back to Locations
           </Link>
@@ -182,7 +177,7 @@ export default async function LocationDetailsPage({
                       </div>
                     )}
                     {availableImages.length > 1 && (
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wider pointer-events-none z-10">
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold z-10 pointer-events-none">
                         Swipe for more
                       </div>
                     )}
@@ -202,7 +197,7 @@ export default async function LocationDetailsPage({
                     </p>
                     <Link
                       href={`/client/book-tour`}
-                      className="block w-full text-center bg-[#f0f9f9] text-[#1a3d3d] border border-[#1a3d3d]/10 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-[#fbbf24] hover:shadow-md transition-all"
+                      className="block w-full text-center bg-[#f0f9f9] text-[#1a3d3d] border border-[#1a3d3d]/10 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-[#fbbf24] transition-all"
                     >
                       View Details
                     </Link>
