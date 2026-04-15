@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AboutHero from "@/components/About/AboutHero";
 
-// --- BROWSER SPOOFING HEADERS ---
+// --- ANTI-BLOCK HEADERS ---
 const fetchOptions = {
   headers: {
     "User-Agent":
@@ -12,14 +13,12 @@ const fetchOptions = {
   },
 };
 
-// 1. Generate Static Params (Simple Single Word Capitalization: "Delhi")
+// 1. Generate Static Params (Tells Vercel which pages to build)
 export async function generateStaticParams() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
+  const baseUrl = "https://crm.mercurevacationclub.com";
 
   try {
-    const [nationalRes, internationalRes] = await Promise.all([
+    const [natRes, intRes] = await Promise.all([
       fetch(`${baseUrl}/application/api/national-locations.php`, fetchOptions),
       fetch(
         `${baseUrl}/application/api/international-locations.php`,
@@ -27,90 +26,65 @@ export async function generateStaticParams() {
       ),
     ]);
 
-    if (!nationalRes.ok || !internationalRes.ok) throw new Error("API Error");
-
-    const national = await nationalRes.json();
-    const international = await internationalRes.json();
+    const national = await natRes.json();
+    const international = await intRes.json();
     const allLocations = [...national, ...international];
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return allLocations.map((loc: any) => {
       const name = loc.name || "";
-
-      const formattedName =
-        name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-
+      // Ensure the slug is formatted as "Dubai", "Goa", etc.
       return {
-        slug: formattedName,
+        slug: name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(),
       };
     });
   } catch (error) {
-    console.error("Failed to generate static params:", error);
-
-    return [
-      { slug: "Delhi" },
-      { slug: "Goa" },
-      { slug: "Dehradun" },
-      { slug: "Manali" },
-    ];
+    console.error("Static Params Fetch Failed:", error);
+    // MUST return fallbacks so the build doesn't crash
+    return [{ slug: "Dubai" }, { slug: "Goa" }, { slug: "Ayodya" }];
   }
 }
 
-// 2. Fetch properties by Location Name
+// 2. Data Fetching Function (Handles your specific JSON structure)
 async function getLocationProperties(locationName: string) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
+  const baseUrl = "https://crm.mercurevacationclub.com";
 
-  const res = await fetch(
-    `${baseUrl}/application/api/properties-by-location.php?location=${encodeURIComponent(locationName)}`,
-    fetchOptions,
-  );
+  try {
+    // We send lowercase to the API to be safe
+    const res = await fetch(
+      `${baseUrl}/application/api/properties-by-location.php?location=${locationName.toLowerCase()}`,
+      fetchOptions,
+    );
 
-  if (!res.ok) return [];
-  return res.json();
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (err) {
+    return [];
+  }
 }
-
-type PropertyItem = {
-  id: string;
-  name: string;
-  img_1?: string;
-  img_2?: string;
-  img_3?: string;
-  img_4?: string;
-  img_5?: string;
-  img_6?: string;
-  price?: string;
-  description?: string;
-};
 
 export default async function LocationDetailsPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const resolvedParams = await params;
-  const locationName = resolvedParams.slug;
-
-  const properties = await getLocationProperties(locationName);
+  const { slug } = await params;
+  const properties = await getLocationProperties(slug);
 
   if (!properties || properties.length === 0) {
     return (
-      <main className="bg-white min-h-screen flex flex-col">
-        <AboutHero title={`${locationName} Details`} />
-        <div className="container mx-auto px-4 py-24 text-center grow flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-bold text-[#1a3d3d] mb-4">
-            No Properties Found
+      <main className="bg-white min-h-screen">
+        <AboutHero title={slug} />
+        <div className="container mx-auto px-4 py-24 text-center">
+          <h2 className="text-3xl font-bold text-[#1a3d3d]">
+            No Properties Found in {slug}
           </h2>
-          <p className="text-gray-500 mb-8 max-w-md mx-auto">
-            We couldn&apos;t find any available properties in {locationName}{" "}
-            right now.
-          </p>
           <Link
             href="/locations/national"
-            className="bg-[#fbbf24] text-[#1a3d3d] px-8 py-3 rounded-full font-bold hover:bg-[#1a3d3d] transition-colors"
+            className="mt-4 inline-block text-[#fbbf24] font-bold"
           >
-            Back to Locations
+            ← Back to Destinations
           </Link>
         </div>
       </main>
@@ -119,88 +93,59 @@ export default async function LocationDetailsPage({
 
   return (
     <main className="bg-white">
-      <AboutHero title={`Properties in ${locationName}`} />
+      <AboutHero title={`Explore ${slug}`} />
 
       <section className="py-24">
-        <div className="container mx-auto px-4 max-w-350">
-          <div className="text-center mb-16">
-            <span className="text-[#fbbf24] font-bold uppercase tracking-widest">
-              Where to Stay
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a3d3d] mt-2 capitalize">
-              Explore {locationName}
-            </h2>
-          </div>
-
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {properties.map((property: PropertyItem, i: number) => {
-              const availableImages = [
-                property.img_1,
-                property.img_2,
-                property.img_3,
-                property.img_4,
-                property.img_5,
-                property.img_6,
-              ].filter(Boolean);
+            {properties.map((item: any) => {
+              // Extract all valid images from your img_1, img_2... structure
+              const images = [
+                item.img_1,
+                item.img_2,
+                item.img_3,
+                item.img_4,
+                item.img_5,
+                item.img_6,
+              ].filter((img) => img && img.includes("https"));
 
               return (
                 <div
-                  key={property.id || i}
-                  className="group relative bg-white rounded-[40px] overflow-hidden shadow-xl border border-gray-100 flex flex-col transition-transform hover:-translate-y-2 duration-300"
+                  key={item.id}
+                  className="bg-white rounded-[30px] overflow-hidden shadow-xl border border-gray-100 flex flex-col"
                 >
-                  <div className="relative h-75 w-full overflow-hidden">
-                    {availableImages.length > 0 ? (
-                      <div className="flex w-full h-full overflow-x-auto snap-x snap-mandatory no-scrollbar">
-                        {availableImages.map((imgUrl, index) => (
-                          <div
-                            key={index}
-                            className="relative min-w-full h-full snap-center"
-                          >
-                            <Image
-                              src={imgUrl as string}
-                              alt={property.name}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 33vw"
-                              className="object-cover bg-gray-200"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="relative w-full h-full">
-                        <Image
-                          src="/img/placeholder.jpg"
-                          alt="Placeholder"
-                          fill
-                          className="object-cover bg-gray-200"
-                        />
-                      </div>
-                    )}
-                    {availableImages.length > 1 && (
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold z-10 pointer-events-none">
-                        Swipe for more
-                      </div>
-                    )}
-                    {property.price && (
-                      <div className="absolute top-6 right-6 bg-[#1a3d3d]/90 backdrop-blur-sm text-white px-5 py-2 rounded-full font-bold shadow-lg z-10">
-                        {property.price}
-                      </div>
-                    )}
+                  {/* Image Gallery / Preview */}
+                  <div className="relative h-64 w-full bg-gray-200">
+                    <Image
+                      src={images[0] || "/img/placeholder.jpg"}
+                      alt={item.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
 
+                  {/* Content */}
                   <div className="p-8 flex flex-col grow">
-                    <h3 className="text-2xl font-bold text-[#1a3d3d] mb-4">
-                      {property.name}
+                    <h3 className="text-xl font-bold text-[#1a3d3d] mb-2">
+                      {item.name}
                     </h3>
-                    <p className="text-gray-500 text-[15px] mb-8 grow line-clamp-3 leading-relaxed">
-                      {property.description}
+                    <p className="text-xs text-[#fbbf24] font-bold uppercase mb-4">
+                      {item.location}
                     </p>
-                    <Link
-                      href={`/client/book-tour`}
-                      className="block w-full text-center bg-[#f0f9f9] text-[#1a3d3d] border border-[#1a3d3d]/10 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-[#fbbf24] transition-all"
-                    >
-                      View Details
-                    </Link>
+                    <p className="text-gray-500 text-sm line-clamp-4 leading-relaxed mb-6">
+                      {item.description}
+                    </p>
+                    <div className="mt-auto">
+                      <p className="text-[10px] text-gray-400 mb-4">
+                        {item.address}
+                      </p>
+                      <Link
+                        href="/client/book-tour"
+                        className="block w-full text-center bg-[#1a3d3d] text-white py-3 rounded-full font-bold hover:bg-[#fbbf24] hover:text-[#1a3d3d] transition-all"
+                      >
+                        Book Now
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
