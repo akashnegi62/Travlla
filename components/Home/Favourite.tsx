@@ -12,9 +12,6 @@ async function getTopProperties() {
   try {
     const response = await fetch(
       `${baseUrl}/application/api/top-ten-properties.php`,
-      {
-        cache: "no-store", // Or remove this if you want it cached for the static build
-      },
     );
     if (!response.ok) return [];
     return response.json();

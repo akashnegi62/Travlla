@@ -16,13 +16,18 @@ type TopProperty = {
 };
 
 // Accept the data as a prop!
-export default function FavouriteSlider({ properties }: { properties: TopProperty[] }) {
+export default function FavouriteSlider({
+  properties,
+}: {
+  properties: TopProperty[];
+}) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current && scrollRef.current.firstElementChild) {
-      const itemWidth = scrollRef.current.firstElementChild.getBoundingClientRect().width;
+      const itemWidth =
+        scrollRef.current.firstElementChild.getBoundingClientRect().width;
       const gap = 20;
       const scrollAmount = itemWidth + gap;
 
@@ -61,15 +66,24 @@ export default function FavouriteSlider({ properties }: { properties: TopPropert
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <button onClick={() => scroll("left")} className="group absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40">
+      <button
+        onClick={() => scroll("left")}
+        className="group absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+      >
         <FaChevronLeft className="group-hover:text-[#f59e0b]" size={16} />
       </button>
 
-      <button onClick={() => scroll("right")} className="group absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40">
+      <button
+        onClick={() => scroll("right")}
+        className="group absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+      >
         <FaChevronRight className="group-hover:text-[#f59e0b]" size={16} />
       </button>
 
-      <div ref={scrollRef} className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 md:px-0 pb-4 pt-4">
+      <div
+        ref={scrollRef}
+        className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 md:px-0 pb-4 pt-4"
+      >
         {properties.map((property) => (
           <motion.div
             key={property.id}
