@@ -3,19 +3,32 @@ import Image from "next/image";
 import Link from "next/link";
 import FavouriteSlider from "./FavouriteSlider"; // Import the client slider
 
+// --- ANTI-BLOCK HEADERS ---
+const fetchOptions = {
+  headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    Accept: "application/json",
+  },
+};
+
 // Fetch securely on the server!
 async function getTopProperties() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com/";
+    "https://crm.mercurevacationclub.com"; // Fixed: Removed trailing slash
+
   try {
     const response = await fetch(
       `${baseUrl}/application/api/top-ten-properties.php`,
+      fetchOptions, // Added browser spoofing
     );
+
     if (!response.ok) return [];
-    return response.json();
+    return await response.json();
   } catch (error) {
     console.error("Failed to fetch top properties:", error);
+    // FAILSAFE: Return empty array so the slider doesn't crash the build
     return [];
   }
 }
@@ -67,7 +80,8 @@ export default async function Favourite() {
         </div>
 
         {/* --- INJECT THE CLIENT SLIDER HERE --- */}
-        <FavouriteSlider properties={properties} />
+        {/* Even if fetch fails, passing an empty array [] prevents the slider from breaking */}
+        <FavouriteSlider properties={properties || []} />
       </div>
     </section>
   );
