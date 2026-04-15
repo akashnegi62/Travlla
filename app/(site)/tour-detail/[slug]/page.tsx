@@ -3,16 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import AboutHero from "@/components/About/AboutHero";
 
-// 1. Generate Static Params (With Capitalization Fix)
+// 1. Generate Static Params (With Capitalization Fix & Slug update)
 export async function generateStaticParams() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
 
   try {
     const [nationalRes, internationalRes] = await Promise.all([
-      fetch(`${baseUrl}/api/national_locations.php`),
-      fetch(`${baseUrl}/api/international_locations.php`),
+      fetch(`${baseUrl}/application/api/national-locations.php`),
+      fetch(`${baseUrl}/application/api/international-locations.php`),
     ]);
 
     const national = await nationalRes.json();
@@ -22,11 +22,17 @@ export async function generateStaticParams() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return allLocations.map((loc: any) => {
       const name = loc.name || "";
-      const formattedName =
-        name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+      // Multi-word fix (e.g. "new delhi" -> "New Delhi")
+      const formattedName = name
+        .split(" ")
+        .map(
+          (word: string) =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        .join(" ");
 
       return {
-        id: formattedName,
+        slug: formattedName, // Changed 'id' to 'slug'
       };
     });
   } catch (error) {
@@ -39,11 +45,11 @@ export async function generateStaticParams() {
 async function getLocationProperties(locationName: string) {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
 
   // Use ?location= and encode it safely for URLs
   const res = await fetch(
-    `${baseUrl}/api/properties_s.php?location=${encodeURIComponent(locationName)}`,
+    `${baseUrl}/application/api/properties-by-location.php?location=${encodeURIComponent(locationName)}`,
   );
 
   if (!res.ok) throw new Error("Failed to fetch property details");
@@ -68,11 +74,11 @@ type PropertyItem = {
 export default async function LocationDetailsPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>; // Changed 'id' to 'slug'
 }) {
   // Await the params to get the location name from the URL
   const resolvedParams = await params;
-  const locationName = resolvedParams.id;
+  const locationName = resolvedParams.slug; // Changed 'id' to 'slug'
 
   // Fetch the properties data
   const properties = await getLocationProperties(locationName);

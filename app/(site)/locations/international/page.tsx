@@ -16,9 +16,11 @@ type InternationalLocation = {
 async function getLocations() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
   // 'no-store' ensures fresh data on every request
-  const res = await fetch(`${baseUrl}/api/international_locations.php`);
+  const res = await fetch(
+    `${baseUrl}/application/api/international-locations.php`,
+  );
 
   if (!res.ok) throw new Error("Failed to fetch international locations");
   return res.json();

@@ -8,9 +8,9 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 async function getLocations() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
   // The 'no-store' forces Next.js to fetch fresh data every time
-  const res = await fetch(`${baseUrl}/api/national_locations.php`);
+  const res = await fetch(`${baseUrl}/application/api/national-locations.php`);
 
   if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();

@@ -8,11 +8,14 @@ import FavouriteSlider from "./FavouriteSlider"; // Import the client slider
 async function getTopProperties() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
   try {
-    const response = await fetch(`${baseUrl}/api/top_ten_properties.php`, {
-      cache: "no-store", // Or remove this if you want it cached for the static build
-    });
+    const response = await fetch(
+      `${baseUrl}/application/api/top-ten-properties.php`,
+      {
+        cache: "no-store", // Or remove this if you want it cached for the static build
+      },
+    );
     if (!response.ok) return [];
     return response.json();
   } catch (error) {

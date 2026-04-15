@@ -5,12 +5,12 @@ import HeaderClient from "./HeaderClient";
 async function getSearchableLocations() {
   const baseUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://rosewoodworldwidetravel.com";
+    "https://crm.mercurevacationclub.com/";
 
   try {
     const [nationalRes, internationalRes] = await Promise.all([
-      fetch(`${baseUrl}/api/national_locations.php`),
-      fetch(`${baseUrl}/api/international_locations.php`),
+      fetch(`${baseUrl}/application/api/national-locations.php`),
+      fetch(`${baseUrl}/application/api/international-locations.php`),
     ]);
 
     const national = await nationalRes.json();
