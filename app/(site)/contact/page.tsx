@@ -1,10 +1,10 @@
 import React from "react";
-import ContactHero from "@/components/Contact/ContactHero";
 import ContactForm from "@/components/Contact/ContactForm";
+import AboutHero from "@/components/About/AboutHero";
 function Contact() {
   return (
     <>
-      <ContactHero />
+      <AboutHero title="Contact Us" />
       <ContactForm />
     </>
   );

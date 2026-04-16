@@ -15,9 +15,7 @@ const fetchOptions = {
 
 // Create a server-side fetch function
 async function getLocations() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com"; // Fixed: Removed trailing slash
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
     const res = await fetch(
@@ -29,8 +27,6 @@ async function getLocations() {
     return await res.json();
   } catch (error) {
     console.error("National Page Fetch Error:", error);
-    // FAILSAFE: Return empty array so map doesn't crash,
-    // or hardcode a few defaults if you want the build to always have content.
     return [];
   }
 }
@@ -63,14 +59,13 @@ export default async function NationalPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {locations.length > 0 ? (
               locations.map((loc: LocationItem, i: number) => {
-                // FIXED: Multi-word formatting for the slug
-                const slugName = loc.name
+                // Formatting name to Title Case for the slug (e.g., "sri lanka" -> "Sri Lanka")
+                const slug = loc.name
                   ? loc.name
                       .split(" ")
                       .map(
-                        (word) =>
-                          word.charAt(0).toUpperCase() +
-                          word.slice(1).toLowerCase(),
+                        (w) =>
+                          w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
                       )
                       .join(" ")
                   : "Unknown";
@@ -97,8 +92,9 @@ export default async function NationalPage() {
                       <h3 className="text-3xl font-bold text-white mb-4">
                         {loc.name}
                       </h3>
+                      {/* Using the formatted slug and adding a trailing slash for Static Export consistency */}
                       <Link
-                        href={`/tour-detail/${slugName}`}
+                        href={`/tour-detail/${slug}/`}
                         className="inline-block bg-white text-[#1a3d3d] px-6 py-2 rounded-full font-bold text-sm hover:bg-[#fbbf24] transition-colors"
                       >
                         Explore Now

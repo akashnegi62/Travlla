@@ -23,28 +23,24 @@ type InternationalLocation = {
 
 // 1. Server-side fetch function
 async function getLocations() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com"; // Fixed: Removed trailing slash
+ const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
     const res = await fetch(
       `${baseUrl}/application/api/international-locations.php`,
-      fetchOptions, // Added browser spoofing
+      fetchOptions,
     );
 
     if (!res.ok) throw new Error("Failed to fetch international locations");
     return await res.json();
   } catch (error) {
     console.error("International Page Fetch Error:", error);
-    // FAILSAFE: Return empty array so map doesn't crash during build timeout
     return [];
   }
 }
 
 // 2. Make the component async
 export default async function InternationalPage() {
-  // Await the data directly inside the component
   const locations = await getLocations();
 
   return (
@@ -69,14 +65,13 @@ export default async function InternationalPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {locations.length > 0 ? (
               locations.map((loc: InternationalLocation, i: number) => {
-                // FIXED: Multi-word formatting for the slug
-                const slugName = loc.name
+                // FIXED: Multi-word formatting for the slug (e.g., "united state of america" -> "United State Of America")
+                const slug = loc.name
                   ? loc.name
                       .split(" ")
                       .map(
-                        (word) =>
-                          word.charAt(0).toUpperCase() +
-                          word.slice(1).toLowerCase(),
+                        (w) =>
+                          w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
                       )
                       .join(" ")
                   : "Unknown";
@@ -103,8 +98,10 @@ export default async function InternationalPage() {
                         {loc.desc ||
                           "Experience the best of this destination with our premium, carefully curated tour packages."}
                       </p>
+
+                      {/* Using the formatted slug and adding a trailing slash for Static Export consistency */}
                       <Link
-                        href={`/tour-detail/${slugName}`}
+                        href={`/tour-detail/${slug}/`}
                         className="text-[#fbbf24] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors"
                       >
                         Book This Trip →

@@ -126,7 +126,7 @@ const Hero = () => {
             <motion.div
               animate={{ x: [0, 15, 0], y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
-              className="absolute top-0 right-1/2 z-0 opacity-20 lg:opacity-100 hidden sm:block"
+              className="absolute top-0 lg:top-30 2xl:top-0 right-1/2 z-0 opacity-20 lg:opacity-100 hidden sm:block"
             >
               <Image
                 src="/img/plane-line.png"

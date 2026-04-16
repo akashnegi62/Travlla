@@ -13,7 +13,7 @@ const fetchOptions = {
   },
 };
 
-// 1. Generate Static Params (Tells Vercel which pages to build)
+// 1. Generate Static Params (Strictly matching the Link format)
 export async function generateStaticParams() {
   const baseUrl = "https://crm.mercurevacationclub.com";
 
@@ -31,35 +31,50 @@ export async function generateStaticParams() {
     const allLocations = [...national, ...international];
 
     return allLocations.map((loc: any) => {
-      const name = loc.name || "";
-      // Ensure the slug is formatted as "Dubai", "Goa", etc.
+      const name = loc.name ? loc.name.trim() : "";
+
+      // Standard Title Case: "delhi" -> "Delhi", "sri lanka" -> "Sri Lanka"
+      const formattedSlug = name
+        .split(/\s+/)
+        .map(
+          (word: string) =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        .join(" ");
+
       return {
-        slug: name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(),
+        slug: formattedSlug,
       };
     });
   } catch (error) {
     console.error("Static Params Fetch Failed:", error);
-    // MUST return fallbacks so the build doesn't crash
-    return [{ slug: "Dubai" }, { slug: "Goa" }, { slug: "Ayodya" }];
+    // FALLBACKS: Must match the strings exactly
+    return [
+      { slug: "Dubai" },
+      { slug: "Goa" },
+      { slug: "Ayodya" },
+      { slug: "Sri Lanka" },
+      { slug: "United State Of America" },
+    ];
   }
 }
 
-// 2. Data Fetching Function (Handles your specific JSON structure)
+// 2. Data Fetching Function
 async function getLocationProperties(locationName: string) {
-  const baseUrl = "https://crm.mercurevacationclub.com";
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
-    // We send lowercase to the API to be safe
+    // API expects lowercase search terms usually, but handles spaces via encode
     const res = await fetch(
-      `${baseUrl}/application/api/properties-by-location.php?location=${locationName.toLowerCase()}`,
+      `${baseUrl}/application/api/properties-by-location.php?location=${encodeURIComponent(locationName.toLowerCase())}`,
       fetchOptions,
     );
 
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data : [];
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
+    console.error("Location Properties Fetch Error:", err);
     return [];
   }
 }
@@ -70,15 +85,18 @@ export default async function LocationDetailsPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const properties = await getLocationProperties(slug);
+
+  // decodeURIComponent handles the %20 from the URL for clean display and API search
+  const decodedSlug = decodeURIComponent(slug);
+  const properties = await getLocationProperties(decodedSlug);
 
   if (!properties || properties.length === 0) {
     return (
       <main className="bg-white min-h-screen">
-        <AboutHero title={slug} />
+        <AboutHero title={decodedSlug} />
         <div className="container mx-auto px-4 py-24 text-center">
           <h2 className="text-3xl font-bold text-[#1a3d3d]">
-            No Properties Found in {slug}
+            No Properties Found in {decodedSlug}
           </h2>
           <Link
             href="/locations/national"
@@ -93,13 +111,11 @@ export default async function LocationDetailsPage({
 
   return (
     <main className="bg-white">
-      <AboutHero title={`Explore ${slug}`} />
-
+      <AboutHero title={`Explore ${decodedSlug}`} />
       <section className="py-24">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {properties.map((item: any) => {
-              // Extract all valid images from your img_1, img_2... structure
               const images = [
                 item.img_1,
                 item.img_2,
@@ -114,7 +130,6 @@ export default async function LocationDetailsPage({
                   key={item.id}
                   className="bg-white rounded-[30px] overflow-hidden shadow-xl border border-gray-100 flex flex-col"
                 >
-                  {/* Image Gallery / Preview */}
                   <div className="relative h-64 w-full bg-gray-200">
                     <Image
                       src={images[0] || "/img/placeholder.jpg"}
@@ -123,8 +138,6 @@ export default async function LocationDetailsPage({
                       className="object-cover"
                     />
                   </div>
-
-                  {/* Content */}
                   <div className="p-8 flex flex-col grow">
                     <h3 className="text-xl font-bold text-[#1a3d3d] mb-2">
                       {item.name}
@@ -140,10 +153,10 @@ export default async function LocationDetailsPage({
                         {item.address}
                       </p>
                       <Link
-                        href="/client/book-tour"
-                        className="block w-full text-center bg-[#1a3d3d] text-white py-3 rounded-full font-bold hover:bg-[#fbbf24] hover:text-[#1a3d3d] transition-all"
+                        href={`/property/${item.id}/`}
+                        className="block w-full text-center bg-[#1a3d3d] text-white py-3 rounded-full font-bold hover:bg-[#fbbf24] transition-all"
                       >
-                        Book Now
+                        View Details
                       </Link>
                     </div>
                   </div>

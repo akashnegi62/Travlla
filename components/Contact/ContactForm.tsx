@@ -7,12 +7,12 @@ import { FaPhoneVolume, FaEnvelope, FaHouse } from "react-icons/fa6";
 const ContactForm = () => {
   return (
     <section className="xl:py-30 py-12.5 px-5 bg-white">
-      <div className="max-w-[1400px] mx-auto bg-white rounded-[60px] xl:p-15 p-5 shadow-[0px_4px_80px_rgba(6,97,104,0.15)] relative">
+      <div className="max-w-350 mx-auto bg-white rounded-[60px] xl:p-15 p-5 shadow-[0px_4px_80px_rgba(6,97,104,0.15)] relative">
         {/* --- GOOGLE MAP --- */}
-        <div className="w-full md:h-[600px] mb-15">
+        <div className="w-full md:h-150 mb-15">
           <div className="overflow-hidden rounded-[40px] shadow-sm">
             <iframe
-              className="w-full h-[400px] md:h-[600px]"
+              className="w-full h-100 md:h-150"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.241263496584!2d-73.9878436240248!3d40.757974771387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sin!4v1712571234567!5m2!1sen!2sin"
               style={{ border: 0 }}
               allowFullScreen
@@ -44,11 +44,11 @@ const ContactForm = () => {
                     type="text"
                     id="dzname"
                     placeholder=" "
-                    className="block w-full sm:h-[74px] h-[55px] rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
+                    className="block w-full sm:h-18.5 h-13.75 rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
                   />
                   <label
                     htmlFor="dzname"
-                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-[35px] peer-focus:text-[#a3e635] origin-left pointer-events-none"
+                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-8.75 peer-focus:text-[#a3e635] origin-left pointer-events-none"
                   >
                     Enter Your Name
                   </label>
@@ -61,11 +61,11 @@ const ContactForm = () => {
                     type="email"
                     id="emailaddress"
                     placeholder=" "
-                    className="block w-full sm:h-[74px] h-[55px] rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
+                    className="block w-full sm:h-18.5 h-13.75 rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
                   />
                   <label
                     htmlFor="emailaddress"
-                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-[35px] peer-focus:text-[#a3e635] origin-left pointer-events-none"
+                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-8.75 peer-focus:text-[#a3e635] origin-left pointer-events-none"
                   >
                     Email Address
                   </label>
@@ -78,11 +78,11 @@ const ContactForm = () => {
                     type="text"
                     id="Subject"
                     placeholder=" "
-                    className="block w-full sm:h-[74px] h-[55px] rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
+                    className="block w-full sm:h-18.5 h-13.75 rounded-full border border-[#1a3d3d]/10 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
                   />
                   <label
                     htmlFor="Subject"
-                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-[35px] peer-focus:text-[#a3e635] origin-left pointer-events-none"
+                    className="absolute text-gray-400 left-10 top-1/2 -translate-y-1/2 duration-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[-50%] peer-focus:scale-75 peer-focus:-translate-y-8.75 peer-focus:text-[#a3e635] origin-left pointer-events-none"
                   >
                     Subject
                   </label>
@@ -93,7 +93,7 @@ const ContactForm = () => {
                   <textarea
                     id="message"
                     placeholder=" "
-                    className="block w-full min-h-[160px] rounded-3xl border border-[#1a3d3d]/10 py-8 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
+                    className="block w-full min-h-40 rounded-3xl border border-[#1a3d3d]/10 py-8 px-10 text-[#1a3d3d] bg-white outline-none focus:border-[#a3e635] transition-all peer"
                   ></textarea>
                   <label
                     htmlFor="message"
@@ -129,7 +129,7 @@ const ContactForm = () => {
               <ul className="space-y-10">
                 {/* Phone */}
                 <li className="flex items-center gap-6 max-sm:flex-col max-sm:text-center">
-                  <div className="bg-[#45869D] w-24 h-24 min-w-[96px] rounded-[40px] flex items-center justify-center p-4">
+                  <div className="bg-[#45869D] w-24 h-24 min-w-24 rounded-[40px] flex items-center justify-center p-4">
                     <div className="bg-white w-full h-full rounded-[30px] flex items-center justify-center shadow-lg text-[#45869D] text-3xl">
                       <FaPhoneVolume />
                     </div>
@@ -149,7 +149,7 @@ const ContactForm = () => {
 
                 {/* Email */}
                 <li className="flex items-center gap-6 max-sm:flex-col max-sm:text-center">
-                  <div className="bg-[#CE8594] w-24 h-24 min-w-[96px] rounded-[40px] flex items-center justify-center p-4">
+                  <div className="bg-[#CE8594] w-24 h-24 min-w-24 rounded-[40px] flex items-center justify-center p-4">
                     <div className="bg-white w-full h-full rounded-[30px] flex items-center justify-center shadow-lg text-[#CE8594] text-3xl">
                       <FaEnvelope />
                     </div>
@@ -169,7 +169,7 @@ const ContactForm = () => {
 
                 {/* Address */}
                 <li className="flex items-center gap-6 max-sm:flex-col max-sm:text-center">
-                  <div className="bg-[#047881] w-24 h-24 min-w-[96px] rounded-[40px] flex items-center justify-center p-4">
+                  <div className="bg-[#047881] w-24 h-24 min-w-24 rounded-[40px] flex items-center justify-center p-4">
                     <div className="bg-white w-full h-full rounded-[30px] flex items-center justify-center shadow-lg text-[#047881] text-3xl">
                       <FaHouse />
                     </div>

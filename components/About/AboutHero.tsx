@@ -53,7 +53,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
       {/* --- ANIMATED ELEMENTS --- */}
 
       {/* Moving Clouds */}
-      <div className="h-50 w-full absolute top-[200px] left-0 z-1">
+      <div className="h-50 w-full absolute top-50 left-0 z-1">
         <motion.div
           animate={{ x: ["-100%", "1000%"] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -112,14 +112,14 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
           ease: "easeInOut",
           delay: 0.5,
         }}
-        className="absolute md:-right-[60px] -right-[40px] top-[165px] z-1"
+        className="absolute md:-right-15 -right-10 top-41.25 z-1"
       >
         <Image
           src="/img/hotballon-right.png"
           alt="Balloon Large"
           width={230}
           height={333}
-          className="md:w-[230px] w-[80px] h-auto"
+          className="md:w-57.5 w-20 h-auto"
           style={{ height: "auto" }}
         />
       </motion.div>
