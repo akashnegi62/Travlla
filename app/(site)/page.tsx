@@ -3,6 +3,7 @@ import Categories from "@/components/Home/Categories";
 import Favourite from "@/components/Home/Favourite";
 import Hero from "@/components/Home/Hero";
 import LatestNews from "@/components/Home/LatestNews";
+import PartnersMarquee from "@/components/Home/PartnersMarquee";
 import PopularTours from "@/components/Home/PopularTours";
 import Recommendation from "@/components/Home/Recommendation";
 import Testimonials from "@/components/Home/Testimonials";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Booking />
       <Favourite />
+      <PartnersMarquee />
       <Recommendation />
       <Categories />
       <TourGuides />

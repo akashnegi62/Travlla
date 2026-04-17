@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React from 'react';
+import React from "react";
 import AboutHero from "@/components/About/AboutHero";
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FaInfoCircle } from 'react-icons/fa';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { FaInfoCircle } from "react-icons/fa";
 
 // --- DATA FROM IMAGE ---
 const roomTypes = [
   {
     title: "TYPE 1 - STUDIO STANDARD ROOM.",
-    description: "Enjoy our beautifully finished hotel studio standard apartment accommodation. This room type is ideal for solo travelers, business visits or couples. For short term or for longer stays, the Studio is your home away from home, with direct elevator access from the lobby and underground secure carts, 3/4 bedroom area and a dedicated balcony.",
+    description:
+      "Enjoy our beautifully finished hotel studio standard apartment accommodation. This room type is ideal for solo travelers, business visits or couples. For short term or for longer stays, the Studio is your home away from home, with direct elevator access from the lobby and underground secure carts, 3/4 bedroom area and a dedicated balcony.",
     features: [
       "Total Occupancy - Max 2 adults for 2 adults",
       "1 King Double Bed (or 2 singles)",
@@ -18,13 +19,14 @@ const roomTypes = [
       "Balcony & Terrace area",
       "Split AC",
       "Free Wi-Fi",
-      "Office & Study Desk"
+      "Office & Study Desk",
     ],
-    image: "/assets/images/tour/style1/pic1.jpg" // Replace with actual room image
+    image: "/assets/images/tour/style1/pic1.jpg", // Replace with actual room image
   },
   {
     title: "TYPE 2 - 2 MASTER DOUBLE STUDIO ROOM | SUITE ROOM:",
-    description: "For a higher level of accommodation, choose our spacious 2 Bedroom Suite. The layout includes a living room with a selection of two and three-seater sofas, separate dining area, full bathroom facility and all families.",
+    description:
+      "For a higher level of accommodation, choose our spacious 2 Bedroom Suite. The layout includes a living room with a selection of two and three-seater sofas, separate dining area, full bathroom facility and all families.",
     features: [
       "Total Occupancy - Max 4 adults",
       "2 Master King Double Beds (can split into 4 singles)",
@@ -35,10 +37,10 @@ const roomTypes = [
       "Separate Bathroom",
       "Air conditioning",
       "Free Wi-Fi",
-      "Office kitchen:"
+      "Office kitchen:",
     ],
-    image: "/assets/images/tour/style1/pic2.jpg" // Replace with actual room image
-  }
+    image: "/assets/images/tour/style1/pic2.jpg", // Replace with actual room image
+  },
 ];
 
 const t1Pricing = [
@@ -57,22 +59,23 @@ export default function MembershipPage() {
   return (
     <main className="bg-[#fafafa]">
       <AboutHero title="Explore Membership" />
-      
+
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-6xl">
-          
           {/* --- ROOM TYPES SECTION --- */}
           <div className="space-y-16">
             {roomTypes.map((room, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="flex flex-col lg:flex-row gap-10 items-start"
               >
                 <div className="lg:w-7/12">
-                  <h2 className="text-2xl font-black text-[#1a3d3d] mb-4 uppercase">{room.title}</h2>
+                  <h2 className="text-2xl font-black text-[#1a3d3d] mb-4 uppercase">
+                    {room.title}
+                  </h2>
                   <p className="text-gray-700 text-[15px] leading-relaxed mb-6 font-medium">
                     {room.description}
                   </p>
@@ -83,8 +86,13 @@ export default function MembershipPage() {
                   </ul>
                 </div>
                 <div className="lg:w-5/12 w-full">
-                  <div className="relative h-[300px] w-full rounded-[20px] overflow-hidden shadow-xl border-4 border-white">
-                    <Image src={room.image} alt="Room" fill className="object-cover" />
+                  <div className="relative h-75 w-full rounded-[20px] overflow-hidden shadow-xl border-4 border-white">
+                    <Image
+                      src={room.image}
+                      alt="Room"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -94,7 +102,7 @@ export default function MembershipPage() {
           <hr className="my-16 border-gray-300" />
 
           {/* --- PRICING TABLES SECTION --- */}
-          
+
           {/* T1 Category */}
           <div className="mb-16">
             <h3 className="text-xl font-bold text-[#1a3d3d] mb-6 border-l-4 border-[#a3e635] pl-3">
@@ -123,14 +131,17 @@ export default function MembershipPage() {
 
           {/* --- FOOTER INFORMATION SECTION --- */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
             {/* Left Info */}
             <div className="flex gap-4 items-start">
-              <FaInfoCircle className="text-gray-400 text-2xl flex-shrink-0 mt-1" />
+              <FaInfoCircle className="text-gray-400 text-2xl shrink-0 mt-1" />
               <div>
-                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">Special Superior Category Accommodation</h4>
+                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">
+                  Special Superior Category Accommodation
+                </h4>
                 <p className="text-gray-600 text-[14px] leading-relaxed mb-4">
-                  After many requests is for professionals to have something designed to their accommodation for 25 years. This new SUPERIOR Suite will now meet all your needs:
+                  After many requests is for professionals to have something
+                  designed to their accommodation for 25 years. This new
+                  SUPERIOR Suite will now meet all your needs:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-[13px] text-gray-600">
                   <li>Occupancy: 4 Adults</li>
@@ -145,17 +156,25 @@ export default function MembershipPage() {
 
             {/* Right Info */}
             <div className="flex gap-4 items-start">
-              <FaInfoCircle className="text-gray-400 text-2xl flex-shrink-0 mt-1" />
+              <FaInfoCircle className="text-gray-400 text-2xl shrink-0 mt-1" />
               <div>
-                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">Special Information:</h4>
+                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">
+                  Special Information:
+                </h4>
                 <p className="text-gray-600 text-[13px] leading-relaxed text-justify">
-                  Prior many requests a future of Hatsmaced Worldwide Travel maritimelite with and on exclaunting of froize 1000 exapect worstfilings. Albsaroir inaculions and five aommodated decices of your uoer past comment praions prime. An it to becomee toarh. Bustiness and moases are enter your house hving from home. I Chaos: fited a noide range of worshooe oeors, snell betters, better, much more facilitiess the widdite and, thus can orceet your high steditoords and air filter special intreads.
+                  Prior many requests a future of Hatsmaced Worldwide Travel
+                  maritimelite with and on exclaunting of froize 1000 exapect
+                  worstfilings. Albsaroir inaculions and five aommodated decices
+                  of your uoer past comment praions prime. An it to becomee
+                  toarh. Bustiness and moases are enter your house hving from
+                  home. I Chaos: fited a noide range of worshooe oeors, snell
+                  betters, better, much more facilitiess the widdite and, thus
+                  can orceet your high steditoords and air filter special
+                  intreads.
                 </p>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
     </main>
@@ -164,7 +183,7 @@ export default function MembershipPage() {
 
 // --- SUB-COMPONENT: PRICING CARD ---
 const PricingCard = ({ plan }: { plan: any }) => (
-  <motion.div 
+  <motion.div
     whileHover={{ y: -5 }}
     className="bg-white rounded-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden relative border border-gray-100"
   >
@@ -179,13 +198,17 @@ const PricingCard = ({ plan }: { plan: any }) => (
 
     {/* Header */}
     <div className={`${plan.color} py-4 text-center`}>
-      <h4 className="text-white font-bold text-lg uppercase tracking-wider">{plan.tier}</h4>
+      <h4 className="text-white font-bold text-lg uppercase tracking-wider">
+        {plan.tier}
+      </h4>
     </div>
 
     {/* Body */}
     <div className="p-8 text-center flex flex-col items-center">
       <div className="mb-6 border-b pb-6 w-full border-gray-100">
-        <span className="text-[40px] font-black text-[#1a3d3d]">{plan.price}</span>
+        <span className="text-[40px] font-black text-[#1a3d3d]">
+          {plan.price}
+        </span>
         <span className="text-lg font-bold text-[#1a3d3d] ml-1">Lakh</span>
       </div>
 

@@ -96,6 +96,7 @@ export default function FavouriteSlider({
                   src={property.img_1 || "/img/placeholder.jpg"}
                   alt={property.name}
                   fill
+                  loading="lazy" // This is the default, but good to be explicit
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />

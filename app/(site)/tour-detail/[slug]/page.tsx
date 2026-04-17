@@ -135,6 +135,7 @@ export default async function LocationDetailsPage({
                       src={images[0] || "/img/placeholder.jpg"}
                       alt={item.name}
                       fill
+                      loading="lazy" // This is the default, but good to be explicit
                       className="object-cover"
                     />
                   </div>

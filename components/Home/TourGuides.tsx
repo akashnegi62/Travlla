@@ -32,30 +32,33 @@ const guides = [
 
 const TourGuides = () => {
   return (
-    <section className="bg-[#fbfcfc] py-20 px-4 overflow-hidden">
-      <div className="container mx-auto max-w-325">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+    <section className="bg-[#fbfcfc] py-20 px-4 lg:pr-20 2xl:px-0 overflow-hidden">
+      <div className="container mx-auto max-w-[1300px]">
+        {/* FIXED: Increased lg:gap-8 to lg:gap-24 to create a large gap between left and right columns */}
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* --- LEFT COLUMN: Rotating Background, Text, & Hero Image --- */}
-          <div className="lg:w-1/2 w-full flex justify-center items-center relative mt-10 lg:mt-0">
+          <div className="lg:w-[60%] w-full flex justify-center items-center relative mt-10 lg:mt-0">
             {/* Container for the layered composition */}
             <div className="relative lg:h-[70vh] lg:w-full w-95 h-95 sm:w-125 sm:h-125 flex flex-col items-center justify-start pt-16 sm:pt-24">
               {/* 1. Animated Rotating Background Image */}
+              {/* FIXED: Added lg:inset-8 to create internal padding/gap so the circle doesn't touch the edges */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 z-0 flex justify-center items-center origin-center"
+                className="absolute inset-4 lg:inset-8 z-0 flex justify-center items-center origin-center"
               >
                 <Image
                   src="/img/circle-shape.png"
                   alt="Background Circle"
                   fill
+                  loading="lazy"
                   className="object-contain"
-                  priority
                 />
               </motion.div>
 
               {/* 2. Text Content (Layered over the circle, above the girl) */}
-              <div className="text-center z-10 relative -translate-y-4 sm:-translate-y-8">
+              {/* FIXED: Added mt-8 to push the text down a bit so it sits perfectly inside the padded circle */}
+              <div className="text-center z-10 relative mt-8 -translate-y-4 sm:-translate-y-8">
                 <h3 className="font-serif italic text-[30px] lg:text-[40px] sm:text-[56px] text-[#004b62] font-bold mb-1 leading-none">
                   Meet with
                 </h3>
@@ -70,22 +73,23 @@ const TourGuides = () => {
               </div>
 
               {/* 3. Hero Image (Girl sitting - layered on top of the bottom half) */}
-              <div className="absolute lg:-bottom-50 -bottom-10 sm:-bottom-16 w-[110%] flex justify-center z-20 pointer-events-none">
+              <div className="absolute lg:-bottom-32 -bottom-10 sm:-bottom-16 w-[110%] flex justify-center z-20 pointer-events-none">
                 <Image
-                  src="/img/tour-bg.png" // Assumes this is the girl with landmarks
+                  src="/img/tour-bg.png"
                   alt="Expert Guide"
                   width={739}
                   height={653}
+                  loading="lazy"
                   className="w-full h-[30vh] lg:h-[65vh] object-contain drop-shadow-2xl"
-                  priority
                 />
               </div>
             </div>
           </div>
 
           {/* --- RIGHT COLUMN: Guide Cards Grid --- */}
-          <div className="lg:w-1/2 w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="lg:w-[60%] w-full">
+            {/* FIXED: Added lg:ml-12 and lg:mt-12 to push the whole grid container away from the left graphic */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-12 lg:mt-12">
               {guides.map((guide, index) => (
                 <motion.div
                   key={index}
@@ -97,11 +101,12 @@ const TourGuides = () => {
                   className="bg-white p-4 pb-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[40px] text-center flex flex-col items-center"
                 >
                   {/* Guide Image */}
-                  <div className="w-full h-65 md:h-70 overflow-hidden rounded-[30px] mb-6 relative">
+                  <div className="w-full h-65 md:h-70 lg:h-50 2xl:h-50 overflow-hidden rounded-[30px] mb-6 relative">
                     <Image
                       src={guide.img}
                       alt={guide.name}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform duration-700 hover:scale-110"
                     />
                   </div>

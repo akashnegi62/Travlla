@@ -49,6 +49,7 @@ const Recommendation = () => {
                     alt="airplane"
                     width={431}
                     height={166}
+                    loading="lazy" // This is the default, but good to be explicit
                     className="max-md:w-full"
                   />
                 </motion.div>
@@ -59,6 +60,7 @@ const Recommendation = () => {
                     src="/img/hero-recommed3.jpg"
                     alt="Rec 1"
                     width={478}
+                    loading="lazy" // This is the default, but good to be explicit
                     height={420}
                     className="w-full rounded-s-3xl rounded-e-[100px]"
                   />
@@ -75,6 +77,7 @@ const Recommendation = () => {
                     alt="Rec Center"
                     fill
                     sizes="(max-width: 640px) 200px, (max-width: 768px) 270px, 390px"
+                    loading="lazy" // This is the default, but good to be explicit
                     className="object-cover"
                   />
                 </motion.div>
@@ -86,6 +89,7 @@ const Recommendation = () => {
                     alt="Rec 2"
                     width={278}
                     height={420}
+                    loading="lazy" // This is the default, but good to be explicit
                     className="w-full rounded-s-3xl rounded-e-[100px]"
                   />
                 </div>

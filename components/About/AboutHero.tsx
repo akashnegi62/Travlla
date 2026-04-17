@@ -66,6 +66,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
             height={190}
             className="opacity-60"
             style={{ height: "auto" }}
+            priority
           />
         </motion.div>
       </div>
@@ -82,6 +83,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
             alt="Airplane"
             width={378}
             height={146}
+            priority
             className="w-auto lg:h-30 h-10"
           />
         </motion.div>
@@ -99,6 +101,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
           width={84}
           height={121}
           className="md:w-21 w-10 h-auto"
+          priority
           style={{ height: "auto" }}
         />
       </motion.div>
@@ -119,6 +122,7 @@ const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
           alt="Balloon Large"
           width={230}
           height={333}
+          priority
           className="md:w-57.5 w-20 h-auto"
           style={{ height: "auto" }}
         />

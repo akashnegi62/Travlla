@@ -118,16 +118,16 @@ const PopularTours = () => {
   };
 
   return (
-    <section className="xl:pt-[120px] pt-[50px] px-5 lg:px-0 bg-[#eefeff] 2xl:mx-15 sm:mx-6 xl:pb-[100px] pb-9 overflow-hidden">
-      <div className="container mx-auto max-w-[1400px]">
+    <section className="xl:pt-30 pt-12.5 px-5 lg:px-0 bg-[#eefeff] 2xl:mx-15 sm:mx-6 xl:pb-25 pb-9 overflow-hidden">
+      <div className="container mx-auto max-w-350">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="sm:mb-[60px] mb-[30px] max-w-[600px] mx-auto text-center"
+          className="sm:mb-15 mb-7.5 max-w-150 mx-auto text-center"
         >
-          <h2 className="xl:text-[46px] md:text-[40px] text-3xl font-bold mb-[10px] text-[#1a3d3d]">
+          <h2 className="xl:text-[46px] md:text-[40px] text-3xl font-bold mb-2.5 text-[#1a3d3d]">
             Explore Popular <span className="text-[#a3e635]">Tours!</span>
           </h2>
           <p className="text-base text-gray-500">
@@ -139,7 +139,7 @@ const PopularTours = () => {
               alt="Separator"
               width={470}
               height={70}
-              className="w-[470px] h-auto"
+              className="w-117.5 h-auto"
             />
           </div>
         </motion.div>
@@ -153,7 +153,7 @@ const PopularTours = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             // Changed gap to a fixed 30px (gap-[30px]) to make the math perfect
-            className="flex gap-[30px] overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-24"
+            className="flex gap-7.5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-24"
           >
             {tourData.map((tour) => (
               <motion.div
@@ -166,13 +166,14 @@ const PopularTours = () => {
                 */
                 className="w-full md:w-[calc(50%-15px)] lg:w-[calc(25%-22.5px)] shrink-0 snap-start"
               >
-                <div className="relative overflow-hidden group rounded-[40px] h-[420px] shadow-md bg-white">
+                <div className="relative overflow-hidden group rounded-[40px] h-105 shadow-md bg-white">
                   {/* Default State Image & Label */}
                   <div className="relative h-full w-full">
                     <Image
                       src={tour.img}
                       alt={tour.location}
                       fill
+                      loading="lazy" // This is the default, but good to be explicit
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                     />

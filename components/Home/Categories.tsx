@@ -158,7 +158,7 @@ const Categories = () => {
       }}
     >
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
-        {/* MOBILE VIEW - Stack layout */}
+        {/* MOBILE & TABLET VIEW - Stack layout */}
         <div className="lg:hidden flex flex-col items-center gap-8">
           {/* Header Section */}
           <div className="w-full space-y-6 text-center">
@@ -190,11 +190,11 @@ const Categories = () => {
             </AnimatePresence>
           </div>
 
-          {/* Mobile Slider */}
-          <div className="w-full relative">
+          {/* FIXED: Mobile/Tablet Slider Wrapper - Constrained max-width so it never stretches out of proportion on tablets */}
+          <div className="w-full max-w-[340px] sm:max-w-[420px] relative mx-auto mt-4">
             <div
               ref={mobileScrollRef}
-              className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-2"
+              className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4"
             >
               {tourCategories.map((cat, index) => {
                 const isActive = index === activeIndex;
@@ -203,22 +203,25 @@ const Categories = () => {
                   <motion.div
                     key={cat.id}
                     data-card
-                    className="min-w-[calc(100%-16px)] snap-center shrink-0"
+                    // FIXED: Replaced calc() with min-w-full so it exactly fits the constrained wrapper
+                    className="min-w-full snap-center shrink-0"
                     animate={{
                       scale: isActive ? 1 : 0.95,
                       opacity: isActive ? 1 : 0.5,
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    {/* Polaroid Style Card - Mobile */}
-                    <div className="bg-white rounded-3xl p-3 shadow-2xl">
-                      <div className="relative h-87.5 rounded-2xl overflow-hidden">
+                    {/* Polaroid Style Card */}
+                    <div className="bg-white rounded-3xl p-3 sm:p-4 shadow-2xl">
+                      {/* FIXED: Added responsive height so it's taller on tablets but looks proportionate */}
+                      <div className="relative h-[350px] sm:h-[420px] rounded-2xl overflow-hidden">
                         <Image
                           src={cat.image}
                           alt={cat.label}
                           fill
                           className="object-cover"
-                          sizes="100vw"
+                          sizes="(max-width: 768px) 100vw, 420px"
+                          loading="lazy"
                         />
                       </div>
                       <h3 className="text-xl font-bold text-center py-4 text-[#1a3d3d]">
@@ -230,11 +233,11 @@ const Categories = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows */}
+            {/* FIXED Navigation Arrows: Overlapping exactly on the card border using translate-x */}
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              className={`absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                 !canScrollLeft ? "opacity-30 cursor-not-allowed" : ""
               }`}
               aria-label="Previous"
@@ -245,7 +248,7 @@ const Categories = () => {
             <button
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              className={`absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                 !canScrollRight ? "opacity-30 cursor-not-allowed" : ""
               }`}
               aria-label="Next"
@@ -254,7 +257,7 @@ const Categories = () => {
             </button>
           </div>
 
-          {/* Mobile Bottom Section */}
+          {/* Mobile/Tablet Bottom Section */}
           <div className="text-center w-full mt-4">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
@@ -269,7 +272,7 @@ const Categories = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="font-black text-5xl uppercase text-[#fbbf24] select-none tracking-tighter"
+              className="font-black text-5xl sm:text-6xl uppercase text-[#fbbf24] select-none tracking-tighter"
             >
               TOUR CATEGORIES
             </motion.h2>
@@ -317,9 +320,6 @@ const Categories = () => {
               >
                 {tourCategories.map((cat, index) => {
                   const position = index - activeIndex;
-                  // position 0: Active/In View
-                  // position 1: Next/Second (peeking in)
-                  // others: Off-screen
 
                   return (
                     <motion.div
@@ -343,6 +343,7 @@ const Categories = () => {
                             alt={cat.label}
                             fill
                             className="object-cover"
+                            loading="lazy"
                             sizes="(max-width: 768px) 100vw, 380px"
                           />
                           <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />

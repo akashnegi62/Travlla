@@ -79,6 +79,7 @@ export default async function NationalPage() {
                       src={loc.img || "/img/placeholder.jpg"}
                       alt={loc.name}
                       fill
+                      loading="lazy" // This is the default, but good to be explicit
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110 bg-gray-200"
                     />

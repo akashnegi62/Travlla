@@ -121,7 +121,7 @@ export default async function PropertyDetailPage({
           alt={property.name}
           fill
           className="object-cover"
-          priority
+          loading="lazy"
         />
         {/* Dark gradient overlay so the white header and bottom text are perfectly readable */}
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/90" />
@@ -178,6 +178,7 @@ export default async function PropertyDetailPage({
                         src={imgSrc}
                         alt={`${property.name} gallery image ${index + 1}`}
                         fill
+                        loading="lazy"
                         className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                       />
                       <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />

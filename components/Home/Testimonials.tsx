@@ -66,6 +66,7 @@ const Testimonials = () => {
         <Image
           src="/img/redballon.png"
           alt="Balloon"
+          loading="lazy"
           width={230}
           height={300}
         />
@@ -100,17 +101,21 @@ const Testimonials = () => {
             {testimonials.map((item) => (
               <div
                 key={item.id}
-                className="min-w-full md:min-w-[50%] snap-start px-6"
+                // FIXED: Added flex and justify-center to center the content in the 50% column
+                className="min-w-full md:min-w-[50%] snap-start px-6 flex justify-center"
               >
-                <div className="bg-transparent mt-0">
+                {/* FIXED: Added a max-width to bound the text so it matches the image nicely */}
+                <div className="bg-transparent mt-0 w-full max-w-[380px]">
                   {/* Image and Rating */}
-                  <div className="mb-7 relative w-76.5 max-md:mx-auto group">
-                    <div className="rounded-[40px] rounded-es-none overflow-hidden h-74.25 shadow-lg">
+                  {/* FIXED: Changed max-md:mx-auto to just mx-auto to center it on ALL screens */}
+                  <div className="mb-7 relative w-[306px] mx-auto group">
+                    <div className="rounded-[40px] rounded-es-none overflow-hidden h-[297px] shadow-lg">
                       <Image
                         src={item.image}
                         alt={item.name}
                         width={306}
                         height={297}
+                        loading="lazy"
                         className="object-cover group-hover:scale-110 transition-transform duration-700 h-full w-full"
                       />
                     </div>
@@ -136,7 +141,7 @@ const Testimonials = () => {
                           {item.role}
                         </span>
                       </div>
-                      <div className="right-part opacity-20">
+                      <div className="right-part opacity-20 shrink-0 ml-4">
                         <Image
                           src="/img/symbol.png"
                           alt="Quote"
@@ -155,7 +160,7 @@ const Testimonials = () => {
             ))}
           </div>
 
-          {/* Navigation Buttons: Bottom Center as per image */}
+          {/* Navigation Buttons */}
           <div className="flex justify-center gap-4 mt-4">
             <button
               onClick={() => scroll("left")}

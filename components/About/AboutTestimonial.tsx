@@ -10,21 +10,21 @@ const testimonialData = [
     id: 1,
     name: "Amelia Warner",
     role: "Tourist",
-    img: "/img/pic1.jpg",
+    img: "/img/person1.jpg",
     text: "Once the travel bug bites, there is no known antidote, and I know that I shall be happily infected until the end of my life. A journey is best measured in friends.",
   },
   {
     id: 2,
     name: "Kavin Martin",
     role: "Traveler",
-    img: "/img/pic2.jpg",
+    img: "/img/person2.jpg",
     text: "I Was Very Impressed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
   },
   {
     id: 3,
     name: "Antonio",
     role: "Tourist",
-    img: "/img/pic3.jpg",
+    img: "/img/person3.jpg",
     text: "Travel bug bites, there is no known antidote, and I know that I shall be happily infected until the end of my life. A journey is best measured in friends.",
   },
 ];
@@ -158,7 +158,7 @@ const AboutTestimonials = () => {
                     </div>
                     <div className="opacity-20 shrink-0">
                       <Image
-                        src="/img/quote.png"
+                        src="/img/symbol.png"
                         alt="quote"
                         width={70}
                         height={58}
