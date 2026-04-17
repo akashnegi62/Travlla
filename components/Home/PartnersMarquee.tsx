@@ -126,9 +126,9 @@ export default function PartnersMarquee() {
       {/* --- PARTNERS SECTION --- */}
       <div className="container mx-auto px-4 max-w-7xl mb-12 text-center">
         <h2 className="text-4xl md:text-5xl font-black text-[#1a3d3d] uppercase tracking-tighter">
-          Our Trusted{" "}
+          Our Associated{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#20b2aa] to-[#a3e635]">
-            Partners
+            Brands
           </span>
         </h2>
         <p className="text-gray-500 mt-4 font-medium max-w-2xl mx-auto">
@@ -144,9 +144,9 @@ export default function PartnersMarquee() {
       {/* --- BRANDS SECTION --- */}
       <div className="container mx-auto px-4 max-w-7xl mb-12 text-center">
         <h2 className="text-4xl md:text-5xl font-black text-[#1a3d3d] uppercase tracking-tighter">
-          Our Trusted{" "}
+          Our Travel{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#20b2aa] to-[#a3e635]">
-            Brands
+            Partners
           </span>
         </h2>
         <p className="text-gray-500 mt-4 font-medium max-w-2xl mx-auto">

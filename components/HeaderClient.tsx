@@ -204,15 +204,17 @@ export default function HeaderClient({
 
                   {/* MEGA MENU */}
                   {item.isMega && item.data && (
-                    <div className="absolute left-1/2 -translate-x-1/2 top-full w-225 bg-white shadow-2xl rounded-b-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-8 border-t-4 border-[#20b2aa] z-1000">
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full w-225 bg-white shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-8 border-t-2 border-[#004b62] z-1000">
                       <div className="grid grid-cols-4 gap-x-8 gap-y-6 max-h-100 overflow-y-auto pr-4 custom-scrollbar">
                         {item.data.map((loc) => (
                           <Link
                             key={loc.id}
                             href={`/tour-detail/${formatSlug(loc.name)}/`}
-                            className="text-[13px] font-bold text-black border-b border-dotted border-[#20b2aa] pb-2 hover:text-[#256168] transition-all uppercase whitespace-normal"
+                            className="text-[13px] font-semibold text-black border-b border-gray-200 pb-2 hover:text-[#004b62] hover:pl-2 transition-all duration-300 uppercase whitespace-normal"
                           >
-                            {loc.name}
+                            {loc.name.length > 15
+                              ? `${loc.name.substring(0, 15)}...`
+                              : loc.name}
                           </Link>
                         ))}
                       </div>
