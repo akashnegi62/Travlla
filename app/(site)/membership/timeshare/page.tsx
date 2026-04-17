@@ -13,7 +13,7 @@ export default function TimesharePage() {
           
           <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:w-1/2">
-              <div className="relative rounded-[40px] overflow-hidden h-[500px] shadow-2xl">
+              <div className="relative rounded-[40px] overflow-hidden h-125 shadow-2xl">
                 <Image src="/img/person2.jpg" alt="Timeshare concept" fill className="object-cover" />
               </div>
             </motion.div>
