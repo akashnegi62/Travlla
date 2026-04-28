@@ -23,7 +23,7 @@ type InternationalLocation = {
 
 // 1. Server-side fetch function
 async function getLocations() {
- const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
     const res = await fetch(
@@ -50,7 +50,7 @@ export default async function InternationalPage() {
       <section className="py-24 bg-[#f0f9f9]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
-            <div className="flex justify-center mb-4 text-[#fbbf24] text-4xl">
+            <div className="flex justify-center mb-4 text-[#8bc34a] text-4xl">
               <FaGlobe className="animate-[spin_4s_linear_infinite]" />
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#1a3d3d] uppercase tracking-tighter">
@@ -103,7 +103,7 @@ export default async function InternationalPage() {
                       {/* Using the formatted slug and adding a trailing slash for Static Export consistency */}
                       <Link
                         href={`/tour-detail/${slug}/`}
-                        className="text-[#fbbf24] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors"
+                        className="text-[#8bc34a] font-black uppercase text-sm tracking-widest hover:text-[#1a3d3d] transition-colors"
                       >
                         Book This Trip →
                       </Link>

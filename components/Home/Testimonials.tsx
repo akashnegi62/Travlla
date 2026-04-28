@@ -1,192 +1,149 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaStar,
+  FaChevronLeft,
+  FaChevronRight,
+  FaQuoteLeft,
+} from "react-icons/fa";
 
 const testimonials = [
   {
     id: 1,
-    name: "Kavin Martin",
-    role: "Traver",
-    image: "/img/client1.jpg",
-    text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
+    name: "Esther Howard",
+    role: "World Traveller, USA",
+    image: "/img/client1.jpg", // The image of the girl in the hat
+    text: "Booking flights has never been easier! I love how intuitive and user-friendly this website is. Saved so much time and hassle booking my last-minute flight. Highly recommend!",
   },
   {
     id: 2,
     name: "Amelia Warner",
-    role: "Tourist",
-    image: "/img/client1.jpg",
-    text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
-  },
-  {
-    id: 3,
-    name: "Kavin Martin",
-    role: "Traver",
-    image: "/img/client1.jpg",
-    text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
-  },
-  {
-    id: 4,
-    name: "Amelia Warner",
-    role: "Tourist",
-    image: "/img/client1.jpg",
-    text: "I Was Very Impresed Lorem posuere in miss drana en the nisan semere sceriun amiss etiam ornare in the miss drana is lorem fermen nunta mauris.",
+    role: "Tourist, UK",
+    image: "/img/client2.jpg",
+    text: "I was very impressed with the service. The team was helpful and the platform was very easy to navigate. I will definitely be using this again for my next trip.",
   },
 ];
 
 const Testimonials = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      // Moving by clientWidth ensures we jump exactly one full view (2 items)
-      const scrollTo =
-        direction === "left"
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+  const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
-    }
-  };
+  const current = testimonials[index];
 
   return (
-    <section
-      className="xl:pt-30 pt-12.5 xl:pb-25 pb-10 bg-center bg-no-repeat bg-[#f0fafa] relative overflow-hidden"
-      style={{ backgroundImage: "url('/img/bg-testimonial.png')" }}
-    >
-      {/* Background Decorative Hot Balloon */}
-      <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 4, repeat: Infinity }}
-        className="absolute md:left-10 left-5 top-1/4 md:w-56 w-24 opacity-50 z-0 pointer-events-none"
-      >
+    <section className="py-20 bg-[#eff9f9] relative overflow-hidden">
+      {/* Background World Map Pattern (Optional) */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0">
         <Image
-          src="/img/redballon.png"
-          alt="Balloon"
-          loading="lazy"
-          width={230}
-          height={300}
+          src="/img/world-map.png"
+          alt=""
+          fill
+          className="object-contain"
         />
-      </motion.div>
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="sm:mb-15 mb-8 max-w-150 mx-auto text-center">
-          <h2 className="xl:text-[46px] md:text-[40px] text-3xl font-bold mb-2 text-[#1a3d3d]">
-            Our Client <span className="text-[#fbbf24]">Says!</span>
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        {/* --- TOP HEADING SECTION --- */}
+        <div className="mb-12">
+          <h2 className="text-5xl md:text-6xl font-black text-[#1a3d3d] leading-tight max-w-lg">
+            Our Clients Say
           </h2>
-          <p className="text-base text-gray-500">
-            Destinations worth exploring! Here are a few popular spots
-          </p>
-          <div className="-mt-7 flex justify-center">
-            <Image
-              src="/img/title-seperator.png"
-              alt="Separator"
-              width={470}
-              height={70}
-              className="w-117.5 h-auto"
-            />
-          </div>
         </div>
 
-        <div className="section-content relative max-w-6xl mx-auto">
-          {/* Scroll Container */}
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10"
-          >
-            {testimonials.map((item) => (
-              <div
-                key={item.id}
-                // FIXED: Added flex and justify-center to center the content in the 50% column
-                className="min-w-full md:min-w-[50%] snap-start px-6 flex justify-center"
-              >
-                {/* FIXED: Added a max-width to bound the text so it matches the image nicely */}
-                <div className="bg-transparent mt-0 w-full max-w-[380px]">
-                  {/* Image and Rating */}
-                  {/* FIXED: Changed max-md:mx-auto to just mx-auto to center it on ALL screens */}
-                  <div className="mb-7 relative w-[306px] mx-auto group">
-                    <div className="rounded-[40px] rounded-es-none overflow-hidden h-[297px] shadow-lg">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        width={306}
-                        height={297}
-                        loading="lazy"
-                        className="object-cover group-hover:scale-110 transition-transform duration-700 h-full w-full"
-                      />
-                    </div>
-                    {/* Stars Badge */}
-                    <div className="inline-flex items-center bg-[#1a3d3d] rounded-2xl rounded-ss-none absolute left-0 -bottom-2 py-1.5 px-4 shadow-md">
-                      {[...Array(5)].map((_, i) => (
-                        <FaStar
-                          key={i}
-                          className="text-[#fbbf24] text-sm mr-1"
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Testimonial Body */}
-                  <div className="info text-left">
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="left-part">
-                        <h4 className="text-3xl font-bold text-[#1a3d3d] mb-1">
-                          {item.name}
-                        </h4>
-                        <span className="text-lg font-bold text-[#fbbf24] uppercase tracking-wide">
-                          {item.role}
-                        </span>
-                      </div>
-                      <div className="right-part opacity-20 shrink-0 ml-4">
-                        <Image
-                          src="/img/symbol.png"
-                          alt="Quote"
-                          width={60}
-                          height={50}
-                          className="invert-[.12] sepia-[.96] saturate-[4.6] hue-rotate-176"
-                        />
-                      </div>
-                    </div>
-                    <p className="text-lg text-[#1a3d3d] leading-relaxed font-medium">
-                      {item.text}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* --- MAIN CONTENT GRID --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* LEFT: Image Section */}
+          <div className="lg:col-span-4">
+            <div className="relative h-[500px] w-full rounded-[40px] overflow-hidden shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={current.image}
+                    alt={current.name}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#1a3d3d] transition-all shadow-lg"
+          {/* RIGHT: Testimonial Card Section */}
+          <div className="lg:col-span-8 flex flex-col">
+            {/* Review Header: Stats and Stars */}
+            <div className="flex flex-wrap items-center justify-between mb-8 pb-4 border-b border-gray-100">
+              <div className="text-xl font-bold text-[#1a3d3d]">
+                ({index + 1}/{testimonials.length * 524}){" "}
+                <span className="text-gray-400 font-medium">Reviews</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex text-[#8bc34a]">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} />
+                  ))}
+                </div>
+                <span className="font-bold text-[#1a3d3d]">4.7/5.0</span>
+              </div>
+            </div>
+
+            {/* The Actual Card */}
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-[40px] p-10 md:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative"
             >
-              <FaChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#1a3d3d] transition-all shadow-lg"
-            >
-              <FaChevronRight size={18} />
-            </button>
+              <div className="text-[#7ec84f] text-5xl mb-6 opacity-80">
+                <FaQuoteLeft />
+              </div>
+
+              <p className="text-xl md:text-2xl text-gray-500 leading-relaxed mb-10 font-medium italic">
+                &quot;{current.text}&quot;
+              </p>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="text-2xl font-bold text-[#1a3d3d] mb-1">
+                    {current.name}
+                  </h4>
+                  <span className="text-[#7ec84f] font-bold text-sm uppercase tracking-widest">
+                    {current.role}
+                  </span>
+                </div>
+
+                {/* Navigation Buttons (Bottom Right of Card area) */}
+                <div className="flex gap-4">
+                  <button
+                    onClick={prev}
+                    className="w-14 h-14 rounded-full border-2 border-gray-100 text-gray-400 flex items-center justify-center hover:bg-[#7ec84f] hover:text-white hover:border-[#7ec84f] transition-all"
+                  >
+                    <FaChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={next}
+                    className="w-14 h-14 rounded-full bg-[#7ec84f] text-white flex items-center justify-center hover:shadow-lg hover:bg-[#1a3d3d] transition-all"
+                  >
+                    <FaChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
 };

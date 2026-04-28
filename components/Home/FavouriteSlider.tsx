@@ -67,16 +67,16 @@ export default function FavouriteSlider({
     >
       <button
         onClick={() => scroll("left")}
-        className="group absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+        className="group absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
       >
-        <FaChevronLeft className="group-hover:text-[#f59e0b]" size={16} />
+        <FaChevronLeft className="group-hover:text-[#8bc34a]" size={16} />
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="group absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#f59e0b] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
+        className="group absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-white transition-all shadow-xl z-40"
       >
-        <FaChevronRight className="group-hover:text-[#f59e0b]" size={16} />
+        <FaChevronRight className="group-hover:text-[#8bc34a]" size={16} />
       </button>
 
       <div
@@ -96,7 +96,6 @@ export default function FavouriteSlider({
                   src={property.img_1 || "/img/placeholder.jpg"}
                   alt={property.name}
                   fill
-                  loading="lazy" // This is the default, but good to be explicit
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />

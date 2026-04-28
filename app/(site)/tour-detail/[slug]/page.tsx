@@ -100,7 +100,7 @@ export default async function LocationDetailsPage({
           </h2>
           <Link
             href="/locations/national"
-            className="mt-4 inline-block text-[#fbbf24] font-bold"
+            className="mt-4 inline-block text-[#8bc34a] font-bold"
           >
             ← Back to Destinations
           </Link>
@@ -143,7 +143,7 @@ export default async function LocationDetailsPage({
                     <h3 className="text-xl font-bold text-[#1a3d3d] mb-2">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-[#fbbf24] font-bold uppercase mb-4">
+                    <p className="text-xs text-[#8bc34a] font-bold uppercase mb-4">
                       {item.location}
                     </p>
                     <p className="text-gray-500 text-sm line-clamp-4 leading-relaxed mb-6">
@@ -155,7 +155,7 @@ export default async function LocationDetailsPage({
                       </p>
                       <Link
                         href={`/property/${item.id}/`}
-                        className="block w-full text-center bg-[#1a3d3d] text-white py-3 rounded-full font-bold hover:bg-[#fbbf24] transition-all"
+                        className="block w-full text-center bg-[#1a3d3d] text-white py-3 rounded-full font-bold hover:bg-[#8bc34a] transition-all"
                       >
                         View Details
                       </Link>

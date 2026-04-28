@@ -46,13 +46,13 @@ const roomTypes = [
 const t1Pricing = [
   { tier: "BRONZE TOUR", price: "4.5", color: "bg-[#c58356]" },
   { tier: "SILVER TOUR", price: "6.5", color: "bg-[#b3b3b3]" },
-  { tier: "GOLD TOUR", price: "7.8", color: "bg-[#fbbf24]", popular: true },
+  { tier: "GOLD TOUR", price: "7.8", color: "bg-[#8bc34a]", popular: true },
 ];
 
 const t2Pricing = [
   { tier: "BRONZE TOUR", price: "5.5", color: "bg-[#c58356]" },
   { tier: "SILVER TOUR", price: "7.5", color: "bg-[#b3b3b3]" },
-  { tier: "GOLD TOUR", price: "9.8", color: "bg-[#fbbf24]", popular: true },
+  { tier: "GOLD TOUR", price: "9.8", color: "bg-[#8bc34a]", popular: true },
 ];
 
 export default function MembershipPage() {

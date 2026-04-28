@@ -86,7 +86,7 @@ const AboutRecommend = () => {
                   viewport={{ once: true }}
                   className="xl:text-[46px] md:text-[40px] text-3xl font-bold text-[#1a3d3d] mb-4 leading-tight"
                 >
-                  We <span className="text-[#fbbf24]">Recommend </span>
+                  We <span className="text-[#8bc34a]">Recommend </span>
                   Beautiful Destinations Every Month
                 </motion.h2>
                 <p className="lg:mb-12 mb-7 2xl:pr-8 text-gray-500 leading-relaxed text-base">
@@ -132,7 +132,7 @@ const AboutRecommend = () => {
                 <div>
                   <Link
                     href="/destination-detail"
-                    className="inline-block bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#fbbf24] transition-all duration-300 shadow-lg"
+                    className="inline-block bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#8bc34a] transition-all duration-300 shadow-lg"
                   >
                     Discover More
                   </Link>
@@ -155,7 +155,7 @@ const AboutRecommend = () => {
                     ))}
                   </div>
                   <div>
-                    <span className="block font-black text-[22px] text-[#fbbf24] leading-none">
+                    <span className="block font-black text-[22px] text-[#8bc34a] leading-none">
                       3.5k
                     </span>
                     <p className="uppercase font-medium text-[10px] text-gray-400 tracking-wider">
@@ -168,7 +168,7 @@ const AboutRecommend = () => {
               {/* VERTICAL EXPERIENCE BADGE */}
               <div className="2xl:absolute right-0 bottom-50 2xl:w-[90px] max-2xl:pt-10">
                 <div className="inline-flex items-center sm:w-[340px] 2xl:absolute left-0 text-left 2xl:-rotate-90 2xl:origin-top-left 2xl:translate-y-[340px] 2xl:pl-[106px]">
-                  <h2 className="font-bold sm:text-[83px] text-5xl leading-none text-[#fbbf24] drop-shadow-[0_4px_0_rgba(26,61,61,1)] mr-4">
+                  <h2 className="font-bold sm:text-[83px] text-5xl leading-none text-[#8bc34a] drop-shadow-[0_4px_0_rgba(26,61,61,1)] mr-4">
                     25
                   </h2>
                   <span className="sm:text-[28px] text-xl font-black leading-[1.2] text-[#1a3d3d] uppercase">

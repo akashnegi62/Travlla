@@ -159,11 +159,6 @@ const PopularTours = () => {
               <motion.div
                 key={tour.id}
                 variants={itemVariants}
-                /* Exact fitting CSS logic based on 'gap-[30px]':
-                  - Mobile: 100% width (1 item)
-                  - Tablet (md): 50% width minus half a gap (15px) (2 items)
-                  - Desktop (lg): 25% width minus 3/4ths of a gap (22.5px) (4 items)
-                */
                 className="w-full md:w-[calc(50%-15px)] lg:w-[calc(25%-22.5px)] shrink-0 snap-start"
               >
                 <div className="relative overflow-hidden group rounded-[40px] h-105 shadow-md bg-white">
@@ -173,7 +168,6 @@ const PopularTours = () => {
                       src={tour.img}
                       alt={tour.location}
                       fill
-                      loading="lazy" // This is the default, but good to be explicit
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                     />

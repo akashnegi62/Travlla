@@ -192,7 +192,7 @@ export default async function PropertyDetailPage({
           {/* Right Column: Sticky Booking Card */}
           <div className="lg:w-1/3">
             <div className="bg-white rounded-3xl p-8 sticky top-32 shadow-2xl border border-gray-100">
-              <div className="flex items-center gap-1 text-[#fbbf24] mb-2 text-lg">
+              <div className="flex items-center gap-1 text-[#8bc34a] mb-2 text-lg">
                 <FaStar />
                 <FaStar />
                 <FaStar />

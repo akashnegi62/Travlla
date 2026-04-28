@@ -16,7 +16,6 @@ const ContactForm = () => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.241263496584!2d-73.9878436240248!3d40.757974771387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sin!4v1712571234567!5m2!1sen!2sin"
               style={{ border: 0 }}
               allowFullScreen
-              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
@@ -105,7 +104,7 @@ const ContactForm = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#fbbf24] transition-all duration-300 shadow-lg"
+                  className="bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#8bc34a] transition-all duration-300 shadow-lg"
                 >
                   Send Message
                 </button>

@@ -7,18 +7,16 @@ import PartnersMarquee from "@/components/Home/PartnersMarquee";
 import PopularTours from "@/components/Home/PopularTours";
 import Recommendation from "@/components/Home/Recommendation";
 import Testimonials from "@/components/Home/Testimonials";
-import TourGuides from "@/components/Home/TourGuides";
 import VideoSection from "@/components/Home/VideoSection";
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-[#eefeff] overflow-hidden">
+    <main className="min-h-screen w-full overflow-hidden">
       <Hero />
       <Booking />
       <Favourite />
       <PartnersMarquee />
       <Recommendation />
       <Categories />
-      <TourGuides />
       <Testimonials />
       <VideoSection />
       <PopularTours />

@@ -148,15 +148,18 @@ const Categories = () => {
   const canScrollRight = activeIndex < tourCategories.length - 1;
 
   return (
-    <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        backgroundImage: "url('/img/tour-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/img/tour-bg.jpg"
+          alt=""
+          fill
+          priority // Fixes NO_LCP by preloading the background
+          quality={75}
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
         {/* MOBILE & TABLET VIEW - Stack layout */}
         <div className="lg:hidden flex flex-col items-center gap-8">
@@ -191,7 +194,7 @@ const Categories = () => {
           </div>
 
           {/* FIXED: Mobile/Tablet Slider Wrapper - Constrained max-width so it never stretches out of proportion on tablets */}
-          <div className="w-full max-w-[340px] sm:max-w-[420px] relative mx-auto mt-4">
+          <div className="w-full max-w-85 sm:max-w-105 relative mx-auto mt-4">
             <div
               ref={mobileScrollRef}
               className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4"
@@ -214,14 +217,15 @@ const Categories = () => {
                     {/* Polaroid Style Card */}
                     <div className="bg-white rounded-3xl p-3 sm:p-4 shadow-2xl">
                       {/* FIXED: Added responsive height so it's taller on tablets but looks proportionate */}
-                      <div className="relative h-[350px] sm:h-[420px] rounded-2xl overflow-hidden">
+                      <div className="relative h-87.5 sm:h-105 rounded-2xl overflow-hidden">
                         <Image
                           src={cat.image}
                           alt={cat.label}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 420px"
-                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, 380px"
+                          loading="lazy" // Ensures images off-screen don't download until needed
+                          quality={70} // Further reduces payload size
                         />
                       </div>
                       <h3 className="text-xl font-bold text-center py-4 text-[#1a3d3d]">
@@ -237,7 +241,7 @@ const Categories = () => {
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                 !canScrollLeft ? "opacity-30 cursor-not-allowed" : ""
               }`}
               aria-label="Previous"
@@ -248,7 +252,7 @@ const Categories = () => {
             <button
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                 !canScrollRight ? "opacity-30 cursor-not-allowed" : ""
               }`}
               aria-label="Next"
@@ -272,7 +276,7 @@ const Categories = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="font-black text-5xl sm:text-6xl uppercase text-[#fbbf24] select-none tracking-tighter"
+              className="font-black text-5xl sm:text-6xl uppercase text-[#8bc34a] select-none tracking-tighter"
             >
               TOUR CATEGORIES
             </motion.h2>
@@ -343,7 +347,6 @@ const Categories = () => {
                             alt={cat.label}
                             fill
                             className="object-cover"
-                            loading="lazy"
                             sizes="(max-width: 768px) 100vw, 380px"
                           />
                           <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
@@ -361,7 +364,7 @@ const Categories = () => {
               <button
                 onClick={() => scroll("left")}
                 disabled={!canScrollLeft}
-                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                   !canScrollLeft ? "opacity-30 cursor-not-allowed" : ""
                 }`}
                 aria-label="Previous"
@@ -372,7 +375,7 @@ const Categories = () => {
               <button
                 onClick={() => scroll("right")}
                 disabled={!canScrollRight}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-14 h-14 rounded-full bg-[#fbbf24] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
+                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-14 h-14 rounded-full bg-[#8bc34a] text-white flex items-center justify-center hover:bg-[#f59e0b] transition-all shadow-xl z-20 ${
                   !canScrollRight ? "opacity-30 cursor-not-allowed" : ""
                 }`}
                 aria-label="Next"
@@ -397,7 +400,7 @@ const Categories = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="font-black text-6xl md:text-8xl lg:text-[100px] leading-none uppercase text-[#fbbf24] select-none tracking-tighter drop-shadow-lg"
+              className="font-black text-6xl md:text-8xl lg:text-[100px] leading-none uppercase text-[#8bc34a] select-none tracking-tighter drop-shadow-lg"
             >
               TOUR CATEGORIES
             </motion.h2>

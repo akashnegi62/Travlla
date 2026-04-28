@@ -74,7 +74,7 @@ const AboutTestimonials = () => {
           <div className="relative text-center w-full">
             <h1
               className="text-[50px] md:text-[120px] lg:text-[180px] font-black uppercase tracking-widest select-none leading-none
-              bg-linear-to-b from-[#066168] via-[#fbbf24]/50 to-white bg-clip-text text-transparent lg:opacity-30"
+              bg-linear-to-b from-[#066168] via-[#8bc34a]/50 to-white bg-clip-text text-transparent lg:opacity-30"
             >
               Testimonial
             </h1>
@@ -172,7 +172,7 @@ const AboutTestimonials = () => {
                   </p>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex gap-1 text-[#fbbf24] text-xl">
+                    <div className="flex gap-1 text-[#8bc34a] text-xl">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} />
                       ))}
@@ -181,13 +181,13 @@ const AboutTestimonials = () => {
                     <div className="flex gap-3">
                       <button
                         onClick={prevSlide}
-                        className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#fbbf24] hover:bg-[#fbbf24] hover:text-white transition-all"
+                        className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#8bc34a] hover:bg-[#8bc34a] hover:text-white transition-all"
                       >
                         <FaChevronLeft />
                       </button>
                       <button
                         onClick={nextSlide}
-                        className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#fbbf24] hover:bg-[#fbbf24] hover:text-white transition-all"
+                        className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#8bc34a] hover:bg-[#8bc34a] hover:text-white transition-all"
                       >
                         <FaChevronRight />
                       </button>

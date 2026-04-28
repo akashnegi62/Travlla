@@ -48,7 +48,7 @@ export default async function NationalPage() {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[#fbbf24] font-bold uppercase tracking-widest">
+            <span className="text-[#8bc34a] font-bold uppercase tracking-widest">
               Incredible India
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1a3d3d] mt-2">
@@ -86,7 +86,7 @@ export default async function NationalPage() {
                     <div className="absolute inset-0 bg-linear-to-t from-[#1a3d3d] via-[#1a3d3d]/40 to-transparent opacity-80" />
 
                     <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
-                      <div className="flex items-center gap-2 text-[#fbbf24] mb-2 font-bold">
+                      <div className="flex items-center gap-2 text-[#8bc34a] mb-2 font-bold">
                         <HiOutlineLocationMarker />
                         <span>{loc.count || "Explore"}</span>
                       </div>
@@ -96,7 +96,7 @@ export default async function NationalPage() {
                       {/* Using the formatted slug and adding a trailing slash for Static Export consistency */}
                       <Link
                         href={`/tour-detail/${slug}/`}
-                        className="inline-block bg-white text-[#1a3d3d] px-6 py-2 rounded-full font-bold text-sm hover:bg-[#fbbf24] transition-colors"
+                        className="inline-block bg-white text-[#1a3d3d] px-6 py-2 rounded-full font-bold text-sm hover:bg-[#8bc34a] transition-colors"
                       >
                         Explore Now
                       </Link>

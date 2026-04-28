@@ -22,7 +22,7 @@ const Recommendation = () => {
   ];
 
   return (
-    <section className="xl:pt-30 pt-12.5 bg-white pb-10">
+    <section className="xl:pt-30 pt-12.5 bg-[#eff9f9] pb-10">
       <div className="container mx-auto px-4">
         <div className="section-content">
           <div className="flex flex-wrap lg:flex-nowrap items-center gap-12">
@@ -49,7 +49,6 @@ const Recommendation = () => {
                     alt="airplane"
                     width={431}
                     height={166}
-                    loading="lazy" // This is the default, but good to be explicit
                     className="max-md:w-full"
                   />
                 </motion.div>
@@ -60,7 +59,6 @@ const Recommendation = () => {
                     src="/img/hero-recommed3.jpg"
                     alt="Rec 1"
                     width={478}
-                    loading="lazy" // This is the default, but good to be explicit
                     height={420}
                     className="w-full rounded-s-3xl rounded-e-[100px]"
                   />
@@ -77,7 +75,6 @@ const Recommendation = () => {
                     alt="Rec Center"
                     fill
                     sizes="(max-width: 640px) 200px, (max-width: 768px) 270px, 390px"
-                    loading="lazy" // This is the default, but good to be explicit
                     className="object-cover"
                   />
                 </motion.div>
@@ -89,7 +86,6 @@ const Recommendation = () => {
                     alt="Rec 2"
                     width={278}
                     height={420}
-                    loading="lazy" // This is the default, but good to be explicit
                     className="w-full rounded-s-3xl rounded-e-[100px]"
                   />
                 </div>
@@ -145,7 +141,7 @@ const Recommendation = () => {
                 <div className="sm:flex items-center gap-6">
                   <Link
                     href="/destination-detail"
-                    className="bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#fbbf24] transition-colors"
+                    className="bg-[#1a3d3d] text-white px-10 py-4 rounded-full font-bold hover:bg-[#8bc34a] transition-colors"
                   >
                     Discover More
                   </Link>
@@ -166,7 +162,7 @@ const Recommendation = () => {
                       ))}
                     </div>
                     <div>
-                      <span className="block font-black text-[22px] text-[#fbbf24] leading-none">
+                      <span className="block font-black text-[22px] text-[#8bc34a] leading-none">
                         3.5k
                       </span>
                       <p className="uppercase font-medium text-[10px] text-gray-500 tracking-tighter">

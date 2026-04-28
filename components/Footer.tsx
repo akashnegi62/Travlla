@@ -105,12 +105,18 @@ const Footer = () => {
       </div>
 
       {/* --- MAIN FOOTER --- */}
-      <footer
-        className="bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('/img/light-bg.png')",
-        }}
-      >
+      <footer className="relative bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat">
+        {/* The Background Image Container */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/img/light-bg.png"
+            alt="" // Empty alt for decorative background
+            fill
+            quality={75} // Optimizes file size to help reach your 777 KiB savings goal
+            className="object-cover"
+            sizes="100vw" // Ensures the browser loads the right size for the screen
+          />
+        </div>
         <div className="container mx-auto px-4 xl:pt-32 pt-16 pb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
             {/* About Widget */}
@@ -213,7 +219,7 @@ const Footer = () => {
                 placeholder="Email address..."
                 className="flex-1 bg-transparent px-6 outline-none text-[#1a3d3d] font-semibold"
               />
-              <button className="w-14 h-14 bg-[#1a3d3d] text-white rounded-full flex items-center justify-center text-xl hover:bg-[#fbbf24] transition-colors">
+              <button className="w-14 h-14 bg-[#1a3d3d] text-white rounded-full flex items-center justify-center text-xl hover:bg-[#8bc34a] transition-colors">
                 <FaSearch />
               </button>
             </div>

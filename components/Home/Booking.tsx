@@ -71,7 +71,7 @@ const Booking = () => {
                   </div>
 
                   {/* Icon Circle */}
-                  <div className="lg:w-25 lg:h-25 w-20 h-20 bg-[#fbbf24] rounded-[50px] flex items-center justify-center -mr-5">
+                  <div className="lg:w-25 lg:h-25 w-20 h-20 bg-[#8bc34a] rounded-[50px] flex items-center justify-center -mr-5">
                     <div className="lg:w-22.5 lg:h-22.5 w-18.75 h-18.75 bg-white rounded-[50px] flex items-center justify-center">
                       <Image
                         src={step.icon}
@@ -99,7 +99,7 @@ const Booking = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="my-7.5 bg-[#f9a90d] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud-bg.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
+            className="my-7.5 bg-[#8bc34a] xl:h-46 rounded-2xl overflow-hidden bg-[url('/img/cloud-bg.png')] bg-no-repeat bg-contain bg-bottom lg:flex items-center justify-between lg:py-12.5 lg:px-15 p-3.75 pt-7.5 max-lg:text-center"
           >
             <div className="2xl:text-[50px] xl:text-4xl text-2xl 2xl:leading-18.5 leading-normal text-[#1a3d3d] flex-1 mx-5 font-[kau] italic max-lg:mb-3.75">
               <span className="text-white font-[kau] text-lg leading-6 block pb-2.5 non-italic">
