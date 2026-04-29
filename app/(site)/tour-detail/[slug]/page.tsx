@@ -15,7 +15,9 @@ const fetchOptions = {
 
 // 1. Generate Static Params (Strictly matching the Link format)
 export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
 
   try {
     const [natRes, intRes] = await Promise.all([
@@ -61,7 +63,9 @@ export async function generateStaticParams() {
 
 // 2. Data Fetching Function
 async function getLocationProperties(locationName: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
 
   try {
     // API expects lowercase search terms usually, but handles spaces via encode

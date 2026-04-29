@@ -14,7 +14,9 @@ const fetchOptions = {
 
 // Fetch securely on the server!
 async function getTopProperties() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
   try {
     const response = await fetch(
       `${baseUrl}/application/api/locations.php`,

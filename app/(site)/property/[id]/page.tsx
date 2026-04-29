@@ -15,7 +15,9 @@ const fetchOptions = {
 
 // 1. Generate Static Params
 export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
 
   try {
     const [natRes, intRes] = await Promise.all([
@@ -62,7 +64,9 @@ export async function generateStaticParams() {
 
 // 2. Fetch Single Property Data
 async function getPropertyDetails(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
   try {
     const res = await fetch(
       `${baseUrl}/application/api/properties.php?id=${id}`,

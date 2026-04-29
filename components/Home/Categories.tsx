@@ -11,7 +11,9 @@ const fetchOptions = {
 };
 
 async function getTopTenProperties() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://crm.mercurevacationclub.com";
   try {
     const response = await fetch(
       `${baseUrl}/application/api/top-ten-properties.php`,
