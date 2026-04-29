@@ -223,6 +223,7 @@ const CategoriesClient = ({ properties }: { properties: Property[] }) => {
                             src={item.img_1}
                             alt={item.name}
                             fill
+                            priority
                             className="object-cover"
                             unoptimized
                           />

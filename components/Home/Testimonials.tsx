@@ -74,6 +74,7 @@ const Testimonials = () => {
                     src={current.image}
                     alt={current.name}
                     fill
+                    priority
                     className="object-cover rounded-[40px]"
                   />
                 </motion.div>
