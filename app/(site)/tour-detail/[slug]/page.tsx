@@ -15,7 +15,7 @@ const fetchOptions = {
 
 // 1. Generate Static Params (Strictly matching the Link format)
 export async function generateStaticParams() {
-  const baseUrl = "https://crm.mercurevacationclub.com";
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
     const [natRes, intRes] = await Promise.all([
