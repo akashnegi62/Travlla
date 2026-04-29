@@ -10,22 +10,23 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-const videoUrl =
-  "https://www.youtube.com/embed/yeukgKerfqM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=yeukgKerfqM&playsinline=1";
-
 const Hero = () => {
   return (
     <>
       {/* --- 1. FULL SCREEN YOUTUBE VIDEO HERO SECTION --- */}
       <section className="relative w-full h-screen overflow-hidden flex items-center">
-        {/* YouTube Video Background Wrapper */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <iframe
-            src={videoUrl}
-            className="absolute top-1/2 left-1/2 h-screen w-full -translate-x-1/2 -translate-y-1/2"
-            allow="autoplay; fullscreen"
-            title="Background Video"
-          />
+        {/* Video Background Wrapper */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-1/2 left-1/2 min-h-screen min-w-full -translate-x-1/2 -translate-y-1/2 object-cover"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         {/* Dark Overlay for Text Readability */}
@@ -61,12 +62,22 @@ const Hero = () => {
               Experience the Best in Travel: A Journey Beyond Your Imagination,
               Where Every Destination Becomes an Unforgettable Adventure.
             </motion.p>
+
+            <a href="#booknow">
+              <motion.button className="group relative bg-[#a2e734] hover:bg-[#1a3d3d] text-white px-16 py-5 rounded-full font-black uppercase tracking-widest transition-all duration-500 shadow-xl flex items-center gap-3">
+                Book Now
+                <FaSearch className="group-hover:rotate-90 transition-transform duration-500" />
+              </motion.button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* --- 2. PLAN YOUR STAY SECTION --- */}
-      <section className="relative z-30 p-20 bg-[#effefe]">
+      <section
+        id="booknow"
+        className="relative z-30 p-20 bg-[#effefe] scroll-mt-20"
+      >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-xl overflow-hidden">
             {/* Toggles */}

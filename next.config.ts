@@ -13,12 +13,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "treehouseluxuryvacations.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "rosewoodworldwidetravel.com",
+        hostname: "crm.mercurevacationclub.com",
         pathname: "/**",
       },
     ],

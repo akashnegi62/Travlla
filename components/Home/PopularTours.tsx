@@ -1,137 +1,57 @@
-"use client";
-
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
-import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MdOutlineCalendarMonth } from "react-icons/md";
 
-const tourData = [
-  {
-    id: 1,
-    location: "Tokyo City Japan",
-    price: 59,
-    duration: "8 days, 3 Nights",
-    rating: 4.8,
-    img: "/img/vac1.jpg",
+// --- ANTI-BLOCK HEADERS (Mirroring your Favourite component) ---
+const fetchOptions = {
+  headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    Accept: "application/json",
   },
-  {
-    id: 2,
-    location: "Plateau in Slovenia",
-    price: 45,
-    duration: "5 days, 2 Nights",
-    rating: 4.9,
-    img: "/img/vac4.jpg",
-  },
-  {
-    id: 3,
-    location: "Bali, Indonesia",
-    price: 60,
-    duration: "10 days, 9 Nights",
-    rating: 4.7,
-    img: "/img/vac5.jpg",
-  },
-  {
-    id: 4,
-    location: "South Korea",
-    price: 70,
-    duration: "7 days, 6 Nights",
-    rating: 4.8,
-    img: "/img/vac2.jpg",
-  },
-  {
-    id: 5,
-    location: "Swiss Alps, Zurich",
-    price: 95,
-    duration: "6 days, 5 Nights",
-    rating: 5.0,
-    img: "/img/vac3.jpg",
-  },
-  {
-    id: 6,
-    location: "Cairo, Egypt",
-    price: 40,
-    duration: "4 days, 3 Nights",
-    rating: 4.6,
-    img: "/img/vac4.jpg",
-  },
-  {
-    id: 7,
-    location: "Paris, France",
-    price: 85,
-    duration: "5 days, 4 Nights",
-    rating: 4.9,
-    img: "/img/vac5.jpg",
-  },
-  {
-    id: 8,
-    location: "Sydney, Australia",
-    price: 110,
-    duration: "12 days, 11 Nights",
-    rating: 4.8,
-    img: "/img/vac1.jpg",
-  },
-];
+};
 
-const PopularTours = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+// 1. Fetch Securely on the Server
+async function getNationalLocations() {
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  try {
+    const response = await fetch(
+      `${baseUrl}/application/api/national-locations.php`,
+      fetchOptions,
+    );
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current && scrollRef.current.firstElementChild) {
-      // Get the exact width of a single card
-      const itemWidth =
-        scrollRef.current.firstElementChild.getBoundingClientRect().width;
-      const gap = 30; // 30px gap based on Tailwind's 'gap-[30px]' used below
-      const scrollAmount = itemWidth + gap; // Scroll exactly 1 item at a time
+    if (!response.ok) return [];
+    const data = await response.json();
 
-      const { scrollLeft } = scrollRef.current;
-      const scrollTo =
-        direction === "left"
-          ? scrollLeft - scrollAmount
-          : scrollLeft + scrollAmount;
+    // Return only the first 8 locations as a grid looks best with even numbers
+    return Array.isArray(data) ? data.slice(0, 8) : [];
+  } catch (error) {
+    console.error("Failed to fetch national locations:", error);
+    return [];
+  }
+}
 
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
-    }
-  };
+interface LocationData {
+  id: string | number;
+  name: string;
+  img?: string;
+}
 
-  // Animation variants for the container and children
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Reveal cards one by one
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+export default async function PopularTours() {
+  const locations = await getNationalLocations();
 
   return (
-    <section className="xl:pt-30 pt-12.5 px-5 lg:px-0 bg-[#eefeff] 2xl:mx-15 sm:mx-6 xl:pb-25 pb-9 overflow-hidden">
-      <div className="container mx-auto max-w-350">
+    <section className="xl:pt-30 pt-12.5 px-5 lg:px-0 bg-[#eefeff] xl:pb-25 pb-9 overflow-hidden">
+      <div className="container mx-auto max-w-[1300px]">
         {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="sm:mb-15 mb-7.5 max-w-150 mx-auto text-center"
-        >
+        <div className="sm:mb-15 mb-10 max-w-150 mx-auto text-center">
           <h2 className="xl:text-[46px] md:text-[40px] text-3xl font-bold mb-2.5 text-[#1a3d3d]">
-            Explore Popular <span className="text-[#a3e635]">Tours!</span>
+            Explore Popular{" "}
+            <span className="text-[#a3e635]">Destinations!</span>
           </h2>
           <p className="text-base text-gray-500">
-            Destinations worth exploring! Here are a few popular spots
+            Handpicked national spots worth exploring for your next vacation.
           </p>
           <div className="-mt-7 flex justify-center">
             <Image
@@ -142,122 +62,54 @@ const PopularTours = () => {
               className="w-117.5 h-auto"
             />
           </div>
-        </motion.div>
+        </div>
 
-        <div className="section-content relative">
-          {/* Scroll Area with Motion Container */}
-          <motion.div
-            ref={scrollRef}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            // Changed gap to a fixed 30px (gap-[30px]) to make the math perfect
-            className="flex gap-7.5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-24"
-          >
-            {tourData.map((tour) => (
-              <motion.div
-                key={tour.id}
-                variants={itemVariants}
-                className="w-full md:w-[calc(50%-15px)] lg:w-[calc(25%-22.5px)] shrink-0 snap-start"
-              >
-                <div className="relative overflow-hidden group rounded-[40px] h-105 shadow-md bg-white">
-                  {/* Default State Image & Label */}
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={tour.img}
-                      alt={tour.location}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 py-6 px-8 bg-black/30 backdrop-blur-sm transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-full">
-                      <h3 className="text-[20px] xl:text-[24px] font-bold text-white flex items-center gap-2">
-                        <HiOutlineLocationMarker className="text-[#a3e635] shrink-0" />
-                        <span className="truncate">{tour.location}</span>
-                      </h3>
-                    </div>
-                  </div>
+        {/* --- 8-ITEM STATIC GRID --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {locations.map((loc: LocationData) => (
+            <Link
+              key={loc.id}
+              href={`/tour-detail/${encodeURIComponent(loc.name)}/`}
+              className="relative block group rounded-[20px] h-[400px] overflow-hidden shadow-xl bg-white"
+            >
+              {/* Destination Image */}
+              <Image
+                src={loc.img || "/img/placeholder.jpg"}
+                alt={loc.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
 
-                  {/* Hover Overlay Content */}
-                  <div className="absolute inset-5 p-5 xl:p-7 flex flex-col justify-between bg-[#1a3d3d]/90 backdrop-blur-sm rounded-[30px] border border-white/10 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10">
-                    <div className="flex justify-between items-start">
-                      <div className="bg-[#1a3d3d] text-white px-3 xl:px-5 py-2 rounded-r-full -ml-6 xl:-ml-8 font-bold text-xs xl:text-sm flex items-center gap-2 shadow-lg whitespace-nowrap">
-                        <MdOutlineCalendarMonth className="text-[#a3e635] text-lg" />
-                        {tour.duration}
-                      </div>
-                      <div className="text-right">
-                        <span className="text-white text-2xl xl:text-3xl font-black block">
-                          ${tour.price}
-                        </span>
-                        <span className="text-white/60 text-[10px] uppercase tracking-widest font-bold">
-                          Per Day
-                        </span>
-                      </div>
-                    </div>
+              {/* Dark Gradient Overlay for text readability */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
 
-                    <div>
-                      <h3 className="text-xl xl:text-2xl font-bold text-white mb-4">
-                        {tour.location}
-                      </h3>
-                      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 xl:gap-0">
-                        <Link
-                          href="/tour-detail"
-                          className="border border-white/30 text-white px-6 py-2 rounded-full font-bold text-center hover:bg-[#a3e635] hover:text-[#1a3d3d] hover:border-[#a3e635] transition-all text-sm"
-                        >
-                          Book Now
-                        </Link>
-                        <div className="text-left xl:text-right">
-                          <span className="text-white text-xs opacity-70">
-                            ({tour.rating} Review)
-                          </span>
-                          <div className="flex text-[#a3e635] gap-0.5 mt-1 xl:justify-end">
-                            {[...Array(5)].map((_, i) => (
-                              <FaStar key={i} size={12} />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              {/* Content Overlay */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="flex items-center gap-2 mb-2 text-[#a3e635]">
+                  <HiOutlineLocationMarker size={18} />
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70">
+                    Explore
+                  </span>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Navigation Buttons */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => scroll("left")}
-              className="w-14 h-14 rounded-full bg-[#a3e635] text-[#1a3d3d] flex items-center justify-center hover:bg-white transition-all shadow-xl z-20"
-            >
-              <FaChevronLeft size={20} />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => scroll("right")}
-              className="w-14 h-14 rounded-full bg-[#a3e635] text-[#1a3d3d] flex items-center justify-center hover:bg-white transition-all shadow-xl z-20"
-            >
-              <FaChevronRight size={20} />
-            </motion.button>
-          </div>
+                <h3 className="text-2xl xl:text-3xl font-black text-white capitalize leading-tight group-hover:text-[#a3e635] transition-colors">
+                  {/* TRIM LOGIC: united state of america => united state.. */}
+                  {loc.name.length > 15
+                    ? `${loc.name.substring(0, 15)}..`
+                    : loc.name}
+                </h3>
+
+                <div className="mt-4 overflow-hidden">
+                  <span className="inline-block text-[#a3e635] text-xs font-bold uppercase tracking-widest opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    View Properties →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
-
-      <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
-};
-
-export default PopularTours;
+}

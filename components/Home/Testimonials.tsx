@@ -39,12 +39,12 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-[#eff9f9] relative overflow-hidden">
       {/* Background World Map Pattern (Optional) */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0">
+      <div className="absolute inset-0 pointer-events-none z-0">
         <Image
-          src="/img/world-map.png"
+          src="/img/bg-testimonial.png"
           alt=""
           fill
-          className="object-contain"
+          className="object-cover"
         />
       </div>
 
@@ -74,7 +74,7 @@ const Testimonials = () => {
                     src={current.image}
                     alt={current.name}
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-[40px]"
                   />
                 </motion.div>
               </AnimatePresence>

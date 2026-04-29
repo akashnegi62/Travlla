@@ -11,7 +11,7 @@ type TopProperty = {
   location: string;
   address: string;
   description: string;
-  img_1: string;
+  img: string;
 };
 
 // Accept the data as a prop!
@@ -93,7 +93,7 @@ export default function FavouriteSlider({
             <div className="border-[1.5px] border-[#2f7a78] rounded-[30px] p-3 bg-transparent hover:bg-[#185351] transition-all duration-500 h-full flex flex-col">
               <div className="w-full h-80 relative rounded-[20px] overflow-hidden mb-4 bg-gray-200">
                 <Image
-                  src={property.img_1 || "/img/placeholder.jpg"}
+                  src={property.img}
                   alt={property.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 20vw"

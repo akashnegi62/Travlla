@@ -14,13 +14,10 @@ const fetchOptions = {
 
 // Fetch securely on the server!
 async function getTopProperties() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com"; // Fixed: Removed trailing slash
-
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   try {
     const response = await fetch(
-      `${baseUrl}/application/api/top-ten-properties.php`,
+      `${baseUrl}/application/api/locations.php`,
       fetchOptions, // Added browser spoofing
     );
 
@@ -39,17 +36,6 @@ export default async function Favourite() {
   return (
     <section className="bg-white xl:p-0 p-0">
       <div className="relative bg-[#256168] overflow-hidden min-h-225 flex flex-col shadow-2xl pb-16 pt-16">
-        {/* --- BACKGROUND DECORATIONS ---
-        <div className="absolute top-0 -right-20 sm:right-0 z-10 w-70 md:w-100 lg:w-125 h-175 pointer-events-none opacity-50 lg:opacity-100 mix-blend-normal">
-          <Image
-            src="/img/man-rock.png"
-            alt="Rock Climber"
-            fill
-            className="object-contain object-top-right drop-shadow-2xl"
-            
-          />
-        </div> */}
-
         {/* --- HEADER CONTENT --- */}
         <div className="container mx-auto px-6 md:px-12 relative z-20 mb-8 lg:mb-32">
           <div className="max-w-112.5 md:max-w-150 lg:max-w-112.5">
