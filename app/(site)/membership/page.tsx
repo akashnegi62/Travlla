@@ -21,7 +21,7 @@ const roomTypes = [
       "Free Wi-Fi",
       "Office & Study Desk",
     ],
-    image: "/assets/images/tour/style1/pic1.jpg", // Replace with actual room image
+    image: "/Img/room1.webp",
   },
   {
     title: "TYPE 2 - 2 MASTER DOUBLE STUDIO ROOM | SUITE ROOM:",
@@ -39,7 +39,7 @@ const roomTypes = [
       "Free Wi-Fi",
       "Office kitchen:",
     ],
-    image: "/assets/images/tour/style1/pic2.jpg", // Replace with actual room image
+    image: "/img/room2.webp",
   },
 ];
 

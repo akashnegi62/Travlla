@@ -11,11 +11,20 @@ type AboutHeroProps = {
 
 const AboutHero = ({ title = "About Us" }: AboutHeroProps) => {
   return (
-    <section className="relative bg-cover bg-center w-full bg-white bg-[url('/img/bg.jpg')] overflow-hidden">
+    <section className="relative w-full bg-white overflow-hidden">
+      {/* Background image */}
+      <div className="absolute left-0 top-0 size-full">
+        <Image
+          src="/img/about-bg.webp"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
       {/* Background Overlay */}
-      <div className="opacity-100 absolute left-0 top-0 size-full"></div>
-       {/* Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="bg-black/30 absolute left-0 top-0 size-full"></div>
 
       <div className="flex w-full lg:h-160 md:h-135 h-100 pb-10 items-baseline mx-auto">
         <div className="relative md:mt-60 mt-45 flex items-center justify-center w-full flex-col z-10">
