@@ -34,3 +34,5 @@ export default async function Header() {
 
   return <HeaderClient national={national} international={international} />;
 }
+
+// Header API call success
