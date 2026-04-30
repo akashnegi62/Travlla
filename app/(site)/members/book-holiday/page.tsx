@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import AboutHero from "@/components/About/AboutHero";
 import Image from "next/image";
 import { motion } from "framer-motion";

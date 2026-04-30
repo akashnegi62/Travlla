@@ -1,13 +1,13 @@
 "use client";
 import AboutHero from "@/components/About/AboutHero";
 import Booking from "@/components/Home/Booking";
+import BookingTour from "@/components/Home/BookingTour";
 export default function BookTourPage() {
   return (
     <main className="bg-white">
       <AboutHero title="Book Your Tour" />
-      <div className="-mt-20 relative z-20">
-        <Booking />
-      </div>
+      <BookingTour />
+      <Booking />
     </main>
   );
 }

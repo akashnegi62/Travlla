@@ -135,7 +135,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Phone</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
+                    <h3 className="text-xl md:text-lg font-light text-[#1a3d3d]">
                       <a
                         href="tel:1236540214"
                         className="hover:text-[#a3e635] transition-colors"
@@ -155,7 +155,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Email</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
+                    <h3 className="text-xl md:text-lg font-light text-[#1a3d3d]">
                       <a
                         href="mailto:travllainfo@gmail.com"
                         className="hover:text-[#a3e635] transition-colors"
@@ -175,7 +175,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="text-lg text-gray-400 block">Address</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#1a3d3d]">
+                    <h3 className="text-xl md:text-lg font-light text-[#1a3d3d]">
                       Awfis, Hitech City , Siddiq Nagar, Hyderabad
                     </h3>
                   </div>
