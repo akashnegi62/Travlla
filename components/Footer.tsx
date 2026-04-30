@@ -123,7 +123,7 @@ const Footer = () => {
             <div className="xl:col-span-1 lg:col-span-2">
               <div className="mb-8">
                 <Image
-                  src="/img/logo-green.png"
+                  src="/img/logo-green.webp"
                   alt="Logo"
                   width={160}
                   height={50}
@@ -268,5 +268,3 @@ const FooterLink = ({
 export default Footer;
 
 // footer image and animation.
-
-

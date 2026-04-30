@@ -156,7 +156,7 @@ export default function HeaderClient({
               className="table-cell align-middle relative w-full h-full mb-2"
             >
               <Image
-                src="/img/newlogo.png"
+                src="/img/newlogo.webp"
                 alt="Logo"
                 fill
                 className="object-contain duration-500"
@@ -350,7 +350,7 @@ export default function HeaderClient({
             >
               <div className="py-6 px-5 flex items-center justify-between border-b border-gray-100">
                 <Image
-                  src="/img/newlogo.png"
+                  src="/img/newlogo.webp"
                   alt="Logo"
                   width={140}
                   height={40}

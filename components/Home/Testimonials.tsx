@@ -15,14 +15,14 @@ const testimonials = [
     id: 1,
     name: "Esther Howard",
     role: "World Traveller, USA",
-    image: "/img/client1.jpg", // The image of the girl in the hat
+    image: "/img/client1.webp", // The image of the girl in the hat
     text: "Booking flights has never been easier! I love how intuitive and user-friendly this website is. Saved so much time and hassle booking my last-minute flight. Highly recommend!",
   },
   {
     id: 2,
     name: "Amelia Warner",
     role: "Tourist, UK",
-    image: "/img/client2.jpg",
+    image: "/img/client2.webp",
     text: "I was very impressed with the service. The team was helpful and the platform was very easy to navigate. I will definitely be using this again for my next trip.",
   },
 ];

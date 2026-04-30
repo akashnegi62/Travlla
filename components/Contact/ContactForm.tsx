@@ -195,7 +195,7 @@ const ContactForm = () => {
               {/* Decorative Side Image (Visible only on very large screens) */}
               <div className="absolute -bottom-10 -right-10 w-64 hidden 2xl:block opacity-80 -z-10">
                 <Image
-                  src="/img/about3.png"
+                  src="/img/about3.webp"
                   alt="decoration"
                   width={260}
                   height={488}
