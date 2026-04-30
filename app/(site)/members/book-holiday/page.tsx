@@ -14,17 +14,17 @@ const exclusiveResorts = [
   {
     name: "Rosewood Maldives Resort",
     points: "2,500 / Night",
-    img: "/img/location/loc2.webp",
+    img: "/img/vac1.jpg",
   },
   {
     name: "Swiss Alps Chalet",
     points: "1,800 / Night",
-    img: "/img/location/loc4.webp",
+    img: "/img/vac2.jpg",
   },
   {
     name: "Kyoto Heritage Villa",
     points: "2,100 / Night",
-    img: "/img/location/loc6.webp",
+    img: "/img/vac3.jpg",
   },
 ];
 
