@@ -266,3 +266,7 @@ const FooterLink = ({
 );
 
 export default Footer;
+
+// footer image and animation.
+
+
