@@ -21,7 +21,7 @@ const roomTypes = [
       "Free Wi-Fi",
       "Office & Study Desk",
     ],
-    image: "/Img/room1.webp",
+    image: "/img/room1.webp",
   },
   {
     title: "TYPE 2 - 2 MASTER DOUBLE STUDIO ROOM | SUITE ROOM:",
