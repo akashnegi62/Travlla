@@ -170,7 +170,7 @@ export default function ActivitiesPage() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className="group flex flex-col justify-between bg-[#a2e734] border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 hover:bg-white/4 transition-all duration-300"
+              className="group flex flex-col justify-between bg-white border border-black/10 rounded-2xl overflow-hidden hover:border-black/20 hover:bg-black/4 transition-all duration-300"
             >
               <div className="relative h-60 w-full overflow-hidden">
                 <video
@@ -183,7 +183,7 @@ export default function ActivitiesPage() {
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#a3e635] transition-colors">
+                  <h4 className="text-xl font-bold tracking-tight text-black group-hover:text-[#a3e635] transition-colors">
                     {activity.title}
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed mt-2 line-clamp-3 font-medium">
@@ -247,7 +247,7 @@ export default function ActivitiesPage() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className="group flex flex-col justify-between bg-[#a2e734] border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 hover:bg-white/4 transition-all duration-300"
+              className="group flex flex-col justify-between bg-white border border-black/10 rounded-2xl overflow-hidden hover:border-black/20 hover:bg-black/4 transition-all duration-300"
             >
               <div className="relative h-60 w-full overflow-hidden">
                 <video
@@ -260,7 +260,7 @@ export default function ActivitiesPage() {
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#a3e635] transition-colors">
+                  <h4 className="text-xl font-bold tracking-tight text-black group-hover:text-[#a3e635] transition-colors">
                     {activity.title}
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed mt-2 line-clamp-3 font-medium">
