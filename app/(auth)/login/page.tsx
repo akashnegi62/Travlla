@@ -1,11 +1,9 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGoogle, FaFacebookF, FaEye, FaEyeSlash } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdChevronRight } from "react-icons/md";
 
 export default function LoginPage() {
@@ -145,29 +143,6 @@ export default function LoginPage() {
             >
               Sign Up
             </Link>
-          </div>
-
-          <div className="relative my-10">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-slate-100"></span>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-4 text-slate-400 font-bold tracking-widest">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <button className="flex-2 flex items-center justify-center gap-3 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all font-bold text-slate-700">
-              <FaGoogle className="text-red-500 text-xl" /> Google
-            </button>
-            <button className="flex-1 flex items-center justify-center py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
-              <FaFacebookF className="text-blue-600 text-xl" />
-            </button>
-            <button className="flex-1 flex items-center justify-center py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
-              <FaXTwitter className="text-xl" />
-            </button>
           </div>
         </div>
       </div>
