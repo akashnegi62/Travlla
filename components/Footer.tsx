@@ -88,7 +88,7 @@ const Footer = () => {
               <ul className="space-y-3 font-semibold text-gray-700">
                 <FooterLink href="/about">About Us</FooterLink>
                 <FooterLink href="/activities">Activities</FooterLink>
-                <FooterLink href="#itinerary">Itinerary</FooterLink>
+                <FooterLink href="/itineraries">Itinerary</FooterLink>
                 <FooterLink href="/membership">Room Type</FooterLink>
                 <FooterLink href="/contact">Contact</FooterLink>
               </ul>
