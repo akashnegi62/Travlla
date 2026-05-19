@@ -131,7 +131,7 @@ export default function HeaderClient({
   return (
     <>
       <header
-        className={`w-full z-999 transition-all duration-500 absolute left-0 right-0 top-0 lg:pt-6 xl:pt-8 px-4 lg:px-6
+        className={`w-full z-999 transition-all duration-500 absolute left-0 right-0 -top-10 lg:pt-6 xl:pt-8 px-4 lg:px-6
         ${isFixed ? "fixed top-0! p-0!" : ""}`}
       >
         <div

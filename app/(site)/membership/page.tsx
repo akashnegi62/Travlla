@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
 import AboutHero from "@/components/About/AboutHero";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaInfoCircle } from "react-icons/fa";
+import { motion, Variants } from "framer-motion";
 
-// --- DATA FROM IMAGE ---
+// --- DATA STRUCTURES ---
 const roomTypes = [
   {
     title: "TYPE 1 - STUDIO STANDARD ROOM.",
@@ -43,27 +41,68 @@ const roomTypes = [
   },
 ];
 
-const t1Pricing = [
-  { tier: "BRONZE TOUR", price: "4.5", color: "bg-[#c58356]" },
-  { tier: "SILVER TOUR", price: "6.5", color: "bg-[#b3b3b3]" },
-  { tier: "GOLD TOUR", price: "7.8", color: "bg-[#8bc34a]", popular: true },
+// Re-mapped pricing lists into the structured privileged key card layout values from your screenshot
+const privilegedKeys = [
+  {
+    title: "EBONY",
+    tagline: "Your year-round access to unforgettable family gateways",
+    bgClass: "bg-[#050708] text-white",
+    waveColor: "rgba(255,255,255,0.08)",
+    textColor: "text-gray-400",
+    benefits: [
+      "7N/8D holidays every year across 52 weeks",
+      "Complimentary breakfast for 2 per room per night, up to 10 years",
+      "Priority access to signature experiences",
+      "Access to international resorts",
+    ],
+  },
+  {
+    title: "IVORY",
+    tagline: "Experience destinations during the peak of their popularity",
+    bgClass: "bg-[#eae6dc] text-[#1a3d3d]",
+    waveColor: "rgba(26,61,61,0.06)",
+    textColor: "text-gray-600",
+    benefits: [
+      "7N/8D holidays every year across 46 weeks",
+      "Complimentary breakfast for 2 per room per night, up to 10 years",
+      "Priority access to signature experiences",
+      "Access to international resorts",
+    ],
+  },
+  {
+    title: "JADE",
+    tagline: "Enjoy your favourite destinations during quieter seasons",
+    bgClass: "bg-[#165251] text-white",
+    waveColor: "rgba(255,255,255,0.08)",
+    textColor: "text-emerald-100/70",
+    benefits: [
+      "7N/8D holidays every year across 24 weeks",
+      "Complimentary breakfast for 2 per room per night, up to 10 years",
+      "Priority access to signature experiences",
+      "Access to international resorts",
+    ],
+  },
 ];
 
-const t2Pricing = [
-  { tier: "BRONZE TOUR", price: "5.5", color: "bg-[#c58356]" },
-  { tier: "SILVER TOUR", price: "7.5", color: "bg-[#b3b3b3]" },
-  { tier: "GOLD TOUR", price: "9.8", color: "bg-[#8bc34a]", popular: true },
-];
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
 
 export default function MembershipPage() {
   return (
-    <main className="bg-[#fafafa]">
+    <main className="bg-[#fafafa] text-[#1a3d3d]">
       <AboutHero title="Explore Membership" />
 
       <section className="py-20">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           {/* --- ROOM TYPES SECTION --- */}
-          <div className="space-y-16">
+          <div className="space-y-16 max-w-6xl mx-auto">
             {roomTypes.map((room, i) => (
               <motion.div
                 key={i}
@@ -99,132 +138,92 @@ export default function MembershipPage() {
             ))}
           </div>
 
-          <hr className="my-16 border-gray-300" />
+          <hr className="my-20 border-gray-200" />
 
-          {/* --- PRICING TABLES SECTION --- */}
+          {/* --- NEW REDESIGNED PRIVILEGED KEYS CONTAINER --- */}
+          <section className="space-y-12 pb-12">
+            <div className="text-center max-w-2xl mx-auto space-y-3">
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#1a3d3d]">
+                Your Key to Unlock Privileged Experiences
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base font-semibold">
+                Select from EBONY, IVORY, and JADE Keys and enter a world of
+                seamless vacations
+              </p>
+            </div>
 
-          {/* T1 Category */}
-          <div className="mb-16">
-            <h3 className="text-xl font-bold text-[#1a3d3d] mb-6 border-l-4 border-[#a3e635] pl-3">
-              T 1 Category | Regular 25 Years Price List |
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {t1Pricing.map((plan, i) => (
-                <PricingCard key={i} plan={plan} />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {privilegedKeys.map((keyCard, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  whileHover={{ y: -8 }}
+                  className={`relative rounded-[32px] p-8 md:p-10 min-h-[520px] overflow-hidden flex flex-col justify-between shadow-xl border border-black/5 ${keyCard.bgClass}`}
+                >
+                  {/* Absolute SVG Fine Line Abstract Pattern Overlay to match your reference image */}
+                  <div className="absolute inset-0 pointer-events-none opacity-80 z-0">
+                    <svg
+                      className="w-full h-full"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M 100,-50 C 200,100 300,200 500,250 M 130,-50 C 230,120 330,220 530,270 M 160,-50 C 260,140 360,240 560,290 M 190,-50 C 290,160 390,260 590,310 M 220,-50 C 320,180 420,280 620,330"
+                        fill="none"
+                        stroke={keyCard.waveColor}
+                        strokeWidth="1.5"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Top Typography Header Info */}
+                  <div className="relative z-10 space-y-4">
+                    <div>
+                      <h3 className="text-3xl font-black tracking-wider uppercase font-mono">
+                        {keyCard.title}
+                      </h3>
+                      <p className="text-[11px] font-bold tracking-widest uppercase opacity-75 mt-0.5">
+                        Key
+                      </p>
+                    </div>
+
+                    <p
+                      className={`text-sm leading-relaxed font-semibold ${keyCard.textColor}`}
+                    >
+                      {keyCard.tagline}
+                    </p>
+                  </div>
+
+                  {/* Core Benefits List Block */}
+                  <div className="relative z-10 space-y-6 pt-8 flex-1 flex flex-col justify-end">
+                    <div>
+                      <h4 className="text-base font-extrabold tracking-wide uppercase mb-3">
+                        Benefits
+                      </h4>
+                      <ul className="space-y-3.5 text-xs font-medium opacity-90">
+                        {keyCard.benefits.map((benefit, bIdx) => (
+                          <li
+                            key={bIdx}
+                            className="flex items-start gap-2 leading-relaxed"
+                          >
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8bc34a] mt-1.5 shrink-0" />
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-
-          {/* T2 Category */}
-          <div className="mb-16">
-            <h3 className="text-xl font-bold text-[#1a3d3d] mb-6 border-l-4 border-[#a3e635] pl-3">
-              T 2 Category | Regular 25 Years Price List |
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {t2Pricing.map((plan, i) => (
-                <PricingCard key={i} plan={plan} />
-              ))}
-            </div>
-          </div>
-
-          <hr className="my-16 border-gray-300" />
-
-          {/* --- FOOTER INFORMATION SECTION --- */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Left Info */}
-            <div className="flex gap-4 items-start">
-              <FaInfoCircle className="text-gray-400 text-2xl shrink-0 mt-1" />
-              <div>
-                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">
-                  Special Superior Category Accommodation
-                </h4>
-                <p className="text-gray-600 text-[14px] leading-relaxed mb-4">
-                  After many requests is for professionals to have something
-                  designed to their accommodation for 25 years. This new
-                  SUPERIOR Suite will now meet all your needs:
-                </p>
-                <ul className="list-disc pl-5 space-y-1 text-[13px] text-gray-600">
-                  <li>Occupancy: 4 Adults</li>
-                  <li>King beds: or Twin beds</li>
-                  <li>A flat screen LCD TV</li>
-                  <li>Safety deposit</li>
-                  <li>Free Wi-Fi</li>
-                  <li>Shared kitchen</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Right Info */}
-            <div className="flex gap-4 items-start">
-              <FaInfoCircle className="text-gray-400 text-2xl shrink-0 mt-1" />
-              <div>
-                <h4 className="font-bold text-[#1a3d3d] text-lg mb-2">
-                  Special Information:
-                </h4>
-                <p className="text-gray-600 text-[13px] leading-relaxed text-justify">
-                  Prior many requests a future of Hatsmaced Worldwide Travel
-                  maritimelite with and on exclaunting of froize 1000 exapect
-                  worstfilings. Albsaroir inaculions and five aommodated decices
-                  of your uoer past comment praions prime. An it to becomee
-                  toarh. Bustiness and moases are enter your house hving from
-                  home. I Chaos: fited a noide range of worshooe oeors, snell
-                  betters, better, much more facilitiess the widdite and, thus
-                  can orceet your high steditoords and air filter special
-                  intreads.
-                </p>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          </section>
         </div>
       </section>
     </main>
   );
 }
-
-// --- SUB-COMPONENT: PRICING CARD ---
-const PricingCard = ({ plan }: { plan: any }) => (
-  <motion.div
-    whileHover={{ y: -5 }}
-    className="bg-white rounded-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden relative border border-gray-100"
-  >
-    {/* Diagonal Ribbon for Gold */}
-    {plan.popular && (
-      <div className="absolute -top-1 -right-1 overflow-hidden w-24 h-24 z-10">
-        <div className="absolute top-4 -right-8 bg-[#8bc34a] text-white text-[10px] font-bold uppercase py-1 w-32 text-center rotate-45 shadow-md">
-          Book Now
-        </div>
-      </div>
-    )}
-
-    {/* Header */}
-    <div className={`${plan.color} py-4 text-center`}>
-      <h4 className="text-white font-bold text-lg uppercase tracking-wider">
-        {plan.tier}
-      </h4>
-    </div>
-
-    {/* Body */}
-    <div className="p-8 text-center flex flex-col items-center">
-      <div className="mb-6 border-b pb-6 w-full border-gray-100">
-        <span className="text-[40px] font-black text-[#1a3d3d]">
-          {plan.price}
-        </span>
-        <span className="text-lg font-bold text-[#1a3d3d] ml-1">Lakh</span>
-      </div>
-
-      <ul className="space-y-4 text-[15px] font-semibold text-gray-700 w-full">
-        <li className="border-b border-gray-100 pb-3">Unlimited Bookings</li>
-        <li className="border-b border-gray-100 pb-3">Priority Profile</li>
-        <li className="border-b border-gray-100 pb-3">Manage Booking</li>
-      </ul>
-
-      <p className="mt-6 mb-8 text-[13px] font-bold text-gray-800">
-        Maintenance: ₹10,000/- + GST %
-      </p>
-
-      <button className="bg-[#4a8a8e] hover:bg-[#1a3d3d] text-white px-8 py-2.5 rounded-md font-bold text-sm transition-colors shadow-md w-max">
-        BUY NOW
-      </button>
-    </div>
-  </motion.div>
-);
