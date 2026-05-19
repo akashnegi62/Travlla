@@ -77,7 +77,7 @@ function BookingTour() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter ID (Optional)"
+                  placeholder="Enter ID"
                   className="w-full text-base md:text-lg font-bold text-[#1a3d3d] border-b-2 border-gray-100 focus:border-[#a3e635] outline-none py-2 transition-all placeholder:text-gray-300 bg-transparent"
                 />
               </div>

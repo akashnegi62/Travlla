@@ -84,7 +84,7 @@ export default function HeaderClient({
   };
 
   const menuData: MenuItem[] = [
-    { name: "HOME", href: "/" },
+    // { name: "HOME", href: "/" },
     {
       name: "ABOUT US",
       href: "#",
@@ -96,26 +96,32 @@ export default function HeaderClient({
         { name: "Career", href: "/about/career" },
       ],
     },
+
+    // Find your menuData array and update/uncomment this section:
     {
-      name: "MEMBERSHIP",
-      href: "#",
-      subMenu: [
-        { name: "Explore Membership", href: "/membership" },
-        { name: "Understanding Costs", href: "/membership/costs" },
-        { name: "What Is a Timeshare?", href: "/membership/timeshare" },
-        { name: "What We Offer", href: "/membership/offer" },
-      ],
+      name: "ACTIVITIES",
+      href: "/activities",
     },
-    {
-      name: "CLIENT",
-      href: "#",
-      subMenu: [
-        { name: "How it works", href: "/client/how-it-works" },
-        { name: "Book Tour", href: "/client/book-tour" },
-        { name: "Feedback", href: "/client/feedback" },
-        { name: "Activities", href: "/client/activities" },
-      ],
-    },
+    // {
+    //   name: "MEMBERSHIP",
+    //   href: "#",
+    //   subMenu: [
+    //     { name: "Explore Membership", href: "/membership" },
+    //     { name: "Understanding Costs", href: "/membership/costs" },
+    //     { name: "What Is a Timeshare?", href: "/membership/timeshare" },
+    //     { name: "What We Offer", href: "/membership/offer" },
+    //   ],
+    // },
+    // {
+    //   name: "CLIENT",
+    //   href: "#",
+    //   subMenu: [
+    //     { name: "How it works", href: "/client/how-it-works" },
+    //     { name: "Book Tour", href: "/client/book-tour" },
+    //     { name: "Feedback", href: "/client/feedback" },
+    //     { name: "Activities", href: "/client/activities" },
+    //   ],
+    // },
     {
       name: "DOMESTIC DESTINATIONS",
       href: "/locations/national",
@@ -128,15 +134,11 @@ export default function HeaderClient({
       isMega: true,
       data: international,
     },
-    {
-      name: "MEMBERS LOUNGE",
-      href: "#",
-      subMenu: [
-        { name: "Login", href: "/login" },
-        { name: "Book Holiday", href: "/members/book-holiday" },
-      ],
-    },
     { name: "CONTACT US", href: "/contact" },
+    {
+      name: "LOGIN",
+      href: "/login",
+    },
   ];
 
   return (

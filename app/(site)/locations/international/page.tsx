@@ -4,16 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGlobe } from "react-icons/fa";
 
-// --- ANTI-BLOCK HEADERS ---
-const fetchOptions = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    Accept: "application/json",
-  },
-};
+import { getInternationalLocations } from "@/lib/api";
 
-// Define the TypeScript type based on what your API returns
 type InternationalLocation = {
   id: string | number;
   name: string;
@@ -21,27 +13,9 @@ type InternationalLocation = {
   desc?: string;
 };
 
-// 1. Server-side fetch function
-async function getLocations() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://crm.mercurevacationclub.com";
-
-  try {
-    const res = await fetch(
-      `${baseUrl}/application/api/international-locations.php`,
-      fetchOptions,
-    );
-
-    if (!res.ok) throw new Error("Failed to fetch international locations");
-    return await res.json();
-  } catch (error) {
-    console.error("International Page Fetch Error:", error);
-    return [];
-  }
-}
-
 // 2. Make the component async
 export default async function InternationalPage() {
-  const locations = await getLocations();
+  const locations = await getInternationalLocations();
 
   return (
     <main className="bg-white">

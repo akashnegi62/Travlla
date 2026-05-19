@@ -4,34 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
-// --- ANTI-BLOCK HEADERS ---
-const fetchOptions = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    Accept: "application/json",
-  },
-};
-
-// Create a server-side fetch function
-async function getLocations() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
-
-  try {
-    const res = await fetch(
-      `${baseUrl}/application/api/national-locations.php`,
-      fetchOptions,
-    );
-
-    if (!res.ok) throw new Error("Failed to fetch data");
-    return await res.json();
-  } catch (error) {
-    console.error("National Page Fetch Error:", error);
-    return [];
-  }
-}
+import { getNationalLocations } from "@/lib/api";
 
 type LocationItem = {
   id: string;
@@ -41,7 +14,7 @@ type LocationItem = {
 };
 
 export default async function NationalPage() {
-  const locations = await getLocations();
+  const locations = await getNationalLocations();
 
   return (
     <main className="bg-white">

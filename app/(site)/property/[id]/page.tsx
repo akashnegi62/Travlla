@@ -4,42 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaMapMarkerAlt, FaCheckCircle, FaStar } from "react-icons/fa";
 
-// --- ANTI-BLOCK HEADERS ---
-const fetchOptions = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    Accept: "application/json",
-  },
-};
+import { getNationalLocations, getInternationalLocations, getLocationProperties, getPropertyDetails } from "@/lib/api";
 
 // 1. Generate Static Params
 export async function generateStaticParams() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
-
   try {
-    const [natRes, intRes] = await Promise.all([
-      fetch(`${baseUrl}/application/api/national-locations.php`, fetchOptions),
-      fetch(
-        `${baseUrl}/application/api/international-locations.php`,
-        fetchOptions,
-      ),
+    const [national, international] = await Promise.all([
+      getNationalLocations(),
+      getInternationalLocations(),
     ]);
 
-    const national = await natRes.json();
-    const international = await intRes.json();
     const allLocations = [...national, ...international];
 
     const propertyPromises = allLocations.map((loc: any) => {
       const locName = loc.name ? loc.name.toLowerCase() : "";
-      return fetch(
-        `${baseUrl}/application/api/properties-by-location.php?location=${encodeURIComponent(locName)}`,
-        fetchOptions,
-      )
-        .then((res) => (res.ok ? res.json() : []))
-        .catch(() => []);
+      return getLocationProperties(locName);
     });
 
     const propertiesArrays = await Promise.all(propertyPromises);
@@ -62,23 +41,6 @@ export async function generateStaticParams() {
   }
 }
 
-// 2. Fetch Single Property Data
-async function getPropertyDetails(id: string) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
-  try {
-    const res = await fetch(
-      `${baseUrl}/application/api/properties.php?id=${id}`,
-      fetchOptions,
-    );
-    if (!res.ok) return null;
-    return await res.json();
-  } catch (error) {
-    console.error("Property Fetch Error:", error);
-    return null;
-  }
-}
 
 // 3. The Page Component
 export default async function PropertyDetailPage({

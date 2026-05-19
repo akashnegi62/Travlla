@@ -4,32 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import AboutHero from "@/components/About/AboutHero";
 
-// --- ANTI-BLOCK HEADERS ---
-const fetchOptions = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    Accept: "application/json",
-  },
-};
+import { getNationalLocations, getInternationalLocations, getLocationProperties } from "@/lib/api";
 
 // 1. Generate Static Params (Strictly matching the Link format)
 export async function generateStaticParams() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
-
   try {
-    const [natRes, intRes] = await Promise.all([
-      fetch(`${baseUrl}/application/api/national-locations.php`, fetchOptions),
-      fetch(
-        `${baseUrl}/application/api/international-locations.php`,
-        fetchOptions,
-      ),
+    const [national, international] = await Promise.all([
+      getNationalLocations(),
+      getInternationalLocations(),
     ]);
 
-    const national = await natRes.json();
-    const international = await intRes.json();
     const allLocations = [...national, ...international];
 
     return allLocations.map((loc: any) => {
@@ -61,27 +45,6 @@ export async function generateStaticParams() {
   }
 }
 
-// 2. Data Fetching Function
-async function getLocationProperties(locationName: string) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "https://crm.mercurevacationclub.com";
-
-  try {
-    // API expects lowercase search terms usually, but handles spaces via encode
-    const res = await fetch(
-      `${baseUrl}/application/api/properties-by-location.php?location=${encodeURIComponent(locationName.toLowerCase())}`,
-      fetchOptions,
-    );
-
-    if (!res.ok) return [];
-    const data = await res.json();
-    return Array.isArray(data) ? data : [];
-  } catch (err) {
-    console.error("Location Properties Fetch Error:", err);
-    return [];
-  }
-}
 
 export default async function LocationDetailsPage({
   params,

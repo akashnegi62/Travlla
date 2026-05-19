@@ -3,34 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
-// --- ANTI-BLOCK HEADERS (Mirroring your Favourite component) ---
-const fetchOptions = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    Accept: "application/json",
-  },
-};
-
-// 1. Fetch Securely on the Server
-async function getNationalLocations() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://crm.mercurevacationclub.com";
-  try {
-    const response = await fetch(
-      `${baseUrl}/application/api/national-locations.php`,
-      fetchOptions,
-    );
-
-    if (!response.ok) return [];
-    const data = await response.json();
-
-    // Return only the first 8 locations as a grid looks best with even numbers
-    return Array.isArray(data) ? data.slice(0, 8) : [];
-  } catch (error) {
-    console.error("Failed to fetch national locations:", error);
-    return [];
-  }
-}
+import { getNationalLocations } from "@/lib/api";
 
 interface LocationData {
   id: string | number;
@@ -39,7 +12,7 @@ interface LocationData {
 }
 
 export default async function PopularTours() {
-  const locations = await getNationalLocations();
+  const locations = (await getNationalLocations()).slice(0, 8);
 
   return (
     <section className="xl:pt-30 pt-12.5 px-5 lg:px-0 bg-[#eefeff] xl:pb-25 pb-9 overflow-hidden">

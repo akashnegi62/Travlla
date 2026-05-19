@@ -1,15 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useRef } from "react";
 import Image from "next/image";
 import {
   motion,
-  useScroll,
-  useSpring,
   useTransform,
   useMotionValue,
-  useVelocity,
-  useAnimationFrame,
   wrap,
 } from "framer-motion";
 
@@ -37,47 +34,44 @@ const normalizeArray = (arr: string[], minLength = 12) => {
 
 function MarqueeRow({ images, baseVelocity }: MarqueeRowProps) {
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
-  });
-
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 1.5], {
-    clamp: false,
-  });
-
   const x = useTransform(baseX, (v) => `${wrap(0, -50, v)}%`);
 
-  const directionFactor = useRef<number>(1);
-  const isHovered = useRef(false);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
 
-  useAnimationFrame((t, delta) => {
-    if (isHovered.current) return;
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDragging.current = true;
+    startX.current = e.clientX;
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
 
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging.current) return;
+    const deltaX = e.clientX - startX.current;
+    startX.current = e.clientX;
+    baseX.set(baseX.get() + deltaX * 0.05);
+  };
 
-    const currentVelocity = velocityFactor.get();
-
-    if (currentVelocity < -0.1) {
-      directionFactor.current = -1;
-    } else if (currentVelocity > 0.1) {
-      directionFactor.current = 1;
+  const handlePointerUpOrLeave = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (isDragging.current) {
+      isDragging.current = false;
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch (_) {}
     }
-
-    moveBy += directionFactor.current * moveBy * Math.abs(currentVelocity);
-
-    baseX.set(baseX.get() + moveBy);
-  });
+  };
 
   const displayImages = normalizeArray(images);
 
   return (
     <div
-      className="w-full overflow-hidden flex flex-col items-center group"
-      onMouseEnter={() => (isHovered.current = true)}
-      onMouseLeave={() => (isHovered.current = false)}
+      className="w-full overflow-hidden flex flex-col items-center group cursor-grab active:cursor-grabbing touch-pan-y select-none"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUpOrLeave}
+      onPointerCancel={handlePointerUpOrLeave}
     >
       <div className="flex whitespace-nowrap w-full">
         <motion.div className="flex gap-4 md:gap-6 px-2 md:px-3" style={{ x }}>
@@ -86,13 +80,14 @@ function MarqueeRow({ images, baseVelocity }: MarqueeRowProps) {
             {displayImages.map((src, i) => (
               <div
                 key={`set1-${i}`}
-                className="relative w-36 h-20 md:w-48 md:h-28 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 hover:border-[#20b2aa] transition-colors duration-300 overflow-hidden"
+                className="relative w-36 h-20 md:w-48 md:h-28 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 hover:border-[#20b2aa] transition-colors duration-300 overflow-hidden select-none"
               >
                 <Image
                   src={src}
                   alt="Logo"
                   fill
-                  className="object-contain p-4 md:p-6"
+                  draggable={false}
+                  className="object-contain p-4 md:p-6 pointer-events-none select-none"
                 />
               </div>
             ))}
@@ -103,13 +98,14 @@ function MarqueeRow({ images, baseVelocity }: MarqueeRowProps) {
             {displayImages.map((src, i) => (
               <div
                 key={`set2-${i}`}
-                className="relative w-36 h-20 md:w-48 md:h-28 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 hover:border-[#20b2aa] transition-colors duration-300 overflow-hidden"
+                className="relative w-36 h-20 md:w-48 md:h-28 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 hover:border-[#20b2aa] transition-colors duration-300 overflow-hidden select-none"
               >
                 <Image
                   src={src}
                   alt="Logo"
                   fill
-                  className="object-contain p-4 md:p-6"
+                  draggable={false}
+                  className="object-contain p-4 md:p-6 pointer-events-none select-none"
                 />
               </div>
             ))}

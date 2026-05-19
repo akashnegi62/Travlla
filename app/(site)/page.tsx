@@ -7,7 +7,6 @@ import PartnersMarquee from "@/components/Home/PartnersMarquee";
 import PopularTours from "@/components/Home/PopularTours";
 import Recommendation from "@/components/Home/Recommendation";
 import Testimonials from "@/components/Home/Testimonials";
-import VideoSection from "@/components/Home/VideoSection";
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-hidden">
@@ -18,7 +17,6 @@ export default function Home() {
       <Recommendation />
       <Categories />
       <Testimonials />
-      <VideoSection />
       <PopularTours />
       <LatestNews />
     </main>

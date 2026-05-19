@@ -13,17 +13,73 @@ import {
 const testimonials = [
   {
     id: 1,
-    name: "Esther Howard",
-    role: "World Traveller, USA",
-    image: "/img/client1.webp", // The image of the girl in the hat
-    text: "Booking flights has never been easier! I love how intuitive and user-friendly this website is. Saved so much time and hassle booking my last-minute flight. Highly recommend!",
+    name: "Aarav Sharma",
+    role: "Frequent Traveller, Mumbai",
+    image: "/img/client1.webp",
+    text: "Our family vacation to Kerala was flawlessly organized! From premium hotel stays to seamless airport transfers, Travlla handled everything beautifully. Exceptional customer service!",
   },
   {
     id: 2,
-    name: "Amelia Warner",
-    role: "Tourist, UK",
+    name: "Priya Nair",
+    role: "Solo Backpacker, Bangalore",
     image: "/img/client2.webp",
-    text: "I was very impressed with the service. The team was helpful and the platform was very easy to navigate. I will definitely be using this again for my next trip.",
+    text: "Booking my solo trip to Himachal was so effortless. The platform gave me the best curated itinerary and amazing recommendations. Will definitely book my next international trip here.",
+  },
+  {
+    id: 3,
+    name: "Rohan Verma",
+    role: "Business Executive, Delhi",
+    image: "/img/pic1.jpg",
+    text: "I travel frequently for business and leisure. Travlla's quick booking process and verified luxury properties have made my travel planning completely stress-free. Highly recommended!",
+  },
+  {
+    id: 4,
+    name: "Ananya Desai",
+    role: "Lifestyle Blogger, Ahmedabad",
+    image: "/img/pic2.jpg",
+    text: "Amazing resort options and unbelievable deals! We celebrated our anniversary in Goa and the beachfront villa recommended by the Travlla team was absolutely magical.",
+  },
+  {
+    id: 5,
+    name: "Vikram Malhotra",
+    role: "Tech Entrepreneur, Pune",
+    image: "/img/pic3.jpg",
+    text: "What stood out for me was the 24/7 concierge support. Whenever we needed a quick modification to our itinerary in Rajasthan, the team responded within minutes. Fantastic experience!",
+  },
+  {
+    id: 6,
+    name: "Sneha Iyer",
+    role: "Photographer, Chennai",
+    image: "/img/client1.webp",
+    text: "The absolute best travel partner! The entire process from flight booking to sightseeing tours was perfectly synchronized. Got some breathtaking shots during our North East tour.",
+  },
+  {
+    id: 7,
+    name: "Kabir Mehta",
+    role: "Travel Enthusiast, Chandigarh",
+    image: "/img/client2.webp",
+    text: "Highly transparent pricing with absolutely zero hidden charges. The curated holiday package for Maldives exceeded our expectations in terms of luxury and comfort.",
+  },
+  {
+    id: 8,
+    name: "Divya Patel",
+    role: "Architect, Surat",
+    image: "/img/pic1.jpg",
+    text: "Such a user-friendly website with gorgeous property selections! Every hotel we stayed at had premium amenities and wonderful hospitality. Travlla is our go-to for all family trips.",
+  },
+  {
+    id: 9,
+    name: "Gaurav Joshi",
+    role: "Marketing Director, Hyderabad",
+    image: "/img/pic2.jpg",
+    text: "Our corporate retreat to Coorg was perfectly coordinated by Travlla. The luxurious accommodations and customized group activities left our entire team thoroughly impressed!",
+  },
+  {
+    id: 10,
+    name: "Meera Sengupta",
+    role: "Food & Travel Writer, Kolkata",
+    image: "/img/pic3.jpg",
+    text: "From discovering hidden homestays in Sikkim to hassle-free private cab bookings, Travlla made our entire culinary exploration incredibly enriching. An absolute delight to book with!",
   },
 ];
 
@@ -87,8 +143,7 @@ const Testimonials = () => {
             {/* Review Header: Stats and Stars */}
             <div className="flex flex-wrap items-center justify-between mb-8 pb-4 border-b border-gray-100">
               <div className="text-xl font-bold text-[#1a3d3d]">
-                ({index + 1}/{testimonials.length * 524}){" "}
-                <span className="text-gray-400 font-medium">Reviews</span>
+                <span className="text-black font-bold">({index + 1}/{testimonials.length}) Reviews</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex text-[#8bc34a]">
