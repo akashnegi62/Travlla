@@ -29,56 +29,56 @@ const testimonials = [
     id: 3,
     name: "Rohan Verma",
     role: "Business Executive, Delhi",
-    image: "/img/pic1.jpg",
+    image: "/img/client3.webp",
     text: "I travel frequently for business and leisure. Travlla's quick booking process and verified luxury properties have made my travel planning completely stress-free. Highly recommended!",
   },
   {
     id: 4,
     name: "Ananya Desai",
     role: "Lifestyle Blogger, Ahmedabad",
-    image: "/img/pic2.jpg",
+    image: "/img/client4.webp",
     text: "Amazing resort options and unbelievable deals! We celebrated our anniversary in Goa and the beachfront villa recommended by the Travlla team was absolutely magical.",
   },
   {
     id: 5,
     name: "Vikram Malhotra",
     role: "Tech Entrepreneur, Pune",
-    image: "/img/pic3.jpg",
+    image: "/img/client5.webp",
     text: "What stood out for me was the 24/7 concierge support. Whenever we needed a quick modification to our itinerary in Rajasthan, the team responded within minutes. Fantastic experience!",
   },
   {
     id: 6,
     name: "Sneha Iyer",
     role: "Photographer, Chennai",
-    image: "/img/client1.webp",
+    image: "/img/client6.webp",
     text: "The absolute best travel partner! The entire process from flight booking to sightseeing tours was perfectly synchronized. Got some breathtaking shots during our North East tour.",
   },
   {
     id: 7,
     name: "Kabir Mehta",
     role: "Travel Enthusiast, Chandigarh",
-    image: "/img/client2.webp",
+    image: "/img/client7.webp",
     text: "Highly transparent pricing with absolutely zero hidden charges. The curated holiday package for Maldives exceeded our expectations in terms of luxury and comfort.",
   },
   {
     id: 8,
     name: "Divya Patel",
     role: "Architect, Surat",
-    image: "/img/pic1.jpg",
+    image: "/img/client8.webp",
     text: "Such a user-friendly website with gorgeous property selections! Every hotel we stayed at had premium amenities and wonderful hospitality. Travlla is our go-to for all family trips.",
   },
   {
     id: 9,
     name: "Gaurav Joshi",
     role: "Marketing Director, Hyderabad",
-    image: "/img/pic2.jpg",
+    image: "/img/client9.webp",
     text: "Our corporate retreat to Coorg was perfectly coordinated by Travlla. The luxurious accommodations and customized group activities left our entire team thoroughly impressed!",
   },
   {
     id: 10,
     name: "Meera Sengupta",
     role: "Food & Travel Writer, Kolkata",
-    image: "/img/pic3.jpg",
+    image: "/img/client10.webp",
     text: "From discovering hidden homestays in Sikkim to hassle-free private cab bookings, Travlla made our entire culinary exploration incredibly enriching. An absolute delight to book with!",
   },
 ];
@@ -142,8 +142,8 @@ const Testimonials = () => {
           <div className="lg:col-span-8 flex flex-col">
             {/* Review Header: Stats and Stars */}
             <div className="flex flex-wrap items-center justify-between mb-8 pb-4 border-b border-gray-100">
-              <div className="text-xl font-bold text-[#1a3d3d]">
-                <span className="text-black font-bold">({index + 1}/{testimonials.length}) Reviews</span>
+              <div className="text-2xl font-bold text-[#1a3d3d]">
+                <span className="text-[#1b3c3d] font-bold">Reviews</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex text-[#8bc34a]">

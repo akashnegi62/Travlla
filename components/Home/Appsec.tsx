@@ -117,7 +117,7 @@ export default function AppSec() {
               <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-gray-50">
                 <Image
                   src="/img/app-screenshot.jpg" // Put an app preview mockup or destination screenshot image here
-                  alt="Mobile application UI display mockup preview"
+                  alt="App Preview"
                   fill
                   priority
                   sizes="(max-width: 768px) 280px, 310px"
@@ -131,7 +131,7 @@ export default function AppSec() {
                     Explore the World Seamlessly
                   </h4>
                   <p className="text-[11px] text-gray-300 mt-1 font-medium">
-                    Royal Savoy Mobile V1.0
+                    MercureVaction Mobile V1.0
                   </p>
                 </div>
               </div>
