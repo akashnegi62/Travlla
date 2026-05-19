@@ -4,64 +4,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaInstagram} from "react-icons/fa";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter, FaPinterest } from "react-icons/fa6";
 import { HiOutlinePhone, HiOutlineMail, HiOutlineHome } from "react-icons/hi";
 import { IconType } from "react-icons/lib";
 
-const instaGallery = [
-  "/img/vac1.jpg",
-  "/img/vac2.jpg",
-  "/img/vac3.jpg",
-  "/img/vac4.jpg",
-  "/img/vac5.jpg",
-  "/img/vac1.jpg",
-  "/img/vac2.jpg",
-  "/img/vac3.jpg",
-  "/img/vac4.jpg",
-];
-
 const Footer = () => {
   return (
     <>
-      {/* --- INSTAGRAM SECTION --- */}
+      {/* --- CAR ANIMATION (Marquee) --- */}
       <div className="bg-[#fcf8f1] text-center xl:pt-20 xl:pb-35 pt-12.5 pb-35 border-b-4 border-[#1a3d3d] relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-[#1a3d3d]">
-            Follow Instagram
-          </h3>
-          <ul className="flex flex-wrap justify-center xl:gap-5 gap-2.5">
-            {instaGallery.map((img, idx) => (
-              <li
-                key={idx}
-                className="xl:w-[9.43%] lg:w-[15%] sm:w-[18%] w-[30%]"
-              >
-                <Link
-                  href="https://instagram.com"
-                  target="_blank"
-                  className="relative rounded-2xl overflow-hidden flex items-center justify-center bg-[#1a3d3d] group aspect-square"
-                >
-                  <Image
-                    src={img}
-                    alt="insta"
-                    fill
-                    sizes="(max-width: 640px) 30vw, (max-width: 1024px) 18vw, 10vw"
-                    className="object-cover duration-500 group-hover:opacity-30 group-hover:blur-[3px]"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {/* Recreating the cross-line effect */}
-                    <div className="relative w-10 h-10 flex items-center justify-center">
-                      <div className="absolute w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                      <FaInstagram className="text-white text-2xl relative z-10 scale-50 group-hover:scale-100 transition-transform duration-500" />
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* --- CAR ANIMATION (Marquee) --- */}
         <div className="absolute left-0 bottom-0 w-full overflow-hidden pointer-events-none z-10">
           <motion.div
             initial={{ x: "-100%" }}
@@ -103,14 +55,13 @@ const Footer = () => {
           <Image src="/img/island.png" alt="Tree" width={220} height={146} />
         </div>
       </div>
-
       {/* --- MAIN FOOTER --- */}
       <footer className="relative bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat">
         <div className="container mx-auto px-4 xl:pt-32 pt-16 pb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
             {/* About Widget */}
             <div className="xl:col-span-1 lg:col-span-2">
-              <div className="mb-8">
+              <div className="mb-8 mr-10">
                 <Image
                   src="/img/logo-green.webp"
                   alt="Logo"
@@ -136,10 +87,10 @@ const Footer = () => {
               <h3 className="text-xl font-bold mb-8">Explore</h3>
               <ul className="space-y-3 font-semibold text-gray-700">
                 <FooterLink href="/about">About Us</FooterLink>
-                <FooterLink href="/faq">FAQ&apos;s</FooterLink>
-                <FooterLink href="/services">Services</FooterLink>
-                <FooterLink href="/team">Team</FooterLink>
-                <FooterLink href="/news">News & Articles</FooterLink>
+                <FooterLink href="/activities">Activities</FooterLink>
+                <FooterLink href="#itinerary">Itinerary</FooterLink>
+                <FooterLink href="/membership">Room Type</FooterLink>
+                <FooterLink href="/contact">Contact</FooterLink>
               </ul>
             </div>
 
@@ -147,11 +98,8 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-bold mb-8">Destinations</h3>
               <ul className="space-y-3 font-semibold text-gray-700">
-                <FooterLink href="#">Tokyo</FooterLink>
-                <FooterLink href="#">France</FooterLink>
-                <FooterLink href="#">Dubai</FooterLink>
-                <FooterLink href="#">Kenya</FooterLink>
-                <FooterLink href="#">Vietnam</FooterLink>
+                <FooterLink href="/locations/national">Nationals</FooterLink>
+                <FooterLink href="/locations/international">International</FooterLink>
               </ul>
             </div>
 
@@ -161,7 +109,6 @@ const Footer = () => {
               <ul className="space-y-3 font-semibold text-gray-700">
                 <FooterLink href="#">Terms & Condition</FooterLink>
                 <FooterLink href="#">Privacy Policy</FooterLink>
-                <FooterLink href="#">Contact</FooterLink>
                 <FooterLink href="#">Careers</FooterLink>
                 <FooterLink href="#">Help</FooterLink>
               </ul>
@@ -205,12 +152,12 @@ const Footer = () => {
 
 // Helper Components
 const SocialLink = ({ href, Icon }: { href: string; Icon: IconType }) => (
-  <li className="w-10 h-10 bg-[#a3e635] rounded-full flex items-center justify-center group hover:rounded-lg transition-all duration-300">
+  <li className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-105 transition-all duration-300">
     <Link
       href={href}
       className="w-8 h-8 bg-[#1a3d3d] text-white rounded-full flex items-center justify-center group-hover:rounded-lg group-hover:text-[#a3e635] transition-all"
     >
-      <Icon className="transition-transform group-hover:rotate-360" />
+      <Icon />
     </Link>
   </li>
 );
