@@ -9,12 +9,14 @@ import PartnersMarquee from "@/components/Home/PartnersMarquee";
 import PopularTours from "@/components/Home/PopularTours";
 import Recommendation from "@/components/Home/Recommendation";
 import Testimonials from "@/components/Home/Testimonials";
+import Roomsec from "@/components/Home/Roomsec";
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-hidden">
       <Hero />
       <Booking />
       <Itinerary />
+      <Roomsec />
       <Favourite />
       <PartnersMarquee />
       <Recommendation />

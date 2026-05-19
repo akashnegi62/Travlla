@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaInstagram, FaSearch } from "react-icons/fa";
+import { FaFacebookF, FaInstagram} from "react-icons/fa";
 import { FaXTwitter, FaPinterest } from "react-icons/fa6";
 import { HiOutlinePhone, HiOutlineMail, HiOutlineHome } from "react-icons/hi";
 import { IconType } from "react-icons/lib";
@@ -106,17 +106,6 @@ const Footer = () => {
 
       {/* --- MAIN FOOTER --- */}
       <footer className="relative bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat">
-        {/* The Background Image Container */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/img/light-bg.png"
-            alt="" // Empty alt for decorative background
-            fill
-            quality={75} // Optimizes file size to help reach your 777 KiB savings goal
-            className="object-cover"
-            sizes="100vw" // Ensures the browser loads the right size for the screen
-          />
-        </div>
         <div className="container mx-auto px-4 xl:pt-32 pt-16 pb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
             {/* About Widget */}
@@ -200,28 +189,6 @@ const Footer = () => {
                   <span className="font-bold">55/11 ronin tower New York</span>
                 </li>
               </ul>
-            </div>
-          </div>
-
-          {/* Subscribe Bar */}
-          <div className="mt-20 bg-[#1a3d3d] rounded-3xl p-6 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl lg:text-5xl font-bold text-[#a3e635] mb-2">
-                <span className="text-white">Subscribe</span> Now!
-              </h2>
-              <p className="text-white/70">
-                Sign up to searing weekly newsletter to get the latest updates.
-              </p>
-            </div>
-            <div className="w-full lg:max-w-md bg-[#f0fafa] p-1.5 rounded-full flex items-center">
-              <input
-                type="email"
-                placeholder="Email address..."
-                className="flex-1 bg-transparent px-6 outline-none text-[#1a3d3d] font-semibold"
-              />
-              <button className="w-14 h-14 bg-[#1a3d3d] text-white rounded-full flex items-center justify-center text-xl hover:bg-[#8bc34a] transition-colors">
-                <FaSearch />
-              </button>
             </div>
           </div>
 
