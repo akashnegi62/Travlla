@@ -64,7 +64,7 @@ export default function Itinerary() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
-    <section className="bg-white py-24 border-t border-gray-100 relative">
+    <section className="bg-[#effefe] py-24 border-t border-gray-100 relative">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* --- HEADER SECTION --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-gray-100">

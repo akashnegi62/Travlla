@@ -130,7 +130,7 @@ const staggerContainer: Variants = {
 
 export default function ActivitiesPage() {
   return (
-    <div className="bg-[#fefffe] text-[#1b3c3d] min-h-screen font-sans overflow-x-hidden">
+    <div className="bg-[#effefe] text-[#1b3c3d] min-h-screen font-sans overflow-x-hidden">
       {/* 1. Hero Page Header */}
       <AboutHero title="Activities" />
 

@@ -35,17 +35,6 @@ const blogPosts = [
 const LatestNews = () => {
   return (
     <section className="relative bg-[#1a3d3d] xl:pt-30 pt-12.5 xl:pb-22.5 pb-5 bg-cover bg-no-repeat">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/img/pattern.png"
-          alt=""
-          fill
-          priority // Fixes NO_LCP by preloading the background
-          quality={75}
-          className="object-contain"
-          sizes="100vw"
-        />
-      </div>
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-wrap items-center mb-15">

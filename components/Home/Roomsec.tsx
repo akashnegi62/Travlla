@@ -54,7 +54,7 @@ const fadeInUp: Variants = {
 
 export default function RoomSec() {
   return (
-    <section className="bg-white py-24 border-b border-gray-100">
+    <section className="bg-[#effefe] py-24 border-b border-gray-100">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* --- SECTION HEADER --- */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">

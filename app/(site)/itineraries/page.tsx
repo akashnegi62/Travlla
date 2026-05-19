@@ -112,7 +112,7 @@ export default function ItinerariesPage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-[#effefe] min-h-screen">
       {/* --- HERO TITLE REUSE COMPONENT --- */}
       <AboutHero title="Exclusive Itineraries" />
 
