@@ -10,7 +10,7 @@ import AboutHero from "@/components/About/AboutHero";
 import { LuClock3, LuX } from "react-icons/lu";
 
 // --- EXPANDED LUXURY ITINERARIES DATA ---
-const itinerariesData = [
+const itineraryData = [
   {
     id: "1",
     country: "United Arab Emirates",
@@ -108,7 +108,7 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
-export default function ItinerariesPage() {
+export default function ItineraryPage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
@@ -146,7 +146,7 @@ export default function ItinerariesPage() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {itinerariesData.map((item) => (
+            {itineraryData.map((item) => (
               <motion.div
                 key={item.id}
                 variants={fadeInUp}

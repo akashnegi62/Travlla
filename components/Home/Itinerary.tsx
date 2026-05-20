@@ -81,7 +81,7 @@ export default function Itinerary() {
             </h2>
           </div>
 
-          <Link href="/itineraries">
+          <Link href="/itinerary">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}

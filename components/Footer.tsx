@@ -88,7 +88,7 @@ const Footer = () => {
               <ul className="space-y-3 font-semibold text-gray-700">
                 <FooterLink href="/about">About Us</FooterLink>
                 <FooterLink href="/activities">Activities</FooterLink>
-                <FooterLink href="/itineraries">Itinerary</FooterLink>
+                <FooterLink href="/itinerary">Itinerary</FooterLink>
                 <FooterLink href="/membership">Room Type</FooterLink>
                 <FooterLink href="/contact">Contact</FooterLink>
               </ul>
@@ -99,7 +99,9 @@ const Footer = () => {
               <h3 className="text-xl font-bold mb-8">Destinations</h3>
               <ul className="space-y-3 font-semibold text-gray-700">
                 <FooterLink href="/locations/national">Nationals</FooterLink>
-                <FooterLink href="/locations/international">International</FooterLink>
+                <FooterLink href="/locations/international">
+                  International
+                </FooterLink>
               </ul>
             </div>
 
