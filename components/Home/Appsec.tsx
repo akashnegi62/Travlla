@@ -114,26 +114,15 @@ export default function AppSec() {
               </div>
 
               {/* Internal Mockup Content Image Screen */}
-              <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-gray-50">
+              <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-neutral-900">
                 <Image
-                  src="/img/app-screenshot.jpg" // Put an app preview mockup or destination screenshot image here
+                  src="/img/app.webp" // Put an app preview mockup or destination screenshot image here
                   alt="App Preview"
                   fill
                   priority
                   sizes="(max-width: 768px) 280px, 310px"
-                  className="object-cover"
+                  className="object-contain"
                 />
-
-                {/* Fallback Overlay UI in case image is missing */}
-                <div className="absolute inset-0 bg-linear-to-b from-[#1a3d3d]/20 via-transparent to-[#1a3d3d]/90 flex flex-col justify-end p-6 text-white pointer-events-none">
-                  <LuSmartphone className="w-8 h-8 text-[#8bc34a] mb-2 animate-pulse" />
-                  <h4 className="text-xl font-bold leading-tight">
-                    Explore the World Seamlessly
-                  </h4>
-                  <p className="text-[11px] text-gray-300 mt-1 font-medium">
-                    MercureVaction Mobile V1.0
-                  </p>
-                </div>
               </div>
             </motion.div>
           </div>

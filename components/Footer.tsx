@@ -58,7 +58,7 @@ const Footer = () => {
       {/* --- MAIN FOOTER --- */}
       <footer className="relative bg-[#fcf8f1] text-[#1a3d3d] bg-cover bg-no-repeat">
         <div className="container mx-auto px-4 xl:pt-32 pt-16 pb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2">
             {/* About Widget */}
             <div className="xl:col-span-1 lg:col-span-2">
               <div className="mb-8 mr-10">
@@ -70,10 +70,6 @@ const Footer = () => {
                   className="w-auto h-auto"
                 />
               </div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Travlla is a multi-award-winning strategy and content creation
-                agency that specializes in travel marketing.
-              </p>
               <ul className="flex gap-2">
                 <SocialLink href="#" Icon={FaXTwitter} />
                 <SocialLink href="#" Icon={FaFacebookF} />

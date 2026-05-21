@@ -131,9 +131,6 @@ export default function Itinerary() {
                   >
                     <FaPlay className="text-white text-xs ml-0.5" />
                   </button>
-                  <span className="text-[10px] uppercase font-black tracking-widest text-white/80 mt-2 text-center drop-shadow-md select-none">
-                    Royal Savoy Holidays
-                  </span>
                 </div>
               </div>
 
